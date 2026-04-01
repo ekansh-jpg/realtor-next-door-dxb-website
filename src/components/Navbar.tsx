@@ -14,13 +14,12 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "shadow-md"
+          ? "shadow-md backdrop-blur-md"
           : "bg-transparent"
       }`}
-      style={scrolled ? { backgroundColor: 'rgba(120, 120, 120, 0.95)', backdropFilter: 'blur(8px)' } : {}}
+      style={scrolled ? { backgroundColor: 'rgba(10, 10, 10, 0.9)' } : {}}
     >
       <div className="container mx-auto flex items-center justify-between py-5 px-6">
-        {/* Logo */}
         <a href="#" className="flex items-center gap-2">
           <div className="flex flex-col leading-tight">
             <span className="font-sans text-sm font-bold tracking-[0.15em] text-white">MOHAMMED</span>
@@ -28,7 +27,6 @@ const Navbar = () => {
           </div>
         </a>
 
-        {/* Subscribe button - navy */}
         <a
           href="https://www.youtube.com/@MohammedZohaib86"
           target="_blank"
