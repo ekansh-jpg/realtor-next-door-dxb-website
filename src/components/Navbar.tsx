@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -12,9 +12,7 @@ const navLinks = [
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -24,18 +22,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  useEffect(() => {
     setMobileOpen(false);
-    setDropdownOpen(false);
   }, [location.pathname]);
 
   return (
@@ -53,39 +40,26 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* Desktop dropdown */}
-        <div className="hidden md:block relative" ref={dropdownRef}>
-          <button
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex items-center gap-2 rounded-md px-6 py-2.5 font-sans text-sm font-medium text-white transition-all border hover:bg-white/5"
-            style={{ borderColor: "#C9A96E" }}
-          >
-            <span style={{ color: "#C9A96E" }}>Explore</span>
-            <ChevronDown
-              className="h-4 w-4 transition-transform duration-200"
-              style={{ color: "#C9A96E", transform: dropdownOpen ? "rotate(180deg)" : "rotate(0deg)" }}
-            />
-          </button>
-
-          {dropdownOpen && (
-            <div
-              className="absolute right-0 mt-2 w-52 rounded-lg border shadow-2xl backdrop-blur-xl overflow-hidden animate-fade-in"
-              style={{ backgroundColor: "rgba(17, 17, 17, 0.95)", borderColor: "rgba(201, 169, 110, 0.3)" }}
+        {/* Desktop inline links */}
+        <div className="hidden md:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className="relative px-4 py-2 font-sans text-sm font-medium transition-all duration-300 hover:text-white"
+              style={{
+                color: location.pathname === link.to ? "#C9A96E" : "rgba(255,255,255,0.6)",
+              }}
             >
-              {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className="block px-5 py-3 font-sans text-sm transition-all hover:bg-white/5"
-                  style={{
-                    color: location.pathname === link.to ? "#C9A96E" : "rgba(255,255,255,0.8)",
-                  }}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          )}
+              {link.label}
+              {location.pathname === link.to && (
+                <span
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-[2px] rounded-full"
+                  style={{ backgroundColor: "#C9A96E" }}
+                />
+              )}
+            </Link>
+          ))}
         </div>
 
         {/* Mobile hamburger */}
