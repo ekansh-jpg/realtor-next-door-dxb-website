@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import eventBg from "@/assets/event-crowd.jpg";
 
 const socials = [
   {
@@ -47,57 +48,70 @@ const socials = [
 
 const SocialSection = () => {
   return (
-    <section className="relative bg-card py-20 md:py-28">
-      <div className="container mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-4 text-center font-serif text-3xl font-bold text-foreground md:text-4xl"
-        >
-          Engage with me
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="mx-auto mb-14 max-w-2xl text-center font-sans leading-relaxed text-muted-foreground"
-        >
-          After spending more than a decade in real estate and building a strong presence on social media,
-          I enjoy sharing my experiences, insights, and thoughts to connect with everyone who wants to be
-          part of Dubai's journey or explore the endless opportunities this city has to offer.
-        </motion.p>
+    <section
+      className="relative bg-cover bg-center"
+      style={{ backgroundImage: `url(${eventBg})` }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.75)' }} />
 
-        <div className="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-6">
-          {socials.map((social, i) => (
-            <motion.a
-              key={social.platform}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="group flex flex-col items-center justify-center bg-accent p-6 text-center transition-all duration-300 hover:bg-primary/10"
-            >
-              <img
-                src={social.icon}
-                alt={social.platform}
-                className="mb-3 h-10 w-10 object-contain"
-                loading="lazy"
-              />
-              <p className="font-sans text-xs text-muted-foreground truncate w-full">
-                {social.handle}
-              </p>
-              {social.followers && (
-                <p className="mt-2 font-serif text-2xl font-bold text-primary md:text-3xl">
-                  {social.followers}
+      <div className="relative z-10 py-20 md:py-28">
+        <div className="container mx-auto px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-4 text-center font-serif text-3xl font-bold uppercase tracking-wider text-white md:text-4xl"
+          >
+            Engage With Me
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mx-auto mb-14 max-w-3xl text-center font-sans italic leading-relaxed text-white/70"
+          >
+            After spending more than a decade in real estate and building a strong presence on social media,
+            I enjoy sharing my experiences, insights, and thoughts to connect with everyone who wants to be
+            part of Dubai's journey or explore the endless opportunities this city has to offer.
+          </motion.p>
+
+          {/* Social cards with red left border */}
+          <div className="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-6">
+            {socials.map((social, i) => (
+              <motion.a
+                key={social.platform}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="group flex flex-col items-center justify-center p-6 text-center transition-all duration-300 border-l-2"
+                style={{
+                  backgroundColor: 'rgba(17, 17, 17, 0.9)',
+                  borderLeftColor: '#FF0000',
+                }}
+              >
+                <img
+                  src={social.icon}
+                  alt={social.platform}
+                  className="mb-3 h-14 w-14 object-contain md:h-16 md:w-16"
+                  loading="lazy"
+                />
+                <p className="font-sans text-xs text-white/60 truncate w-full">
+                  {social.handle}
                 </p>
-              )}
-            </motion.a>
-          ))}
+                {social.followers && (
+                  <p className="mt-2 font-serif text-2xl font-bold text-white md:text-3xl">
+                    {social.followers}
+                  </p>
+                )}
+              </motion.a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
