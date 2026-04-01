@@ -1,8 +1,17 @@
 import { motion } from "framer-motion";
+import heroBg from "@/assets/ekansh-hero.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative flex min-h-screen items-center justify-center" style={{ backgroundColor: '#787878' }}>
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.5)' }} />
+
       <div className="relative z-10 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}

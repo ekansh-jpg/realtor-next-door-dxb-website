@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import skylineBg from "@/assets/dubai-skyline-day.jpg";
+import ekanshAbout from "@/assets/ekansh-about.jpg";
 
 const About = () => {
   return (
@@ -32,20 +33,18 @@ const About = () => {
             </p>
           </motion.div>
 
-          {/* Right: Video */}
+          {/* Right: Photo */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="aspect-video overflow-hidden rounded-xl shadow-2xl">
-              <iframe
-                src="https://www.youtube.com/embed/hm_Vchf3NPM"
-                title="Ekansh Kinger Introduction"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="h-full w-full"
+            <div className="overflow-hidden rounded-xl shadow-2xl">
+              <img
+                src={ekanshAbout}
+                alt="Ekansh Kinger"
+                className="h-full w-full object-cover"
                 loading="lazy"
               />
             </div>
