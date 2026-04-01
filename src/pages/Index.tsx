@@ -3,6 +3,8 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Stats from "@/components/Stats";
 import Achievements from "@/components/Achievements";
+import WhyMe from "@/components/WhyMe";
+import Testimonials from "@/components/Testimonials";
 import FeaturedOn from "@/components/FeaturedOn";
 import VideoSection from "@/components/VideoSection";
 import PartnersMarquee from "@/components/PartnersMarquee";
@@ -18,6 +20,8 @@ const Index = () => {
       <About />
       <Stats />
       <Achievements />
+      <WhyMe />
+      <Testimonials />
       <FeaturedOn />
       <VideoSection />
       <PartnersMarquee />
