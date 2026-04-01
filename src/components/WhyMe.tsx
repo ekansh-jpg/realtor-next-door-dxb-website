@@ -85,7 +85,6 @@ const WhyMe = () => {
           ))}
         </div>
       </div>
-      </div>
     </section>
   );
 };
