@@ -10,7 +10,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="font-serif text-5xl font-bold uppercase tracking-wider text-white md:text-7xl lg:text-8xl"
         >
-          Mohammed Zohaib
+          Ekansh Kinger
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -18,7 +18,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-4 font-serif text-lg italic tracking-wide text-white/80 md:text-xl"
         >
-          #1 Real Estate Consultant in Dubai
+          Meet Your Realtor Next Door
         </motion.p>
       </div>
     </section>
