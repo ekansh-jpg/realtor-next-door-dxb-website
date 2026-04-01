@@ -54,10 +54,17 @@ const Counter = ({ target, suffix, prefix, format }: { target: number; suffix: s
 
 const Stats = () => {
   return (
-    <section
-      className="relative bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: `url(${nightSkyline})` }}
-    >
+    <section className="relative overflow-hidden">
+      {/* Background video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src="/videos/ekansh-intro.mp4" type="video/mp4" />
+      </video>
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.7)' }} />
 
       <div className="relative z-10 py-20 md:py-28">
