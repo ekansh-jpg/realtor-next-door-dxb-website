@@ -4,6 +4,7 @@ import { RefreshCw, ExternalLink, TrendingUp, Building, BarChart3 } from "lucide
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import bgTransactions from "@/assets/bg-transactions.jpg";
 
 const chartData = [
   { date: "22 Mar", existing: 1.8, offPlan: 1.2 },
@@ -46,103 +47,130 @@ const Transactions = () => {
   });
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E8" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
       <Navbar />
 
-      {/* Header */}
-      <div className="pt-28 pb-10 container mx-auto px-6">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center">
-          <span
-            className="inline-block px-4 py-1.5 rounded-full font-sans text-xs tracking-[0.2em] uppercase border mb-6"
-            style={{ borderColor: "#C9A96E", color: "#C9A96E" }}
+      {/* Hero with parallax */}
+      <section
+        className="relative bg-cover bg-center bg-fixed pt-24 pb-20"
+        style={{ backgroundImage: `url(${bgTransactions})`, minHeight: "40vh" }}
+      >
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(10, 10, 10, 0.82)" }} />
+        <div className="relative z-10 container mx-auto px-6 flex flex-col items-center justify-center text-center" style={{ minHeight: "30vh" }}>
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-5 py-2 rounded-full font-sans text-xs tracking-[0.25em] uppercase border mb-6"
+            style={{ borderColor: "rgba(201,169,110,0.4)", color: "#C9A96E" }}
           >
             Live Market Data
-          </span>
-          <h1 className="font-serif text-3xl md:text-5xl font-bold mb-3" style={{ color: "#0A0A0A" }}>
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-serif text-3xl md:text-5xl font-bold uppercase tracking-wider text-white mb-4"
+          >
             Real Estate <span style={{ color: "#C9A96E" }}>Transactions</span>
-          </h1>
-          <p className="font-sans text-sm md:text-base max-w-2xl mx-auto" style={{ color: "rgba(10,10,10,0.55)" }}>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="font-sans text-sm md:text-base max-w-2xl italic text-white/60"
+          >
             Dubai's latest property transaction data — updated daily from official sources
-          </p>
-        </motion.div>
-      </div>
+          </motion.p>
+        </div>
+      </section>
 
       {/* Stat Cards */}
-      <div className="container mx-auto px-6 pb-8">
-        <div className="grid md:grid-cols-3 gap-5">
+      <div className="container mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-3 gap-6">
           {statCards.map((card, i) => (
             <motion.div
               key={card.label}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-              className="rounded-2xl p-6 border shadow-sm"
-              style={{ backgroundColor: "#FFFFFF", borderColor: "rgba(201,169,110,0.15)" }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.12 }}
+              whileHover={{ scale: 1.03, transition: { duration: 0.25 } }}
+              className="rounded-xl border border-white/10 p-8 text-center backdrop-blur-sm hover:border-white/25 transition-all duration-300"
+              style={{ backgroundColor: "rgba(17, 17, 17, 0.85)" }}
             >
-              <div className="flex items-start justify-between mb-3">
-                <p className="font-sans text-xs tracking-wider uppercase" style={{ color: "rgba(10,10,10,0.45)" }}>{card.label}</p>
-                <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: "rgba(201,169,110,0.12)" }}>
-                  <card.icon className="h-4 w-4" style={{ color: "#C9A96E" }} />
-                </div>
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: "rgba(201,169,110,0.1)" }}>
+                <card.icon className="h-5 w-5" style={{ color: "#C9A96E" }} />
               </div>
-              <p className="font-serif text-2xl md:text-3xl font-bold" style={{ color: "#0A0A0A" }}>{card.value}</p>
-              <p className="font-sans text-xs mt-1" style={{ color: "rgba(10,10,10,0.4)" }}>{card.sub}</p>
+              <p className="font-serif text-2xl md:text-3xl font-bold text-white mb-1">{card.value}</p>
+              <p className="font-sans text-xs uppercase tracking-wider text-white/40">{card.label}</p>
+              <p className="font-sans text-xs mt-2" style={{ color: "#22c55e" }}>{card.sub}</p>
             </motion.div>
           ))}
         </div>
       </div>
 
       {/* Chart */}
-      <div className="container mx-auto px-6 pb-8">
+      <div className="container mx-auto px-6 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="rounded-2xl border p-6 shadow-sm"
-          style={{ backgroundColor: "#FFFFFF", borderColor: "rgba(201,169,110,0.15)" }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="rounded-xl border border-white/10 p-8 backdrop-blur-sm"
+          style={{ backgroundColor: "rgba(17, 17, 17, 0.85)" }}
         >
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-8">
             <div>
-              <h3 className="font-serif text-lg font-bold" style={{ color: "#0A0A0A" }}>Daily Transaction Worth</h3>
-              <p className="font-sans text-xs" style={{ color: "rgba(10,10,10,0.4)" }}>Existing vs Off-Plan (in Billions AED)</p>
+              <h3 className="font-serif text-xl font-bold uppercase tracking-wider text-white">Daily Transaction Worth</h3>
+              <p className="font-sans text-xs mt-1 text-white/40">Existing vs Off-Plan (in Billions AED)</p>
             </div>
-            <button className="flex items-center gap-2 px-4 py-2 rounded-lg font-sans text-xs border transition-colors hover:bg-gray-50"
-              style={{ borderColor: "rgba(201,169,110,0.3)", color: "#C9A96E" }}>
-              <RefreshCw className="h-3 w-3" /> Refresh
-            </button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full font-sans text-xs uppercase tracking-wider border transition-all"
+              style={{ borderColor: "rgba(201,169,110,0.3)", color: "#C9A96E" }}
+            >
+              <RefreshCw className="h-3.5 w-3.5" /> Refresh
+            </motion.button>
           </div>
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
-                <XAxis dataKey="date" tick={{ fontSize: 12, fill: "rgba(10,10,10,0.5)" }} axisLine={{ stroke: "rgba(0,0,0,0.1)" }} />
-                <YAxis tick={{ fontSize: 12, fill: "rgba(10,10,10,0.5)" }} axisLine={{ stroke: "rgba(0,0,0,0.1)" }} tickFormatter={(v) => `${v}B`} />
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
+                <XAxis dataKey="date" tick={{ fontSize: 11, fill: "rgba(255,255,255,0.4)" }} axisLine={{ stroke: "rgba(255,255,255,0.1)" }} />
+                <YAxis tick={{ fontSize: 11, fill: "rgba(255,255,255,0.4)" }} axisLine={{ stroke: "rgba(255,255,255,0.1)" }} tickFormatter={(v) => `${v}B`} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: "#fff", border: "1px solid rgba(201,169,110,0.2)", borderRadius: "8px", fontSize: "12px" }}
+                  contentStyle={{ backgroundColor: "#111111", border: "1px solid rgba(201,169,110,0.2)", borderRadius: "8px", fontSize: "12px", color: "#fff" }}
+                  labelStyle={{ color: "rgba(255,255,255,0.6)" }}
                   formatter={(value: number) => [`AED ${value}B`, ""]}
                 />
-                <Legend wrapperStyle={{ fontSize: "12px" }} />
-                <Line type="monotone" dataKey="existing" name="Existing" stroke="#C9A96E" strokeWidth={2.5} dot={{ fill: "#C9A96E", r: 4 }} />
-                <Line type="monotone" dataKey="offPlan" name="Off-Plan" stroke="#0A0A0A" strokeWidth={2.5} dot={{ fill: "#0A0A0A", r: 4 }} />
+                <Legend wrapperStyle={{ fontSize: "11px", color: "rgba(255,255,255,0.5)" }} />
+                <Line type="monotone" dataKey="existing" name="Existing" stroke="#C9A96E" strokeWidth={2.5} dot={{ fill: "#C9A96E", r: 4 }} activeDot={{ r: 6 }} />
+                <Line type="monotone" dataKey="offPlan" name="Off-Plan" stroke="rgba(255,255,255,0.6)" strokeWidth={2.5} dot={{ fill: "rgba(255,255,255,0.6)", r: 4 }} activeDot={{ r: 6 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </motion.div>
       </div>
 
-      {/* Filters & Table */}
-      <div className="container mx-auto px-6 pb-10">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex flex-wrap gap-3 mb-6">
+      {/* Filters */}
+      <div className="container mx-auto px-6 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap gap-3 mb-8"
+        >
           {filters.map((f) => (
             <button
               key={f}
               onClick={() => setActiveFilter(f)}
-              className="px-5 py-2 rounded-full font-sans text-xs tracking-wider transition-all border"
+              className="px-6 py-2.5 rounded-full font-sans text-xs tracking-wider uppercase transition-all border"
               style={{
-                backgroundColor: activeFilter === f ? "#C9A96E" : "#FFFFFF",
-                borderColor: activeFilter === f ? "#C9A96E" : "rgba(10,10,10,0.12)",
-                color: activeFilter === f ? "#FFFFFF" : "rgba(10,10,10,0.6)",
+                backgroundColor: activeFilter === f ? "#C9A96E" : "transparent",
+                borderColor: activeFilter === f ? "#C9A96E" : "rgba(255,255,255,0.15)",
+                color: activeFilter === f ? "#0A0A0A" : "rgba(255,255,255,0.6)",
               }}
             >
               {f}
@@ -150,17 +178,19 @@ const Transactions = () => {
           ))}
         </motion.div>
 
+        {/* Table */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="rounded-2xl border overflow-hidden shadow-sm"
-          style={{ borderColor: "rgba(201,169,110,0.15)", backgroundColor: "#FFFFFF" }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="rounded-xl border border-white/10 overflow-hidden"
+          style={{ backgroundColor: "rgba(17, 17, 17, 0.85)" }}
         >
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr style={{ borderBottom: "1px solid rgba(10,10,10,0.08)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(201,169,110,0.15)" }}>
                   {["Area", "Type", "Bedrooms", "Size", "Price", "Date", "Status"].map((h) => (
                     <th key={h} className="px-6 py-4 text-left font-sans text-xs tracking-wider uppercase" style={{ color: "#C9A96E" }}>
                       {h}
@@ -169,52 +199,90 @@ const Transactions = () => {
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((t) => (
-                  <tr key={t.id} className="transition-colors hover:bg-gray-50/50" style={{ borderBottom: "1px solid rgba(10,10,10,0.05)" }}>
-                    <td className="px-6 py-4 font-sans text-sm font-medium" style={{ color: "#0A0A0A" }}>{t.area}</td>
-                    <td className="px-6 py-4 font-sans text-sm" style={{ color: "rgba(10,10,10,0.6)" }}>{t.type}</td>
-                    <td className="px-6 py-4 font-sans text-sm" style={{ color: "rgba(10,10,10,0.6)" }}>{t.bedrooms}</td>
-                    <td className="px-6 py-4 font-sans text-sm" style={{ color: "rgba(10,10,10,0.6)" }}>{t.sqft} sqft</td>
+                {filtered.map((t, i) => (
+                  <motion.tr
+                    key={t.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.04 }}
+                    className="transition-colors hover:bg-white/5"
+                    style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
+                  >
+                    <td className="px-6 py-4 font-sans text-sm font-medium text-white">{t.area}</td>
+                    <td className="px-6 py-4 font-sans text-sm text-white/60">{t.type}</td>
+                    <td className="px-6 py-4 font-sans text-sm text-white/60">{t.bedrooms}</td>
+                    <td className="px-6 py-4 font-sans text-sm text-white/60">{t.sqft} sqft</td>
                     <td className="px-6 py-4 font-sans text-sm font-semibold" style={{ color: "#C9A96E" }}>{t.price}</td>
-                    <td className="px-6 py-4 font-sans text-sm" style={{ color: "rgba(10,10,10,0.4)" }}>{t.date}</td>
+                    <td className="px-6 py-4 font-sans text-sm text-white/40">{t.date}</td>
                     <td className="px-6 py-4">
                       <span className="px-3 py-1 rounded-full font-sans text-xs" style={{
-                        backgroundColor: t.status === "Completed" ? "rgba(34,197,94,0.1)" : "rgba(201,169,110,0.1)",
-                        color: t.status === "Completed" ? "#16a34a" : "#C9A96E",
+                        backgroundColor: t.status === "Completed" ? "rgba(34,197,94,0.15)" : "rgba(201,169,110,0.15)",
+                        color: t.status === "Completed" ? "#22c55e" : "#C9A96E",
                       }}>
                         {t.status}
                       </span>
                     </td>
-                  </tr>
+                  </motion.tr>
                 ))}
               </tbody>
             </table>
           </div>
         </motion.div>
+
+        <p className="font-sans text-xs text-white/30 text-center mt-6">
+          Data sourced from Dubai Land Department (DLD) • Updated weekly
+        </p>
       </div>
 
       {/* CTA */}
-      <div className="container mx-auto px-6 pb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <a
-            href="https://dubailand.gov.ae/en/eservices/real-estate-transaction/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-sans text-sm font-semibold tracking-wider uppercase transition-all hover:opacity-90 shadow-lg"
-            style={{ backgroundColor: "#C9A96E", color: "#FFFFFF" }}
-          >
-            Check Real-Time Data on DubaiLand <ExternalLink className="h-4 w-4" />
-          </a>
-          <p className="font-sans text-xs mt-4" style={{ color: "rgba(10,10,10,0.35)" }}>
-            Data sourced from Dubai Land Department (DLD) • Updated weekly
-          </p>
-        </motion.div>
-      </div>
+      <section
+        className="relative bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: `url(${bgTransactions})` }}
+      >
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(10, 10, 10, 0.75)" }} />
+        <div className="relative z-10 py-20 md:py-28">
+          <div className="container mx-auto px-6 text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="font-serif text-3xl font-bold uppercase tracking-[0.15em] text-white md:text-4xl"
+            >
+              Real-Time Market Data
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="mx-auto mt-6 max-w-lg font-sans italic leading-relaxed text-white/70"
+            >
+              Access the official Dubai Land Department portal for live transaction data, market reports, and real estate insights.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.35, duration: 0.5, type: "spring", stiffness: 200 }}
+              className="mt-10"
+            >
+              <motion.a
+                href="https://dubailand.gov.ae/en/eservices/real-estate-transaction/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-3 rounded-full px-10 py-4 font-sans text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300"
+                style={{ backgroundColor: "#C9A96E" }}
+              >
+                Check Real-Time Data on DubaiLand <ExternalLink className="h-4 w-4" />
+              </motion.a>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>
