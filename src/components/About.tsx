@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
-import skylineBg from "@/assets/dubai-skyline-day.jpg";
 import ekanshAbout from "@/assets/ekansh-about.jpg";
 
 const About = () => {
   return (
     <section
-      className="relative py-20 md:py-28 bg-cover bg-center"
-      style={{ backgroundImage: `url(${skylineBg})` }}
+      className="relative py-20 md:py-28"
+      style={{ backgroundColor: '#F5F5F5' }}
     >
       <div className="container mx-auto px-6">
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
@@ -40,14 +39,14 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="overflow-hidden rounded-xl shadow-2xl">
+            <div className="aspect-video overflow-hidden rounded-xl shadow-2xl">
               <video
                 src="/videos/ekansh-intro.mp4"
                 controls
                 playsInline
                 preload="metadata"
                 poster={ekanshAbout}
-                className="w-full"
+                className="h-full w-full object-cover"
               />
             </div>
           </motion.div>
