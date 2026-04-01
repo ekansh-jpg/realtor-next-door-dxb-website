@@ -33,19 +33,21 @@ const About = () => {
             </p>
           </motion.div>
 
-          {/* Right: Photo */}
+          {/* Right: Video */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="overflow-hidden rounded-xl shadow-2xl">
-              <img
-                src={ekanshAbout}
-                alt="Ekansh Kinger"
+            <div className="aspect-video overflow-hidden rounded-xl shadow-2xl">
+              <video
+                src="/videos/ekansh-intro.mp4"
+                controls
+                playsInline
+                preload="metadata"
+                poster={ekanshAbout}
                 className="h-full w-full object-cover"
-                loading="lazy"
               />
             </div>
           </motion.div>
