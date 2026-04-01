@@ -124,14 +124,11 @@ const Contact = () => {
             className="lg:col-span-2 space-y-6"
           >
             {[
-              { icon: Phone, label: "Call Me", value: "+971 54 459 0555", href: "tel:+971544590555" },
-              {
-                icon: () => <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="h-6 w-6" />,
-                label: "WhatsApp", value: "+971 54 459 0555", href: "https://wa.me/971544590555",
-              },
-              { icon: Instagram, label: "Instagram", value: "@realtor_nextdoordxb", href: "https://www.instagram.com/realtor_nextdoordxb" },
-              { icon: MapPin, label: "Location", value: "Dubai, United Arab Emirates", href: "#" },
-            ].map((item, i) => (
+              { icon: "phone" as const, label: "Call Me", value: "+971 54 459 0555", href: "tel:+971544590555" },
+              { icon: "whatsapp" as const, label: "WhatsApp", value: "+971 54 459 0555", href: "https://wa.me/971544590555" },
+              { icon: "instagram" as const, label: "Instagram", value: "@realtor_nextdoordxb", href: "https://www.instagram.com/realtor_nextdoordxb" },
+              { icon: "map" as const, label: "Location", value: "Dubai, United Arab Emirates", href: "#" },
+            ].map((item) => (
               <a
                 key={item.label}
                 href={item.href}
