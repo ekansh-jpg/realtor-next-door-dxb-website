@@ -1,4 +1,4 @@
-import { Youtube, Instagram, Facebook, Linkedin } from "lucide-react";
+import { Instagram, Phone, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -6,30 +6,34 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-6 md:flex-row">
         {/* Logo */}
         <div className="flex flex-col leading-tight">
-          <span className="font-sans text-sm font-bold tracking-[0.15em] text-white">MOHAMMED</span>
-          <span className="font-sans text-sm font-bold tracking-[0.15em] text-white">ZOHAIB</span>
+          <span className="font-sans text-sm font-bold tracking-[0.15em] text-white">EKANSH KINGER</span>
+          <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-white/50">Realtor Next Door DXB</span>
         </div>
 
-        {/* Copyright */}
-        <p className="font-sans text-xs text-white/50">
-          © 2023 Mohammed Zohaib
-        </p>
+        {/* Info */}
+        <div className="text-center">
+          <p className="font-sans text-xs text-white/50">
+            RERA Certified • NobleHorizon • Dubai, UAE
+          </p>
+          <p className="font-sans text-xs text-white/40 mt-1">
+            © 2026 Ekansh Kinger. All rights reserved.
+          </p>
+        </div>
 
         {/* Social icons */}
         <div className="flex items-center gap-3">
-          {[
-            { href: "https://www.youtube.com/@MohammedZohaib86", icon: <Youtube className="h-4 w-4" /> },
-            { href: "https://www.instagram.com/mohammedzohaib86", icon: <Instagram className="h-4 w-4" /> },
-            { href: "https://www.linkedin.com/in/mohammed-zohaib-68679432", icon: <Linkedin className="h-4 w-4" /> },
-            { href: "https://www.facebook.com/mohammedzohaib86/", icon: <Facebook className="h-4 w-4" /> },
-            { href: "https://x.com/ZohaibDubai", icon: <span className="text-xs font-bold">𝕏</span> },
-            { href: "https://www.tiktok.com/@life_of_zee_", icon: <span className="text-xs">♪</span> },
-          ].map((s) => (
-            <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all hover:border-white/40 hover:text-white">
-              {s.icon}
-            </a>
-          ))}
+          <a href="https://www.instagram.com/realtor_nextdoordxb" target="_blank" rel="noopener noreferrer"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all hover:border-white/40 hover:text-white">
+            <Instagram className="h-4 w-4" />
+          </a>
+          <a href="https://wa.me/971544590555" target="_blank" rel="noopener noreferrer"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all hover:border-white/40 hover:text-white">
+            <Phone className="h-4 w-4" />
+          </a>
+          <a href="mailto:contact@ekanshkinger.com"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all hover:border-white/40 hover:text-white">
+            <Mail className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </footer>

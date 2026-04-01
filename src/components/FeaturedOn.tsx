@@ -15,17 +15,11 @@ const FeaturedOn = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center gap-6 md:flex-row md:justify-center md:gap-10"
+            className="text-center"
           >
             <h3 className="font-serif text-2xl font-bold italic text-white/80 md:text-3xl">
-              Featured on
+              Trusted Partners
             </h3>
-            <img
-              src="https://mohammedzohaib.com/wp-content/uploads/2025/10/Mask-group-e1761787950828.png"
-              alt="Featured media logos - Business Insider, Benzinga, AsiaOne, RCN, FOX"
-              className="max-w-sm opacity-90 md:max-w-lg"
-              loading="lazy"
-            />
           </motion.div>
         </div>
       </div>
