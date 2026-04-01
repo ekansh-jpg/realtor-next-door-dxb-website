@@ -5,7 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "@/components/ScrollToTop";
-import ScrollToTopButton from "@/components/ScrollToTopButton";
+
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import PageTransition from "@/components/PageTransition";
 import Index from "./pages/Index.tsx";
@@ -43,7 +43,7 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <AnimatedRoutes />
-        <ScrollToTopButton />
+        
         <WhatsAppFloat />
       </BrowserRouter>
     </TooltipProvider>
