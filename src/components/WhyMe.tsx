@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart, Building2, HandshakeIcon, Globe } from "lucide-react";
-import dubaiSkyline from "@/assets/dubai-night-skyline.jpg";
+import bgWhyme from "@/assets/bg-whyme.jpg";
 
 const reasons = [
   {
@@ -32,24 +32,26 @@ const reasons = [
 const WhyMe = () => {
   return (
     <section
-      className="relative bg-cover bg-center py-20 md:py-28"
-      style={{ backgroundImage: `url(${dubaiSkyline})` }}
+      className="relative bg-cover bg-center bg-fixed py-20 md:py-28"
+      style={{ backgroundImage: `url(${bgWhyme})` }}
     >
-      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.85)' }} />
+      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.82)' }} />
       <div className="relative z-10 container mx-auto px-6">
         <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, letterSpacing: "0.1em" }}
+          whileInView={{ opacity: 1, letterSpacing: "0.2em" }}
           viewport={{ once: true }}
-          className="mb-2 text-center font-sans text-sm uppercase tracking-[0.2em]"
+          transition={{ duration: 0.8 }}
+          className="mb-2 text-center font-sans text-sm uppercase"
           style={{ color: '#C9A96E' }}
         >
           Why Me
         </motion.p>
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1 }}
           className="mb-6 text-center font-serif text-3xl font-bold uppercase tracking-wider text-white md:text-4xl"
         >
           Why Clients Choose Me
@@ -58,7 +60,7 @@ const WhyMe = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
           className="mx-auto mb-16 max-w-2xl text-center font-sans italic leading-relaxed text-white/60"
         >
           It's not just about finding a property — it's about finding the right partner who has your best interests at heart.
@@ -68,16 +70,24 @@ const WhyMe = () => {
           {reasons.map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="group rounded-xl border border-white/10 p-8 text-center transition-all duration-300 hover:border-white/20"
-              style={{ backgroundColor: '#111111' }}
+              transition={{ duration: 0.6, delay: i * 0.12, ease: "easeOut" }}
+              whileHover={{ scale: 1.03, transition: { duration: 0.25 } }}
+              className="group rounded-xl border border-white/10 p-8 text-center transition-all duration-300 hover:border-white/25 backdrop-blur-sm"
+              style={{ backgroundColor: 'rgba(17, 17, 17, 0.85)' }}
             >
-              <span className="mb-4 inline-block font-serif text-3xl font-bold" style={{ color: '#C9A96E' }}>
+              <motion.span
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 + i * 0.1, type: "spring", stiffness: 200 }}
+                className="mb-4 inline-block font-serif text-3xl font-bold"
+                style={{ color: '#C9A96E' }}
+              >
                 {item.num}
-              </span>
+              </motion.span>
               <item.icon className="mx-auto mb-4 h-8 w-8 text-white/40 transition-colors group-hover:text-white/70" />
               <h3 className="font-serif text-lg font-bold uppercase tracking-wider text-white">{item.title}</h3>
               <p className="mt-3 font-sans text-sm leading-relaxed text-white/50">{item.description}</p>
