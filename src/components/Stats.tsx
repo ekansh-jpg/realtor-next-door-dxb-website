@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 const stats = [
   { value: 10, suffix: "+", label: "Years of Experience" },
   { value: 500, suffix: "+", label: "Properties Sold" },
-  { value: 1, suffix: "B+", prefix: "$", label: "Worth of Properties" },
+  { value: 1, suffix: "B+", prefix: "$", label: "worth of properties" },
 ];
 
 const Counter = ({ target, suffix, prefix }: { target: number; suffix: string; prefix?: string }) => {
@@ -15,9 +15,7 @@ const Counter = ({ target, suffix, prefix }: { target: number; suffix: string; p
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !started) {
-          setStarted(true);
-        }
+        if (entry.isIntersecting && !started) setStarted(true);
       },
       { threshold: 0.5 }
     );
@@ -27,7 +25,6 @@ const Counter = ({ target, suffix, prefix }: { target: number; suffix: string; p
 
   useEffect(() => {
     if (!started) return;
-    const duration = 2000;
     const steps = 60;
     const increment = target / steps;
     let current = 0;
@@ -39,13 +36,16 @@ const Counter = ({ target, suffix, prefix }: { target: number; suffix: string; p
       } else {
         setCount(Math.floor(current));
       }
-    }, duration / steps);
+    }, 2000 / steps);
     return () => clearInterval(timer);
   }, [started, target]);
 
   return (
     <div ref={ref} className="text-center">
-      <p className="font-serif text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
+      <p className="font-sans text-sm uppercase tracking-widest text-white/50 mb-3">
+        {/* label on top */}
+      </p>
+      <p className="font-serif text-5xl font-bold text-white md:text-6xl">
         {prefix}{count}{suffix}
       </p>
     </div>
@@ -54,9 +54,9 @@ const Counter = ({ target, suffix, prefix }: { target: number; suffix: string; p
 
 const Stats = () => {
   return (
-    <section className="border-y border-border bg-secondary/30 py-20 md:py-24">
+    <section className="bg-background py-16 md:py-20">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -66,10 +66,10 @@ const Stats = () => {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="text-center"
             >
-              <Counter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
-              <p className="mt-3 font-sans text-sm uppercase tracking-widest text-muted-foreground">
+              <p className="font-sans text-xs uppercase tracking-[0.2em] text-white/50 mb-4">
                 {stat.label}
               </p>
+              <Counter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
             </motion.div>
           ))}
         </div>

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Youtube } from "lucide-react";
 
 const Navbar = () => {
@@ -15,20 +14,25 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/90 backdrop-blur-lg shadow-lg shadow-background/50"
+          ? "bg-[#787878]/95 backdrop-blur-md shadow-md"
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between py-4 px-6">
-        <a href="#" className="font-serif text-xl font-bold tracking-wide text-foreground">
-          MOHAMMED<br />
-          <span className="text-sm font-medium tracking-[0.3em]">ZOHAIB</span>
+      <div className="container mx-auto flex items-center justify-between py-5 px-6">
+        {/* Logo - text-based like original */}
+        <a href="#" className="flex items-center gap-2">
+          <div className="flex flex-col leading-tight">
+            <span className="font-sans text-sm font-bold tracking-[0.15em] text-white">MOHAMMED</span>
+            <span className="font-sans text-sm font-bold tracking-[0.15em] text-white">ZOHAIB</span>
+          </div>
         </a>
+
+        {/* Subscribe button - navy blue like original */}
         <a
           href="https://www.youtube.com/@MohammedZohaib86"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 rounded-md bg-secondary px-5 py-2.5 font-sans text-sm font-medium text-foreground transition-all hover:bg-muted hover:scale-105"
+          className="flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 font-sans text-sm font-medium text-white transition-all hover:opacity-90"
         >
           Subscribe <Youtube className="h-4 w-4" />
         </a>
