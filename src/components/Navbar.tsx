@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Youtube } from "lucide-react";
+import { Instagram } from "lucide-react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
