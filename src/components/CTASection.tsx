@@ -33,11 +33,11 @@ const CTASection = () => {
           className="mt-10"
         >
           <a
-            href="#"
+            href="tel:+971544590555"
             className="inline-block rounded-full px-10 py-4 font-sans text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:opacity-80"
             style={{ backgroundColor: '#0A0A0A' }}
           >
-            Access My Agenda
+            Call Now — +971 54 459 0555
           </a>
         </motion.div>
       </div>
