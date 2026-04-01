@@ -12,7 +12,7 @@ const logos = [
 
 const PartnersMarquee = () => {
   return (
-    <section className="bg-background py-12 overflow-hidden">
+    <section style={{ backgroundColor: '#0A0A0A' }} className="py-12 overflow-hidden">
       <div className="relative">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...logos, ...logos].map((logo, i) => (
