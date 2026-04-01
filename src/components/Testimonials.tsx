@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Star, Award, Users, StarIcon } from "lucide-react";
-import nightSkyline from "@/assets/dubai-night-skyline.jpg";
+import bgTestimonials from "@/assets/bg-testimonials.jpg";
 
 const testimonials = [
   {
@@ -29,41 +29,49 @@ const highlights = [
 const Testimonials = () => {
   return (
     <section
-      className="relative bg-cover bg-center"
-      style={{ backgroundImage: `url(${nightSkyline})` }}
+      className="relative bg-cover bg-center bg-fixed"
+      style={{ backgroundImage: `url(${bgTestimonials})` }}
     >
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.85)' }} />
 
       <div className="relative z-10 py-20 md:py-28">
         <div className="container mx-auto px-6">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
             className="mb-14 text-center font-serif text-3xl font-bold uppercase tracking-wider text-white md:text-4xl"
           >
             What Clients Say
           </motion.h2>
 
-          {/* Testimonial cards */}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {testimonials.map((t, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="rounded-xl border-l-2 p-8"
+                transition={{ duration: 0.6, delay: i * 0.2, ease: "easeOut" }}
+                whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                className="rounded-xl border-l-2 p-8 backdrop-blur-sm"
                 style={{
                   backgroundColor: 'rgba(17, 17, 17, 0.9)',
                   borderLeftColor: '#C9A96E',
                 }}
               >
-                {/* Stars */}
                 <div className="mb-4 flex gap-1">
                   {[...Array(5)].map((_, s) => (
-                    <Star key={s} className="h-4 w-4 fill-current" style={{ color: '#C9A96E' }} />
+                    <motion.div
+                      key={s}
+                      initial={{ opacity: 0, scale: 0 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 + s * 0.08, type: "spring", stiffness: 300 }}
+                    >
+                      <Star className="h-4 w-4 fill-current" style={{ color: '#C9A96E' }} />
+                    </motion.div>
                   ))}
                 </div>
                 <p className="font-sans text-sm italic leading-relaxed text-white/70">
@@ -77,16 +85,16 @@ const Testimonials = () => {
             ))}
           </div>
 
-          {/* Bottom highlights */}
           <div className="mt-16 grid grid-cols-3 gap-4">
             {highlights.map((h, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3 + i * 0.1 }}
-                className="flex flex-col items-center gap-2 rounded-lg py-6"
+                transition={{ delay: 0.5 + i * 0.15, duration: 0.5, type: "spring" }}
+                whileHover={{ scale: 1.05 }}
+                className="flex flex-col items-center gap-2 rounded-lg py-6 backdrop-blur-sm"
                 style={{ backgroundColor: 'rgba(17, 17, 17, 0.7)' }}
               >
                 <h.icon className="h-6 w-6" style={{ color: '#C9A96E' }} />
