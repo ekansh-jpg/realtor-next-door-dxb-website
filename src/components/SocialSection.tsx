@@ -1,48 +1,28 @@
 import { motion } from "framer-motion";
+import { Phone } from "lucide-react";
 import eventBg from "@/assets/event-crowd.jpg";
 
 const socials = [
   {
-    platform: "X",
-    handle: "@ZohaibDubai",
-    followers: "",
-    url: "https://x.com/ZohaibDubai",
-    icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/vecteezy_new-twitter-x-logo-twitter-icon-x-social-media-icon_42148611-scaled-e1761918200503-1018x1024.png",
-  },
-  {
-    platform: "LinkedIn",
-    handle: "Mohammed Zohaib",
-    followers: "25k",
-    url: "https://www.linkedin.com/in/mohammed-zohaib-68679432",
-    icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/%E2%80%94Pngtree%E2%80%94linkedin-png-icon-design-elements_3562011-1024x1024.png",
+    platform: "Call",
+    handle: "+971 54 459 0555",
+    url: "tel:+971544590555",
+    icon: null,
+    lucideIcon: true,
   },
   {
     platform: "Instagram",
-    handle: "@mohammedzohaib86",
-    followers: "43.3K",
-    url: "https://www.instagram.com/mohammedzohaib86",
+    handle: "@realtor_nextdoordxb",
+    url: "https://www.instagram.com/realtor_nextdoordxb",
     icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/%E2%80%94Pngtree%E2%80%94instagram-icon_8704817-1024x1024.png",
+    lucideIcon: false,
   },
   {
-    platform: "YouTube",
-    handle: "@MohammedZohaib86",
-    followers: "26K",
-    url: "https://www.youtube.com/@MohammedZohaib86/playlists",
-    icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/vecteezy_youtube-logo-png-youtube-logo-transparent-png-youtube-icon_23986704-scaled-e1761262696651-1024x733.png",
-  },
-  {
-    platform: "TikTok",
-    handle: "life_of_zee_",
-    followers: "13k",
-    url: "https://www.tiktok.com/@life_of_zee_",
-    icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/vecteezy_tiktok-logo-png-tiktok-logo-transparent-png-tiktok-icon_23986939-scaled-e1761617132856-1024x1020.png",
-  },
-  {
-    platform: "Facebook",
-    handle: "Mohammed Zohaib",
-    followers: "",
-    url: "https://www.facebook.com/mohammedzohaib86/",
-    icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/vecteezy_facebook-logo-png-facebook-logo-transparent-png-facebook_23986999-scaled-e1761617178285-1022x1024.png",
+    platform: "WhatsApp",
+    handle: "+971 54 459 0555",
+    url: "https://wa.me/971544590555",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
+    lucideIcon: false,
   },
 ];
 
@@ -52,7 +32,6 @@ const SocialSection = () => {
       className="relative bg-cover bg-center"
       style={{ backgroundImage: `url(${eventBg})` }}
     >
-      {/* Dark overlay */}
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.75)' }} />
 
       <div className="relative z-10 py-20 md:py-28">
@@ -72,43 +51,41 @@ const SocialSection = () => {
             transition={{ delay: 0.1 }}
             className="mx-auto mb-14 max-w-3xl text-center font-sans italic leading-relaxed text-white/70"
           >
-            After spending more than a decade in real estate and building a strong presence on social media,
-            I enjoy sharing my experiences, insights, and thoughts to connect with everyone who wants to be
-            part of Dubai's journey or explore the endless opportunities this city has to offer.
+            Ready to explore Dubai's real estate opportunities? Reach out to me directly
+            through any of these channels — I'm always happy to connect.
           </motion.p>
 
-          {/* Social cards with red left border */}
-          <div className="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-6">
+          <div className="grid grid-cols-1 gap-1 md:grid-cols-3">
             {socials.map((social, i) => (
               <motion.a
                 key={social.platform}
                 href={social.url}
-                target="_blank"
+                target={social.platform === "Call" ? "_self" : "_blank"}
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="group flex flex-col items-center justify-center p-6 text-center transition-all duration-300 border-l-2"
+                className="group flex flex-col items-center justify-center p-8 text-center transition-all duration-300 border-l-2"
                 style={{
                   backgroundColor: 'rgba(17, 17, 17, 0.9)',
-                  borderLeftColor: '#FF0000',
+                  borderLeftColor: '#C9A96E',
                 }}
               >
-                <img
-                  src={social.icon}
-                  alt={social.platform}
-                  className="mb-3 h-14 w-14 object-contain md:h-16 md:w-16"
-                  loading="lazy"
-                />
-                <p className="font-sans text-xs text-white/60 truncate w-full">
+                {social.lucideIcon ? (
+                  <Phone className="mb-3 h-14 w-14 text-white" />
+                ) : (
+                  <img
+                    src={social.icon!}
+                    alt={social.platform}
+                    className="mb-3 h-14 w-14 object-contain md:h-16 md:w-16"
+                    loading="lazy"
+                  />
+                )}
+                <p className="font-serif text-lg font-bold text-white">{social.platform}</p>
+                <p className="mt-1 font-sans text-sm text-white/60">
                   {social.handle}
                 </p>
-                {social.followers && (
-                  <p className="mt-2 font-serif text-2xl font-bold text-white md:text-3xl">
-                    {social.followers}
-                  </p>
-                )}
               </motion.a>
             ))}
           </div>
