@@ -23,7 +23,7 @@ const Achievements = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="mx-auto mb-14 max-w-2xl text-center font-sans leading-relaxed text-foreground/70"
+          className="mx-auto mb-14 max-w-2xl text-center font-sans leading-relaxed text-muted-foreground"
         >
           I'm honored to be consistently ranked as the top broker by Emaar Properties, solidifying my position
           as <span className="font-semibold text-foreground">Dubai's number-one realtor</span>. Alongside Emaar,
@@ -39,10 +39,10 @@ const Achievements = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="rounded-xl bg-foreground/10 p-8 text-center backdrop-blur-sm transition-all duration-300 hover:bg-foreground/15 hover:scale-[1.03]"
+              className="rounded-xl border border-border bg-card p-8 text-center transition-all duration-300 hover:border-primary/50 hover:scale-[1.03]"
             >
               <h3 className="font-serif text-xl font-bold text-foreground">{item.title}</h3>
-              <p className="mt-2 font-sans text-sm text-foreground/60">{item.subtitle}</p>
+              <p className="mt-2 font-sans text-sm text-muted-foreground">{item.subtitle}</p>
             </motion.div>
           ))}
         </div>

@@ -16,7 +16,7 @@ const VideoSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-2 text-center font-sans text-xs uppercase tracking-[0.3em] text-foreground/50"
+          className="mb-2 text-center font-sans text-xs uppercase tracking-[0.3em] text-muted-foreground"
         >
           Watch Zohaib
         </motion.p>
@@ -25,7 +25,7 @@ const VideoSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="mb-4 text-center font-sans text-foreground/80"
+          className="mb-4 text-center font-sans text-muted-foreground"
         >
           Watch{" "}
           <span className="font-serif text-3xl font-bold text-foreground md:text-4xl">
@@ -49,7 +49,6 @@ const VideoSection = () => {
           </a>
         </motion.div>
 
-        {/* First row: 3 videos */}
         <div className="grid gap-6 md:grid-cols-3">
           {videos.slice(0, 3).map((video, i) => (
             <motion.div
@@ -58,7 +57,7 @@ const VideoSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="overflow-hidden rounded-xl bg-foreground/10 backdrop-blur-sm transition-all duration-300 hover:bg-foreground/15"
+              className="overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:border-primary/30"
             >
               <div className="aspect-video">
                 <iframe
@@ -79,7 +78,6 @@ const VideoSection = () => {
           ))}
         </div>
 
-        {/* Second row: 2 videos centered */}
         <div className="mt-6 grid gap-6 md:grid-cols-3">
           <div className="hidden md:block" />
           {videos.slice(3, 5).map((video, i) => (
@@ -89,7 +87,7 @@ const VideoSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: (i + 3) * 0.15 }}
-              className="overflow-hidden rounded-xl bg-foreground/10 backdrop-blur-sm transition-all duration-300 hover:bg-foreground/15"
+              className="overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:border-primary/30"
             >
               <div className="aspect-video">
                 <iframe
