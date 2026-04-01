@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 const achievements = [
   { title: "Emaar Broker", subtitle: "Awards 2023" },
-  { title: "Annual Broker", subtitle: "Awards 2023" },
-  { title: "Annual Broker", subtitle: "Awards 2024" },
+  { title: "Annual broker", subtitle: "Awards 2023" },
+  { title: "Annual broker", subtitle: "Awards 2024" },
 ];
 
 const Achievements = () => {
@@ -14,20 +14,21 @@ const Achievements = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-6 text-center font-serif text-3xl font-bold text-white md:text-4xl"
+          className="mb-6 text-center font-serif text-3xl font-bold text-foreground md:text-4xl"
         >
-          My Achievements
+          My achievements
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="mx-auto mb-14 max-w-2xl text-center font-sans leading-relaxed text-white/70"
+          className="mx-auto mb-14 max-w-2xl text-center font-sans leading-relaxed text-foreground/70"
         >
-          Consistently ranked as the top broker by Emaar Properties, solidifying a position
-          as <span className="font-semibold text-white">Dubai's number-one realtor</span>.
-          Recognized by Damac, Sobha, and other market leaders.
+          I'm honored to be consistently ranked as the top broker by Emaar Properties, solidifying my position
+          as <span className="font-semibold text-foreground">Dubai's number-one realtor</span>. Alongside Emaar,
+          I've also excelled with Damac, Sobha, and other Market Leaders, earning the first-ever NABNI Namous
+          Award for top-performing channel partner. This recognition fuels my drive to lead in real estate.
         </motion.p>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -38,10 +39,10 @@ const Achievements = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="rounded-xl bg-white/10 p-8 text-center backdrop-blur-sm transition-all duration-300 hover:bg-white/15 hover:scale-[1.03]"
+              className="rounded-xl bg-foreground/10 p-8 text-center backdrop-blur-sm transition-all duration-300 hover:bg-foreground/15 hover:scale-[1.03]"
             >
-              <h3 className="font-serif text-xl font-bold text-white">{item.title}</h3>
-              <p className="mt-2 font-sans text-sm text-white/60">{item.subtitle}</p>
+              <h3 className="font-serif text-xl font-bold text-foreground">{item.title}</h3>
+              <p className="mt-2 font-sans text-sm text-foreground/60">{item.subtitle}</p>
             </motion.div>
           ))}
         </div>

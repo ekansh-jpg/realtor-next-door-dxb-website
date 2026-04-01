@@ -3,7 +3,9 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Stats from "@/components/Stats";
 import Achievements from "@/components/Achievements";
+import FeaturedOn from "@/components/FeaturedOn";
 import VideoSection from "@/components/VideoSection";
+import PartnersMarquee from "@/components/PartnersMarquee";
 import SocialSection from "@/components/SocialSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
@@ -16,7 +18,9 @@ const Index = () => {
       <About />
       <Stats />
       <Achievements />
+      <FeaturedOn />
       <VideoSection />
+      <PartnersMarquee />
       <SocialSection />
       <CTASection />
       <Footer />

@@ -11,7 +11,7 @@
     --foreground: 0 0% 100%;
 
     /* Cards on dark sections */
-    --card: 0 0% 13%;
+    --card: 0 0% 7%;
     --card-foreground: 0 0% 100%;
 
     --popover: 0 0% 100%;
@@ -29,8 +29,8 @@
     --muted: 0 0% 40%;
     --muted-foreground: 0 0% 75%;
 
-    /* Dark accent for CTA buttons */
-    --accent: 0 0% 7%;
+    /* Dark accent for social cards ~#1a1a1a */
+    --accent: 0 0% 10%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -41,9 +41,6 @@
     --ring: 210 21% 31%;
 
     --radius: 0.5rem;
-
-    /* Footer dark */
-    --footer-bg: 0 0% 7%;
 
     --sidebar-background: 0 0% 47%;
     --sidebar-foreground: 0 0% 100%;
@@ -64,7 +61,7 @@
   body {
     @apply text-foreground;
     font-family: 'Inter', sans-serif;
-    background-color: hsl(0 0% 47%);
+    background-color: hsl(var(--background));
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -85,4 +82,18 @@ html {
 ::-webkit-scrollbar-thumb {
   background: hsl(0 0% 50%);
   border-radius: 3px;
+}
+
+/* Marquee animation for partner logos */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
 }
