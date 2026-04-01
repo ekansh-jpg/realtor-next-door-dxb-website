@@ -43,7 +43,7 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <AnimatedRoutes />
-        <ScrollToTopButton />
+        
         <WhatsAppFloat />
       </BrowserRouter>
     </TooltipProvider>
