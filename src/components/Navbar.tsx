@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Youtube } from "lucide-react";
+import { Instagram } from "lucide-react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -28,13 +28,15 @@ const Navbar = () => {
         </a>
 
         <a
-          href="#"
+          href="https://www.instagram.com/realtor_nextdoordxb"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 rounded-md px-5 py-2.5 font-sans text-sm font-medium text-white transition-all hover:opacity-90"
-          style={{ backgroundColor: '#3D4F5F' }}
+          style={{
+            background: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
+          }}
         >
-          Subscribe <Youtube className="h-4 w-4" />
+          Follow <Instagram className="h-4 w-4" />
         </a>
       </div>
     </nav>
