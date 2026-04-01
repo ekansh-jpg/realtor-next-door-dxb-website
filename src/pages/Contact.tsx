@@ -124,10 +124,22 @@ const Contact = () => {
             className="lg:col-span-2 space-y-6"
           >
             {[
-              { icon: "phone" as const, label: "Call Me", value: "+971 54 459 0555", href: "tel:+971544590555" },
-              { icon: "whatsapp" as const, label: "WhatsApp", value: "+971 54 459 0555", href: "https://wa.me/971544590555" },
-              { icon: "instagram" as const, label: "Instagram", value: "@realtor_nextdoordxb", href: "https://www.instagram.com/realtor_nextdoordxb" },
-              { icon: "map" as const, label: "Location", value: "Dubai, United Arab Emirates", href: "#" },
+              {
+                label: "Call Me", value: "+971 54 459 0555", href: "tel:+971544590555",
+                iconEl: <Phone className="h-5 w-5" style={{ color: "#C9A96E" }} />,
+              },
+              {
+                label: "WhatsApp", value: "+971 54 459 0555", href: "https://wa.me/971544590555",
+                iconEl: <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="h-6 w-6" />,
+              },
+              {
+                label: "Instagram", value: "@realtor_nextdoordxb", href: "https://www.instagram.com/realtor_nextdoordxb",
+                iconEl: <Instagram className="h-5 w-5" style={{ color: "#C9A96E" }} />,
+              },
+              {
+                label: "Location", value: "Dubai, United Arab Emirates", href: "#",
+                iconEl: <MapPin className="h-5 w-5" style={{ color: "#C9A96E" }} />,
+              },
             ].map((item) => (
               <a
                 key={item.label}
@@ -138,7 +150,7 @@ const Contact = () => {
                 style={{ backgroundColor: "#111111", borderColor: "rgba(201,169,110,0.1)" }}
               >
                 <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(201,169,110,0.1)" }}>
-                  {typeof item.icon === "function" ? <item.icon /> : <item.icon className="h-5 w-5" style={{ color: "#C9A96E" }} />}
+                  {item.iconEl}
                 </div>
                 <div>
                   <p className="font-sans text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>{item.label}</p>
