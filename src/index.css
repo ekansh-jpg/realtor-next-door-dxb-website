@@ -6,50 +6,50 @@
 
 @layer base {
   :root {
-    /* Main grey background (hero) ~#787878 */
-    --background: 0 0% 47%;
+    /* Black background #0A0A0A */
+    --background: 0 0% 4%;
     --foreground: 0 0% 100%;
 
-    /* Cards on dark sections */
+    /* Dark grey cards #111111 */
     --card: 0 0% 7%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Navy blue accent (Subscribe button) ~#3D4F5F */
-    --primary: 210 21% 31%;
-    --primary-foreground: 0 0% 100%;
+    /* Gold accent #C9A96E */
+    --primary: 38 46% 61%;
+    --primary-foreground: 0 0% 4%;
 
-    /* White sections */
+    /* White for CTA sections */
     --secondary: 0 0% 100%;
-    --secondary-foreground: 0 0% 10%;
+    --secondary-foreground: 0 0% 4%;
 
-    /* Muted grey text */
-    --muted: 0 0% 40%;
-    --muted-foreground: 0 0% 75%;
+    /* Muted grey */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
 
-    /* Dark accent for social cards ~#1a1a1a */
-    --accent: 0 0% 10%;
+    /* Dark grey accent */
+    --accent: 0 0% 7%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 25%;
-    --input: 0 0% 25%;
-    --ring: 210 21% 31%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 38 46% 61%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 47%;
+    --sidebar-background: 0 0% 4%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 210 21% 31%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 40%;
+    --sidebar-primary: 38 46% 61%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 15%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 25%;
-    --sidebar-ring: 210 21% 31%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 38 46% 61%;
   }
 }
 
@@ -77,10 +77,10 @@ html {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: hsl(0 0% 20%);
+  background: hsl(0 0% 4%);
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(0 0% 50%);
+  background: hsl(38 46% 61%);
   border-radius: 3px;
 }
 

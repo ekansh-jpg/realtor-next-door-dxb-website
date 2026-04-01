@@ -42,10 +42,7 @@ const Counter = ({ target, suffix, prefix }: { target: number; suffix: string; p
 
   return (
     <div ref={ref} className="text-center">
-      <p className="font-sans text-sm uppercase tracking-widest text-white/50 mb-3">
-        {/* label on top */}
-      </p>
-      <p className="font-serif text-5xl font-bold text-white md:text-6xl">
+      <p className="font-serif text-5xl font-bold text-primary md:text-6xl">
         {prefix}{count}{suffix}
       </p>
     </div>
@@ -66,7 +63,7 @@ const Stats = () => {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="text-center"
             >
-              <p className="font-sans text-xs uppercase tracking-[0.2em] text-white/50 mb-4">
+              <p className="font-sans text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">
                 {stat.label}
               </p>
               <Counter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />

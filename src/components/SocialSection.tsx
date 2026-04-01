@@ -62,7 +62,7 @@ const SocialSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="mx-auto mb-14 max-w-2xl text-center font-sans leading-relaxed text-foreground/60"
+          className="mx-auto mb-14 max-w-2xl text-center font-sans leading-relaxed text-muted-foreground"
         >
           After spending more than a decade in real estate and building a strong presence on social media,
           I enjoy sharing my experiences, insights, and thoughts to connect with everyone who wants to be
@@ -80,7 +80,7 @@ const SocialSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="group flex flex-col items-center justify-center bg-accent p-6 text-center transition-all duration-300 hover:bg-accent/80"
+              className="group flex flex-col items-center justify-center bg-accent p-6 text-center transition-all duration-300 hover:bg-primary/10"
             >
               <img
                 src={social.icon}
@@ -88,11 +88,11 @@ const SocialSection = () => {
                 className="mb-3 h-10 w-10 object-contain"
                 loading="lazy"
               />
-              <p className="font-sans text-xs text-foreground/60 truncate w-full">
+              <p className="font-sans text-xs text-muted-foreground truncate w-full">
                 {social.handle}
               </p>
               {social.followers && (
-                <p className="mt-2 font-serif text-2xl font-bold text-foreground md:text-3xl">
+                <p className="mt-2 font-serif text-2xl font-bold text-primary md:text-3xl">
                   {social.followers}
                 </p>
               )}
