@@ -40,14 +40,14 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="aspect-video overflow-hidden rounded-xl shadow-2xl">
+            <div className="overflow-hidden rounded-xl shadow-2xl">
               <video
                 src="/videos/ekansh-intro.mp4"
                 controls
                 playsInline
                 preload="metadata"
                 poster={ekanshAbout}
-                className="h-full w-full object-cover"
+                className="w-full"
               />
             </div>
           </motion.div>
