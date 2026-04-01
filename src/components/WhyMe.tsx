@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart, Building2, HandshakeIcon, Globe } from "lucide-react";
+import dubaiSkyline from "@/assets/dubai-night-skyline.jpg";
 
 const reasons = [
   {
