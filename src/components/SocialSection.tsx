@@ -1,27 +1,48 @@
 import { motion } from "framer-motion";
 import eventBg from "@/assets/event-crowd.jpg";
-import { Heart, Building2, Headphones, Globe } from "lucide-react";
 
-const reasons = [
+const socials = [
   {
-    icon: Heart,
-    title: "Honest Guidance",
-    description: "No pushy sales tactics. Just transparent advice rooted in genuine care for your investment goals.",
+    platform: "X",
+    handle: "@ZohaibDubai",
+    followers: "",
+    url: "https://x.com/ZohaibDubai",
+    icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/vecteezy_new-twitter-x-logo-twitter-icon-x-social-media-icon_42148611-scaled-e1761918200503-1018x1024.png",
   },
   {
-    icon: Building2,
-    title: "Top Developer Access",
-    description: "Partnerships with Emaar, DAMAC, Sobha, Nakheel & more — exclusive deals at the best prices.",
+    platform: "LinkedIn",
+    handle: "Mohammed Zohaib",
+    followers: "25k",
+    url: "https://www.linkedin.com/in/mohammed-zohaib-68679432",
+    icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/%E2%80%94Pngtree%E2%80%94linkedin-png-icon-design-elements_3562011-1024x1024.png",
   },
   {
-    icon: Headphones,
-    title: "End-to-End Support",
-    description: "From first inquiry to post-handover, I'm with you at every step of your property journey.",
+    platform: "Instagram",
+    handle: "@mohammedzohaib86",
+    followers: "43.3K",
+    url: "https://www.instagram.com/mohammedzohaib86",
+    icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/%E2%80%94Pngtree%E2%80%94instagram-icon_8704817-1024x1024.png",
   },
   {
-    icon: Globe,
-    title: "International Buyers",
-    description: "Seamless process for NRI and overseas buyers. I handle the complexities so you don't have to.",
+    platform: "YouTube",
+    handle: "@MohammedZohaib86",
+    followers: "26K",
+    url: "https://www.youtube.com/@MohammedZohaib86/playlists",
+    icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/vecteezy_youtube-logo-png-youtube-logo-transparent-png-youtube-icon_23986704-scaled-e1761262696651-1024x733.png",
+  },
+  {
+    platform: "TikTok",
+    handle: "life_of_zee_",
+    followers: "13k",
+    url: "https://www.tiktok.com/@life_of_zee_",
+    icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/vecteezy_tiktok-logo-png-tiktok-logo-transparent-png-tiktok-icon_23986939-scaled-e1761617132856-1024x1020.png",
+  },
+  {
+    platform: "Facebook",
+    handle: "Mohammed Zohaib",
+    followers: "",
+    url: "https://www.facebook.com/mohammedzohaib86/",
+    icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/vecteezy_facebook-logo-png-facebook-logo-transparent-png-facebook_23986999-scaled-e1761617178285-1022x1024.png",
   },
 ];
 
@@ -31,25 +52,18 @@ const SocialSection = () => {
       className="relative bg-cover bg-center"
       style={{ backgroundImage: `url(${eventBg})` }}
     >
+      {/* Dark overlay */}
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.75)' }} />
 
       <div className="relative z-10 py-20 md:py-28">
         <div className="container mx-auto px-6">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-2 text-center font-sans text-xs uppercase tracking-[0.3em] text-white/50"
-          >
-            Why Me
-          </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-4 text-center font-serif text-3xl font-bold uppercase tracking-wider text-white md:text-4xl"
           >
-            Why Clients Choose Me
+            Engage With Me
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -58,26 +72,44 @@ const SocialSection = () => {
             transition={{ delay: 0.1 }}
             className="mx-auto mb-14 max-w-3xl text-center font-sans italic leading-relaxed text-white/70"
           >
-            It's not just about finding a property — it's about finding the right partner who has your best interests at heart.
+            After spending more than a decade in real estate and building a strong presence on social media,
+            I enjoy sharing my experiences, insights, and thoughts to connect with everyone who wants to be
+            part of Dubai's journey or explore the endless opportunities this city has to offer.
           </motion.p>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {reasons.map((reason, i) => (
-              <motion.div
-                key={reason.title}
+          {/* Social cards with red left border */}
+          <div className="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-6">
+            {socials.map((social, i) => (
+              <motion.a
+                key={social.platform}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="flex flex-col items-center p-6 text-center rounded-xl border border-white/10 transition-all duration-300 hover:border-white/25"
-                style={{ backgroundColor: 'rgba(17, 17, 17, 0.9)' }}
+                className="group flex flex-col items-center justify-center p-6 text-center transition-all duration-300 border-l-2"
+                style={{
+                  backgroundColor: 'rgba(17, 17, 17, 0.9)',
+                  borderLeftColor: '#FF0000',
+                }}
               >
-                <reason.icon className="mb-4 h-10 w-10 text-white/70" />
-                <h3 className="font-serif text-lg font-bold text-white">{reason.title}</h3>
-                <p className="mt-3 font-sans text-sm leading-relaxed text-white/60">
-                  {reason.description}
+                <img
+                  src={social.icon}
+                  alt={social.platform}
+                  className="mb-3 h-14 w-14 object-contain md:h-16 md:w-16"
+                  loading="lazy"
+                />
+                <p className="font-sans text-xs text-white/60 truncate w-full">
+                  {social.handle}
                 </p>
-              </motion.div>
+                {social.followers && (
+                  <p className="mt-2 font-serif text-2xl font-bold text-white md:text-3xl">
+                    {social.followers}
+                  </p>
+                )}
+              </motion.a>
             ))}
           </div>
         </div>

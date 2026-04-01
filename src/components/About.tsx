@@ -17,12 +17,12 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <p className="font-sans text-xs uppercase tracking-[0.3em]" style={{ color: '#555' }}>About Me</p>
             <h2 className="font-serif text-4xl font-bold uppercase tracking-wider md:text-5xl" style={{ color: '#0A0A0A' }}>
-              Meet Your Realtor Next Door
+              Who Am I
             </h2>
             <p className="font-sans text-base leading-relaxed md:text-lg" style={{ color: '#333' }}>
-              I'm Ekansh Kinger — a successful realtor and investment manager at NobleHorizon in Dubai. I believe in transparent guidance over pushy sales. With deep expertise in business planning, negotiation, and strong partnerships with Dubai's top developers — I ensure you get the best deals in the market.
+              CEO & Co-founder of 3X Capital, Entrepreneur,
+              Investor, Youtuber, Podcast host, TEDx speaker.
             </p>
           </motion.div>
 
@@ -35,8 +35,8 @@ const About = () => {
           >
             <div className="aspect-video overflow-hidden rounded-xl shadow-2xl">
               <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Ekansh Kinger Introduction"
+                src="https://www.youtube.com/embed/hm_Vchf3NPM"
+                title="Mohammed Zohaib Introduction"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="h-full w-full"

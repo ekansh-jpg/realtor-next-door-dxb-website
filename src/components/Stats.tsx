@@ -3,9 +3,9 @@ import { useEffect, useState, useRef } from "react";
 import nightSkyline from "@/assets/dubai-night-skyline.jpg";
 
 const stats = [
-  { value: 5, suffix: "+", label: "Years Experience" },
-  { value: 500, suffix: "+", label: "Properties Sold", format: true },
-  { value: 100, suffix: "M+", prefix: "AED ", label: "Worth of Properties" },
+  { value: 15, suffix: "+", label: "Years of Experience" },
+  { value: 5000, suffix: "+", label: "Properties Sold", format: true },
+  { value: 1, suffix: "B +", prefix: "$", label: "worth of properties" },
 ];
 
 const Counter = ({ target, suffix, prefix, format }: { target: number; suffix: string; prefix?: string; format?: boolean }) => {
@@ -58,10 +58,12 @@ const Stats = () => {
       className="relative bg-cover bg-center bg-fixed"
       style={{ backgroundImage: `url(${nightSkyline})` }}
     >
+      {/* Dark overlay */}
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.7)' }} />
 
       <div className="relative z-10 py-20 md:py-28">
         <div className="container mx-auto px-6">
+          {/* Heading */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -77,9 +79,10 @@ const Stats = () => {
             transition={{ delay: 0.1 }}
             className="mx-auto mb-20 max-w-3xl text-center font-sans leading-relaxed text-white/70"
           >
-            Ekansh Kinger's journey from e-learning to becoming a leading realtor and investment manager at NobleHorizon in Dubai is a testament to persistence and vision. He brings strategic business planning, sharp negotiation skills, and a client-first approach to every property deal.
+            As the Co-Founder and CEO of 3X Capital, Mohammed Zohaib is leading a new era in real estate; where technology, media, entertainment, and education introduce a progressive approach to Dubai's real estate.
           </motion.p>
 
+          {/* Stats */}
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
             {stats.map((stat, i) => (
               <motion.div

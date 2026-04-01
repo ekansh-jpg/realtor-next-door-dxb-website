@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MessageCircle } from "lucide-react";
+import { Youtube } from "lucide-react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -22,19 +22,19 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between py-5 px-6">
         <a href="#" className="flex items-center gap-2">
           <div className="flex flex-col leading-tight">
-            <span className="font-sans text-sm font-bold tracking-[0.15em] text-white">EKANSH</span>
-            <span className="font-sans text-sm font-bold tracking-[0.15em] text-white">KINGER</span>
+            <span className="font-sans text-sm font-bold tracking-[0.15em] text-white">MOHAMMED</span>
+            <span className="font-sans text-sm font-bold tracking-[0.15em] text-white">ZOHAIB</span>
           </div>
         </a>
 
         <a
-          href="https://wa.me/971544590555"
+          href="https://www.youtube.com/@MohammedZohaib86"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 rounded-md px-5 py-2.5 font-sans text-sm font-medium text-white transition-all hover:opacity-90"
           style={{ backgroundColor: '#3D4F5F' }}
         >
-          Get In Touch <MessageCircle className="h-4 w-4" />
+          Subscribe <Youtube className="h-4 w-4" />
         </a>
       </div>
     </nav>

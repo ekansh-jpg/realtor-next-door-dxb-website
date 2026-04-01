@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import nightSkyline from "@/assets/dubai-night-skyline.jpg";
-import { Award, ShieldCheck, Layers, Users } from "lucide-react";
+import award1 from "@/assets/award-1.jpg";
+import award2 from "@/assets/award-2.jpg";
+import award3 from "@/assets/award-3.jpg";
 
 const achievements = [
-  { title: "Top Broker", subtitle: "Developer Awards", description: "Recognized as top-performing broker by leading Dubai developers for outstanding sales.", icon: Award },
-  { title: "RERA Certified", subtitle: "Official Recognition", description: "Fully certified and authorized real estate broker in Dubai.", icon: ShieldCheck },
-  { title: "Dual Industry", subtitle: "E-Learning & Real Estate", description: "Unique expertise spanning two competitive industries — e-learning and Dubai real estate.", icon: Layers },
-  { title: "500+ Network", subtitle: "Strong Connections", description: "A powerful professional network of 500+ industry leaders, mentors, and clients.", icon: Users },
+  { title: "Emaar Broker", subtitle: "Awards 2023", image: award1 },
+  { title: "Annual Broker", subtitle: "Awards 2023", image: award2 },
+  { title: "Annual Broker", subtitle: "Awards 2024", image: award3 },
 ];
 
 const Achievements = () => {
@@ -15,6 +16,7 @@ const Achievements = () => {
       className="relative bg-cover bg-center"
       style={{ backgroundImage: `url(${nightSkyline})` }}
     >
+      {/* Dark overlay */}
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.75)' }} />
 
       <div className="relative z-10 py-20 md:py-28">
@@ -34,24 +36,37 @@ const Achievements = () => {
             transition={{ delay: 0.1 }}
             className="mx-auto mb-14 max-w-3xl text-center font-sans italic leading-relaxed text-white/70"
           >
-            Honored by top developers and trusted by hundreds of clients — these milestones fuel my drive to lead in real estate.
+            I'm honored to be consistently ranked as the top broker by Emaar Properties, solidifying my position
+            as <span className="font-semibold text-white not-italic">Dubai's number-one realtor</span>. Alongside Emaar,
+            I've also excelled with Damac, Sobha, and other Market Leaders, earning the first-ever NABNI Namous
+            Award for top-performing channel partner. This recognition fuels my drive to lead in real estate.
           </motion.p>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {/* Achievement cards with real photos */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {achievements.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="rounded-xl border border-white/10 p-6 text-center transition-all duration-300 hover:border-white/25 hover:scale-[1.03]"
-                style={{ backgroundColor: 'rgba(17, 17, 17, 0.8)' }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                className="group relative overflow-hidden rounded-xl"
               >
-                <item.icon className="mx-auto mb-4 h-10 w-10 text-white/80" />
-                <h3 className="font-serif text-lg font-bold uppercase tracking-wider text-white">{item.title}</h3>
-                <p className="mt-1 font-sans text-xs uppercase tracking-widest text-white/50">{item.subtitle}</p>
-                <p className="mt-3 font-sans text-sm leading-relaxed text-white/60">{item.description}</p>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-80 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  width={640}
+                  height={800}
+                />
+                {/* Gradient overlay at bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-6">
+                  <h3 className="font-serif text-xl font-bold uppercase tracking-wider text-white">{item.title}</h3>
+                  <p className="mt-1 font-sans text-sm text-white/70">{item.subtitle}</p>
+                </div>
               </motion.div>
             ))}
           </div>
