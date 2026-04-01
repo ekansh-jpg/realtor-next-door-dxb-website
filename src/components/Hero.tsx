@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden" style={{ backgroundColor: '#787878' }}>
+    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden" style={{ backgroundColor: '#787878' }}>
       {/* Subtle animated gradient overlay */}
       <motion.div
         className="absolute inset-0 opacity-30"
@@ -12,7 +12,7 @@ const Hero = () => {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="relative z-10 text-center">
+      <div className="relative z-10 text-center px-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -22,7 +22,7 @@ const Hero = () => {
             initial={{ opacity: 0, letterSpacing: "0.1em" }}
             animate={{ opacity: 1, letterSpacing: "0.4em" }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="font-sans text-xs uppercase mb-6 text-white/60"
+            className="font-sans text-[10px] md:text-xs uppercase mb-4 md:mb-6 text-white/60"
           >
             Dubai Real Estate
           </motion.p>
@@ -30,7 +30,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="font-serif text-5xl font-bold uppercase tracking-wider text-white md:text-7xl lg:text-8xl"
+            className="font-serif text-4xl font-bold uppercase tracking-wider text-white sm:text-5xl md:text-7xl lg:text-8xl"
           >
             Ekansh Kinger
           </motion.h1>
@@ -38,14 +38,14 @@ const Hero = () => {
             initial={{ width: 0 }}
             animate={{ width: "80px" }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="h-[2px] mx-auto mt-6 mb-4"
+            className="h-[2px] mx-auto mt-4 md:mt-6 mb-3 md:mb-4"
             style={{ backgroundColor: "#C9A96E" }}
           />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="font-serif text-lg italic tracking-wide text-white/80 md:text-xl"
+            className="font-serif text-base md:text-lg italic tracking-wide text-white/80 md:text-xl"
           >
             Meet Your Realtor Next Door
           </motion.p>
@@ -57,7 +57,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-white/40">Scroll</span>
         <motion.div

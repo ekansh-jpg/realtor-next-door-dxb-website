@@ -25,6 +25,16 @@ const Navbar = () => {
     setMobileOpen(false);
   }, [location.pathname]);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -32,11 +42,11 @@ const Navbar = () => {
       }`}
       style={scrolled ? { backgroundColor: "rgba(10, 10, 10, 0.9)" } : {}}
     >
-      <div className="container mx-auto flex items-center justify-between py-5 px-6">
+      <div className="container mx-auto flex items-center justify-between py-4 md:py-5 px-5 md:px-6">
         <Link to="/" className="flex items-center gap-2">
           <div className="flex flex-col leading-tight">
-            <span className="font-sans text-sm font-bold tracking-[0.15em] text-white">EKANSH</span>
-            <span className="font-sans text-sm font-bold tracking-[0.15em] text-white">KINGER</span>
+            <span className="font-sans text-xs md:text-sm font-bold tracking-[0.15em] text-white">EKANSH</span>
+            <span className="font-sans text-xs md:text-sm font-bold tracking-[0.15em] text-white">KINGER</span>
           </div>
         </Link>
 
@@ -64,31 +74,34 @@ const Navbar = () => {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-white"
+          className="md:hidden text-white p-1"
           onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
         >
           {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu - full screen overlay */}
       {mobileOpen && (
         <div
-          className="md:hidden border-t animate-fade-in"
-          style={{ backgroundColor: "rgba(10, 10, 10, 0.98)", borderColor: "rgba(201, 169, 110, 0.2)" }}
+          className="md:hidden fixed inset-0 top-[56px] animate-fade-in overflow-y-auto"
+          style={{ backgroundColor: "rgba(10, 10, 10, 0.98)" }}
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className="block px-6 py-4 font-sans text-sm transition-all hover:bg-white/5"
-              style={{
-                color: location.pathname === link.to ? "#C9A96E" : "rgba(255,255,255,0.8)",
-              }}
-            >
-              {link.label}
-            </Link>
-          ))}
+          <div className="flex flex-col items-center justify-center min-h-[60vh] gap-2 py-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="block px-6 py-4 font-sans text-lg uppercase tracking-widest transition-all hover:bg-white/5 text-center"
+                style={{
+                  color: location.pathname === link.to ? "#C9A96E" : "rgba(255,255,255,0.8)",
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </nav>

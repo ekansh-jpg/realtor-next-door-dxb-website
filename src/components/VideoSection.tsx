@@ -16,9 +16,9 @@ const instagramPosts = [
 
 const VideoSection = () => {
   return (
-    <section style={{ backgroundColor: '#0A0A0A' }} className="py-20 md:py-28">
-      <div className="container mx-auto px-6">
-        <div className="grid gap-10 md:grid-cols-2">
+    <section style={{ backgroundColor: '#0A0A0A' }} className="py-14 md:py-28">
+      <div className="container mx-auto px-5 md:px-6">
+        <div className="grid gap-8 md:gap-10 md:grid-cols-2">
           {/* Left: Ekansh portrait */}
           <motion.div
             initial={{ opacity: 0, x: -50, scale: 0.95 }}
@@ -37,9 +37,9 @@ const VideoSection = () => {
 
           {/* Right: Heading + Instagram embeds */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <motion.p
@@ -47,11 +47,11 @@ const VideoSection = () => {
               whileInView={{ opacity: 1, letterSpacing: "0.2em" }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="font-sans text-sm uppercase mb-3" style={{ color: '#C9A96E' }}
+              className="font-sans text-xs md:text-sm uppercase mb-3" style={{ color: '#C9A96E' }}
             >
               Social
             </motion.p>
-            <h2 className="font-serif text-3xl font-bold uppercase tracking-wider text-white md:text-4xl">
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wider text-white">
               Watch Ekansh
             </h2>
             <motion.div
@@ -59,10 +59,10 @@ const VideoSection = () => {
               whileInView={{ width: "60px" }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="h-[2px] mt-4 mb-4"
+              className="h-[2px] mt-3 md:mt-4 mb-3 md:mb-4"
               style={{ backgroundColor: "#C9A96E" }}
             />
-            <p className="font-sans italic text-white/70">
+            <p className="font-sans text-sm italic text-white/70">
               Follow for Dubai's Most Actionable Real Estate Content
             </p>
             <motion.a
@@ -71,7 +71,7 @@ const VideoSection = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="mt-5 inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-sans text-sm font-bold uppercase tracking-wider text-white transition-all hover:opacity-90"
+              className="mt-4 md:mt-5 inline-flex items-center gap-2 rounded-full px-5 md:px-6 py-2 md:py-2.5 font-sans text-xs md:text-sm font-bold uppercase tracking-wider text-white transition-all hover:opacity-90"
               style={{
                 background: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
               }}
@@ -80,7 +80,7 @@ const VideoSection = () => {
             </motion.a>
 
             {/* Instagram embeds */}
-            <div className="mt-8 grid gap-4 grid-cols-2">
+            <div className="mt-6 md:mt-8 grid gap-3 md:gap-4 grid-cols-2">
               {instagramPosts.map((post, i) => (
                 <motion.a
                   key={i}
