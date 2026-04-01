@@ -31,8 +31,12 @@ const reasons = [
 
 const WhyMe = () => {
   return (
-    <section className="py-20 md:py-28" style={{ backgroundColor: '#0A0A0A' }}>
-      <div className="container mx-auto px-6">
+    <section
+      className="relative bg-cover bg-center py-20 md:py-28"
+      style={{ backgroundImage: `url(${dubaiSkyline})` }}
+    >
+      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.85)' }} />
+      <div className="relative z-10 container mx-auto px-6">
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
