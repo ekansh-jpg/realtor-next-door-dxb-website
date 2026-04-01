@@ -32,19 +32,19 @@ const achievements = [
 const Achievements = () => {
   return (
     <section
-      className="relative bg-cover bg-center bg-fixed"
+      className="relative bg-cover bg-center md:bg-fixed"
       style={{ backgroundImage: `url(${bgAchievements})` }}
     >
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.8)' }} />
 
-      <div className="relative z-10 py-20 md:py-28">
-        <div className="container mx-auto px-6">
+      <div className="relative z-10 py-14 md:py-28">
+        <div className="container mx-auto px-5 md:px-6">
           <motion.h2
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="mb-6 text-center font-serif text-3xl font-bold uppercase tracking-wider text-white md:text-4xl"
+            className="mb-4 md:mb-6 text-center font-serif text-2xl font-bold uppercase tracking-wider text-white sm:text-3xl md:text-4xl"
           >
             My Achievements
           </motion.h2>
@@ -53,13 +53,13 @@ const Achievements = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15, duration: 0.6 }}
-            className="mx-auto mb-14 max-w-3xl text-center font-sans italic leading-relaxed text-white/70"
+            className="mx-auto mb-10 md:mb-14 max-w-3xl text-center font-sans text-sm italic leading-relaxed text-white/70 px-2"
           >
             Recognition That Speaks Volumes — Honored by top developers and trusted by hundreds of clients,
             these milestones fuel my drive to lead in real estate.
           </motion.p>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
             {achievements.map((item, i) => (
               <motion.div
                 key={i}
@@ -68,21 +68,16 @@ const Achievements = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="group rounded-xl p-8 text-center transition-all duration-300 border-t-2"
+                className="group rounded-xl p-5 md:p-8 text-center transition-all duration-300 border-t-2"
                 style={{
                   backgroundColor: 'rgba(17, 17, 17, 0.9)',
                   borderTopColor: '#C9A96E',
                 }}
               >
-                <motion.div
-                  whileHover={{ rotate: 10, scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <item.icon className="mx-auto mb-4 h-12 w-12" style={{ color: '#C9A96E' }} />
-                </motion.div>
-                <h3 className="font-serif text-xl font-bold uppercase tracking-wider text-white">{item.title}</h3>
-                <p className="mt-1 font-sans text-sm font-semibold" style={{ color: '#C9A96E' }}>{item.subtitle}</p>
-                <p className="mt-3 font-sans text-sm leading-relaxed text-white/60">{item.description}</p>
+                <item.icon className="mx-auto mb-3 md:mb-4 h-8 w-8 md:h-12 md:w-12" style={{ color: '#C9A96E' }} />
+                <h3 className="font-serif text-base md:text-xl font-bold uppercase tracking-wider text-white">{item.title}</h3>
+                <p className="mt-1 font-sans text-[10px] md:text-sm font-semibold" style={{ color: '#C9A96E' }}>{item.subtitle}</p>
+                <p className="mt-2 md:mt-3 font-sans text-xs md:text-sm leading-relaxed text-white/60 hidden sm:block">{item.description}</p>
               </motion.div>
             ))}
           </div>

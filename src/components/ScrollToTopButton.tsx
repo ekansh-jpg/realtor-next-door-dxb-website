@@ -20,11 +20,11 @@ const ScrollToTopButton = () => {
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-24 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md shadow-2xl transition-colors hover:border-[#C9A96E]/60"
+          className="fixed bottom-20 md:bottom-24 right-4 md:right-6 z-50 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md shadow-2xl transition-colors hover:border-[#C9A96E]/60"
           style={{ backgroundColor: "rgba(17,17,17,0.9)" }}
           aria-label="Scroll to top"
         >
-          <ArrowUp className="h-5 w-5" style={{ color: "#C9A96E" }} />
+          <ArrowUp className="h-4 w-4 md:h-5 md:w-5" style={{ color: "#C9A96E" }} />
         </motion.button>
       )}
     </AnimatePresence>
