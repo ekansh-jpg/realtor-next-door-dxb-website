@@ -55,7 +55,6 @@ const Counter = ({ target, suffix, prefix, format }: { target: number; suffix: s
 const Stats = () => {
   return (
     <section className="relative overflow-hidden">
-      {/* Background video */}
       <video
         autoPlay
         muted
@@ -63,7 +62,7 @@ const Stats = () => {
         playsInline
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src="/videos/ekansh-intro.mp4" type="video/mp4" />
+        <source src="/videos/dubai-timelapse.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.7)' }} />
 
