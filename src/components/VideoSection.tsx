@@ -4,6 +4,8 @@ const videos = [
   { id: "hm_Vchf3NPM", title: "My Dubai Property Investment Strategy & Full Portfolio Revealed" },
   { id: "GZMO6p52h-s", title: "Dubai Villa Market 2025 | Will 142,000 New Units Destroy Prices?" },
   { id: "dpUhTZJaZbY", title: "I'm Buying DAMAC Islands 2 (And You Should Too)" },
+  { id: "vfOvQ70sqj0", title: "I Compared Siniya Island & Downtown UAQ—Here's What I Found" },
+  { id: "I5Vt26lz5gk", title: "From Dubai Islands to Palm Jebel Ali: Complete Real Estate Breakdown!" },
 ];
 
 const VideoSection = () => {
@@ -14,7 +16,7 @@ const VideoSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-2 text-center font-sans text-xs uppercase tracking-[0.3em] text-white/50"
+          className="mb-2 text-center font-sans text-xs uppercase tracking-[0.3em] text-foreground/50"
         >
           Watch Zohaib
         </motion.p>
@@ -23,9 +25,12 @@ const VideoSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="mb-4 text-center font-serif text-3xl font-bold text-white md:text-4xl"
+          className="mb-4 text-center font-sans text-foreground/80"
         >
-          Dubai's Most Actionable Real Estate Content
+          Watch{" "}
+          <span className="font-serif text-3xl font-bold text-foreground md:text-4xl">
+            Dubai's Most Actionable Real Estate Content
+          </span>
         </motion.h2>
         <motion.div
           initial={{ opacity: 0 }}
@@ -38,21 +43,22 @@ const VideoSection = () => {
             href="https://www.youtube.com/@MohammedZohaib86"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block rounded-md bg-primary px-6 py-2.5 font-sans text-sm font-medium text-white transition-all hover:opacity-90"
+            className="inline-block rounded-md bg-primary px-6 py-2.5 font-sans text-sm font-medium text-primary-foreground transition-all hover:opacity-90"
           >
             Subscribe
           </a>
         </motion.div>
 
+        {/* First row: 3 videos */}
         <div className="grid gap-6 md:grid-cols-3">
-          {videos.map((video, i) => (
+          {videos.slice(0, 3).map((video, i) => (
             <motion.div
               key={video.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="overflow-hidden rounded-xl bg-white/10 backdrop-blur-sm transition-all duration-300 hover:bg-white/15"
+              className="overflow-hidden rounded-xl bg-foreground/10 backdrop-blur-sm transition-all duration-300 hover:bg-foreground/15"
             >
               <div className="aspect-video">
                 <iframe
@@ -65,7 +71,38 @@ const VideoSection = () => {
                 />
               </div>
               <div className="p-4">
-                <p className="font-sans text-sm font-medium text-white line-clamp-2">
+                <p className="font-sans text-sm font-medium text-foreground line-clamp-2">
+                  {video.title}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Second row: 2 videos centered */}
+        <div className="mt-6 grid gap-6 md:grid-cols-3">
+          <div className="hidden md:block" />
+          {videos.slice(3, 5).map((video, i) => (
+            <motion.div
+              key={video.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: (i + 3) * 0.15 }}
+              className="overflow-hidden rounded-xl bg-foreground/10 backdrop-blur-sm transition-all duration-300 hover:bg-foreground/15"
+            >
+              <div className="aspect-video">
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="h-full w-full"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-4">
+                <p className="font-sans text-sm font-medium text-foreground line-clamp-2">
                   {video.title}
                 </p>
               </div>
