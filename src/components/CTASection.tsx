@@ -21,7 +21,7 @@ const CTASection = () => {
           className="mx-auto mt-6 max-w-lg font-sans italic leading-relaxed"
           style={{ color: '#555' }}
         >
-          After almost two decades in real estate, I'm dedicated to sharing insights with investors.
+          With years of real estate expertise, I'm dedicated to helping investors find the best deals in Dubai.
           <br />
           Let's work together to turn your investment goals into reality.
         </motion.p>

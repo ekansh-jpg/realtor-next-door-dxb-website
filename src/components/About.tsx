@@ -21,8 +21,14 @@ const About = () => {
               Who Am I
             </h2>
             <p className="font-sans text-base leading-relaxed md:text-lg" style={{ color: '#333' }}>
-              CEO & Co-founder of 3X Capital, Entrepreneur,
-              Investor, Youtuber, Podcast host, TEDx speaker.
+              I'm Ekansh Kinger — a successful realtor and investment manager at NobleHorizon in Dubai.
+              My journey spans from e-learning to mastering Dubai's dynamic real estate market, driven
+              by determination and smart planning.
+            </p>
+            <p className="font-sans text-base leading-relaxed md:text-lg" style={{ color: '#333' }}>
+              I believe in transparent guidance over pushy sales. With deep expertise in business planning,
+              negotiation, and strong partnerships with Dubai's top developers like Emaar, DAMAC, Sobha,
+              and Nakheel — I ensure you get the best deals in the market.
             </p>
           </motion.div>
 
@@ -36,7 +42,7 @@ const About = () => {
             <div className="aspect-video overflow-hidden rounded-xl shadow-2xl">
               <iframe
                 src="https://www.youtube.com/embed/hm_Vchf3NPM"
-                title="Mohammed Zohaib Introduction"
+                title="Ekansh Kinger Introduction"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="h-full w-full"
