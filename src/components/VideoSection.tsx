@@ -21,54 +21,78 @@ const VideoSection = () => {
         <div className="grid gap-10 md:grid-cols-2">
           {/* Left: Ekansh portrait */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, x: -50, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="hidden md:block"
           >
             <img
               src={ekanshPortrait}
               alt="Ekansh Kinger"
-              className="h-full max-h-[700px] w-full rounded-xl object-cover"
+              className="h-full max-h-[700px] w-full rounded-xl object-cover shadow-2xl"
               loading="lazy"
             />
           </motion.div>
 
           {/* Right: Heading + Instagram embeds */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
+            <motion.p
+              initial={{ opacity: 0, letterSpacing: "0.1em" }}
+              whileInView={{ opacity: 1, letterSpacing: "0.2em" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="font-sans text-sm uppercase mb-3" style={{ color: '#C9A96E' }}
+            >
+              Social
+            </motion.p>
             <h2 className="font-serif text-3xl font-bold uppercase tracking-wider text-white md:text-4xl">
               Watch Ekansh
             </h2>
-            <p className="mt-3 font-sans text-white/70">
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "60px" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="h-[2px] mt-4 mb-4"
+              style={{ backgroundColor: "#C9A96E" }}
+            />
+            <p className="font-sans italic text-white/70">
               Follow for Dubai's Most Actionable Real Estate Content
             </p>
-            <a
+            <motion.a
               href="https://www.instagram.com/realtor_nextdoordxb"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-md px-6 py-2.5 font-sans text-sm font-bold uppercase tracking-wider text-white transition-all hover:opacity-90"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="mt-5 inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-sans text-sm font-bold uppercase tracking-wider text-white transition-all hover:opacity-90"
               style={{
                 background: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
               }}
             >
               Follow on Instagram
-            </a>
+            </motion.a>
 
             {/* Instagram embeds */}
             <div className="mt-8 grid gap-4 grid-cols-2">
               {instagramPosts.map((post, i) => (
-                <a
+                <motion.a
                   key={i}
                   href={post.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group overflow-hidden rounded-lg block"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="group overflow-hidden rounded-xl block border border-white/10 hover:border-white/25 transition-all"
                 >
                   <div className="aspect-[4/5] relative overflow-hidden">
                     <iframe
@@ -80,7 +104,7 @@ const VideoSection = () => {
                       title={post.title}
                     />
                   </div>
-                </a>
+                </motion.a>
               ))}
             </div>
           </motion.div>
