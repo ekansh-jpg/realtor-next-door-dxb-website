@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import ekanshPortrait from "@/assets/ekansh-portrait.jpg";
+import ekanshAward from "@/assets/ekansh-award.jpg.asset.json";
 
 const instagramPosts = [
   {
@@ -28,8 +28,8 @@ const VideoSection = () => {
             className="hidden md:block"
           >
             <img
-              src={ekanshPortrait}
-              alt="Ekansh Kinger"
+              src={ekanshAward.url}
+              alt="Ekansh Kinger with award"
               className="h-full max-h-[700px] w-full rounded-xl object-cover shadow-2xl"
               loading="lazy"
             />
