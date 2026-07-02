@@ -83,9 +83,9 @@ const Stats = () => {
             className="mx-auto mb-12 md:mb-20 max-w-3xl text-center font-sans text-sm md:text-base leading-relaxed text-white/70 px-2"
           >
             Ekansh Kinger's journey from e-learning to becoming a leading realtor and investment manager
-            at NobleHorizon in Dubai is a testament to persistence and vision. Mastering two competitive
-            industries, he brings strategic business planning, sharp negotiation skills, and a client-first
-            approach to every property deal — from off-plan investments to ready villas.
+            in Dubai is a testament to persistence and vision. Mastering two competitive industries, he
+            brings strategic business planning, sharp negotiation skills, and a client-first approach
+            to every property deal — from off-plan investments to ready villas.
           </motion.p>
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 md:gap-10">
