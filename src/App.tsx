@@ -7,12 +7,15 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "@/components/ScrollToTop";
 
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import MobileBottomNav from "@/components/MobileBottomNav";
 import PageTransition from "@/components/PageTransition";
 import Index from "./pages/Index.tsx";
 import Transactions from "./pages/Transactions.tsx";
 import DubaiInsights from "./pages/DubaiInsights.tsx";
 import Services from "./pages/Services.tsx";
 import Contact from "./pages/Contact.tsx";
+import Properties from "./pages/Properties.tsx";
+import PropertyDetail from "./pages/PropertyDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -24,6 +27,8 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
+        <Route path="/properties" element={<PageTransition><Properties /></PageTransition>} />
+        <Route path="/properties/:slug" element={<PageTransition><PropertyDetail /></PageTransition>} />
         <Route path="/transactions" element={<PageTransition><Transactions /></PageTransition>} />
         <Route path="/dubai-insights" element={<PageTransition><DubaiInsights /></PageTransition>} />
         <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
@@ -43,7 +48,7 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <AnimatedRoutes />
-        
+        <MobileBottomNav />
         <WhatsAppFloat />
       </BrowserRouter>
     </TooltipProvider>
