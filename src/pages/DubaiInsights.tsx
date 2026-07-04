@@ -10,26 +10,26 @@ import insight2 from "@/assets/insight-2.jpg";
 import insight3 from "@/assets/insight-3.jpg";
 
 const marketStats = [
-  { label: "Total Transactions (2024)", value: "180,900+", icon: TrendingUp },
-  { label: "Average Price/sqft", value: "AED 1,850", icon: Building },
-  { label: "Top Area", value: "Dubai Marina", icon: MapPin },
-  { label: "YoY Growth", value: "+18.5%", icon: TrendingUp },
+  { label: "Total Transactions (2025 YTD)", value: "215,000+", icon: TrendingUp },
+  { label: "Average Price/sqft", value: "AED 2,050", icon: Building },
+  { label: "Hottest Area", value: "Palm Jebel Ali", icon: MapPin },
+  { label: "YoY Price Growth", value: "+21.3%", icon: TrendingUp },
 ];
 
 const articles = [
-  { image: insight1, date: "March 2025", category: "Market Overview", title: "Dubai Real Estate Hits Record $100B+ in 2024", excerpt: "Dubai's property market surpassed AED 370 billion in total transactions, marking the highest ever recorded year." },
-  { image: insight2, date: "March 2025", category: "Investment Hotspot", title: "Why Dubai Hills Estate is the #1 Choice for Families", excerpt: "With world-class amenities, top schools, and Emaar's signature quality — Dubai Hills continues to dominate." },
-  { image: insight3, date: "February 2025", category: "Development", title: "Palm Jebel Ali: The Next Mega-Project Reshaping Dubai", excerpt: "Nakheel's revival of Palm Jebel Ali promises to be five times larger than Palm Jumeirah." },
-  { image: insight1, date: "February 2025", category: "Policy", title: "Golden Visa Through Real Estate: What You Need to Know", excerpt: "UAE's Golden Visa program now allows property investors to secure 10-year residency with qualifying investments." },
-  { image: insight2, date: "January 2025", category: "Market Trends", title: "Off-Plan vs Ready Properties: 2025 Investment Guide", excerpt: "A comprehensive comparison of off-plan and ready property investments in Dubai's current market." },
-  { image: insight3, date: "January 2025", category: "NRI Guide", title: "Complete Guide for Indian Investors in Dubai Real Estate", excerpt: "Everything NRI investors need to know about buying property in Dubai — from financing to legal requirements." },
+  { image: insight1, date: "June 2026", category: "Mega Launch", title: "Palm Jebel Ali Phase 3 Sold Out in 48 Hours", excerpt: "Nakheel's third villa release on Palm Jebel Ali cleared record-breaking demand — signature villas from AED 18M priced-in for 2027 handover." },
+  { image: insight2, date: "May 2026", category: "Investment Hotspot", title: "DAMAC Lagoons: Why Mediterranean Clusters Outsell the Market", excerpt: "Portofino, Santorini and Malta clusters lead townhouse resale premiums across Dubai's off-plan segment." },
+  { image: insight3, date: "May 2026", category: "Skyline", title: "Safa Two & Downtown Cluster Reshape Sheikh Zayed Road", excerpt: "DAMAC's de GRISOGONO super-tall and Emaar's Downtown Views III are anchoring a new luxury corridor." },
+  { image: insight1, date: "April 2026", category: "Policy", title: "Golden Visa 2.0: New Property Rules NRIs Should Know", excerpt: "Updated UAE Golden Visa property thresholds and payment-plan eligibility explained for 2026 buyers." },
+  { image: insight2, date: "April 2026", category: "Yield", title: "Best Rental Yield Neighbourhoods in Dubai — 2026 Ranking", excerpt: "JVC, Discovery Gardens and Al Furjan continue to top Dubai for gross rental yields above 8%." },
+  { image: insight3, date: "March 2026", category: "Branded Living", title: "Branded Residences Now 30% of New Dubai Launches", excerpt: "Address, Bugatti, Bulgari and Cavalli-branded projects are commanding 40–60% premiums on resale." },
 ];
 
 const hotspots = [
-  { area: "Dubai Creek Harbour", growth: "+24%", avgPrice: "AED 1,650/sqft", highlight: "Emaar's flagship waterfront" },
-  { area: "Business Bay", growth: "+19%", avgPrice: "AED 1,900/sqft", highlight: "Commercial & residential hub" },
-  { area: "JVC", growth: "+31%", avgPrice: "AED 950/sqft", highlight: "Affordable investment entry" },
-  { area: "Jumeirah Village Triangle", growth: "+22%", avgPrice: "AED 1,100/sqft", highlight: "Rising rental yields" },
+  { area: "Palm Jebel Ali", growth: "+38%", avgPrice: "AED 4,200/sqft", highlight: "Nakheel's revived mega-island" },
+  { area: "Dubai Creek Harbour", growth: "+27%", avgPrice: "AED 2,450/sqft", highlight: "Emaar's flagship waterfront" },
+  { area: "DAMAC Lagoons", growth: "+29%", avgPrice: "AED 1,650/sqft", highlight: "Mediterranean villa community" },
+  { area: "JVC & JVT", growth: "+24%", avgPrice: "AED 1,150/sqft", highlight: "Highest rental yields in Dubai" },
 ];
 
 const faqs = [
@@ -148,7 +148,7 @@ const DubaiInsights = () => {
           <div className="container mx-auto px-5 md:px-6 text-center">
             <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] text-white">
-              Subscribe to Market Updates
+              Follow Market Updates
             </motion.h2>
             <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
               className="mx-auto mt-4 md:mt-6 max-w-lg font-sans text-sm italic leading-relaxed text-white/70 px-2">
@@ -163,7 +163,7 @@ const DubaiInsights = () => {
               <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} type="submit"
                 className="px-6 md:px-8 py-3 md:py-3.5 rounded-full font-sans text-xs md:text-sm font-semibold uppercase tracking-wider md:tracking-widest flex items-center justify-center gap-2 transition-all"
                 style={{ backgroundColor: "#C9A96E", color: "#0A0A0A" }}>
-                <Send className="h-3.5 w-3.5 md:h-4 md:w-4" /> Subscribe
+                <Send className="h-3.5 w-3.5 md:h-4 md:w-4" /> Follow
               </motion.button>
             </motion.form>
           </div>

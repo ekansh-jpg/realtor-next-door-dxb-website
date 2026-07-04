@@ -7,34 +7,34 @@ import Footer from "@/components/Footer";
 import bgTransactions from "@/assets/bg-transactions.jpg";
 
 const chartData = [
-  { date: "22 Mar", existing: 1.8, offPlan: 1.2 },
-  { date: "23 Mar", existing: 2.1, offPlan: 1.5 },
-  { date: "24 Mar", existing: 2.4, offPlan: 1.1 },
-  { date: "25 Mar", existing: 1.9, offPlan: 1.8 },
-  { date: "26 Mar", existing: 2.7, offPlan: 2.0 },
-  { date: "27 Mar", existing: 3.1, offPlan: 1.6 },
-  { date: "28 Mar", existing: 2.5, offPlan: 2.3 },
+  { date: "Mon", existing: 2.4, offPlan: 2.1 },
+  { date: "Tue", existing: 2.9, offPlan: 2.6 },
+  { date: "Wed", existing: 3.2, offPlan: 2.4 },
+  { date: "Thu", existing: 2.8, offPlan: 3.1 },
+  { date: "Fri", existing: 3.6, offPlan: 2.9 },
+  { date: "Sat", existing: 4.1, offPlan: 3.4 },
+  { date: "Sun", existing: 3.5, offPlan: 3.7 },
 ];
 
 const transactionData = [
-  { id: 1, area: "Dubai Marina", type: "Apartment", bedrooms: "2 BR", price: "AED 2,450,000", sqft: "1,250", date: "28 Mar 2025", status: "Completed" },
-  { id: 2, area: "Downtown Dubai", type: "Apartment", bedrooms: "1 BR", price: "AED 1,890,000", sqft: "850", date: "27 Mar 2025", status: "Completed" },
-  { id: 3, area: "Palm Jumeirah", type: "Villa", bedrooms: "4 BR", price: "AED 12,500,000", sqft: "4,200", date: "26 Mar 2025", status: "Completed" },
-  { id: 4, area: "Business Bay", type: "Apartment", bedrooms: "Studio", price: "AED 980,000", sqft: "450", date: "25 Mar 2025", status: "Completed" },
-  { id: 5, area: "JVC", type: "Apartment", bedrooms: "1 BR", price: "AED 750,000", sqft: "720", date: "25 Mar 2025", status: "Off-Plan" },
-  { id: 6, area: "Dubai Hills", type: "Villa", bedrooms: "5 BR", price: "AED 8,900,000", sqft: "5,500", date: "24 Mar 2025", status: "Completed" },
-  { id: 7, area: "Creek Harbour", type: "Apartment", bedrooms: "3 BR", price: "AED 3,200,000", sqft: "1,800", date: "24 Mar 2025", status: "Off-Plan" },
-  { id: 8, area: "JBR", type: "Apartment", bedrooms: "2 BR", price: "AED 3,100,000", sqft: "1,400", date: "23 Mar 2025", status: "Completed" },
-  { id: 9, area: "Arabian Ranches", type: "Villa", bedrooms: "4 BR", price: "AED 5,600,000", sqft: "3,800", date: "23 Mar 2025", status: "Completed" },
-  { id: 10, area: "DAMAC Hills", type: "Townhouse", bedrooms: "3 BR", price: "AED 2,800,000", sqft: "2,100", date: "22 Mar 2025", status: "Off-Plan" },
+  { id: 1, area: "Palm Jebel Ali", type: "Villa", bedrooms: "6 BR", price: "AED 42,000,000", sqft: "8,900", date: "This week", status: "Off-Plan" },
+  { id: 2, area: "Dubai Creek Harbour", type: "Apartment", bedrooms: "3 BR", price: "AED 4,850,000", sqft: "1,780", date: "This week", status: "Off-Plan" },
+  { id: 3, area: "Palm Jumeirah", type: "Villa", bedrooms: "5 BR", price: "AED 18,500,000", sqft: "5,400", date: "This week", status: "Completed" },
+  { id: 4, area: "Downtown Dubai", type: "Apartment", bedrooms: "2 BR", price: "AED 3,650,000", sqft: "1,320", date: "This week", status: "Completed" },
+  { id: 5, area: "DAMAC Lagoons", type: "Townhouse", bedrooms: "4 BR", price: "AED 3,100,000", sqft: "2,350", date: "This week", status: "Off-Plan" },
+  { id: 6, area: "Dubai Hills Estate", type: "Villa", bedrooms: "5 BR", price: "AED 11,200,000", sqft: "5,800", date: "This week", status: "Completed" },
+  { id: 7, area: "Business Bay", type: "Apartment", bedrooms: "1 BR", price: "AED 2,150,000", sqft: "820", date: "This week", status: "Completed" },
+  { id: 8, area: "MBR City · Hartland II", type: "Apartment", bedrooms: "2 BR", price: "AED 2,780,000", sqft: "1,150", date: "This week", status: "Off-Plan" },
+  { id: 9, area: "Arabian Ranches III", type: "Villa", bedrooms: "4 BR", price: "AED 6,400,000", sqft: "3,900", date: "This week", status: "Completed" },
+  { id: 10, area: "Jumeirah Village Circle", type: "Apartment", bedrooms: "Studio", price: "AED 895,000", sqft: "470", date: "This week", status: "Completed" },
 ];
 
 const filters = ["All", "Apartment", "Villa", "Townhouse", "Off-Plan"];
 
 const statCards = [
-  { label: "Total Transactions (7 Days)", value: "5,120", icon: BarChart3, sub: "+12% from last week" },
-  { label: "Total Worth (7 Days)", value: "AED 17.82B", icon: TrendingUp, sub: "+8.3% from last week" },
-  { label: "Property Breakdown", value: "4,085 / 422 / 613", icon: Building, sub: "Units / Buildings / Land" },
+  { label: "Weekly Transactions", value: "6,840", icon: BarChart3, sub: "+14.2% WoW" },
+  { label: "Total Worth (7 Days)", value: "AED 22.5B", icon: TrendingUp, sub: "+9.6% WoW" },
+  { label: "Units / Villas / Off-Plan", value: "4,920 / 780 / 1,140", icon: Building, sub: "Off-plan share up" },
 ];
 
 const Transactions = () => {
