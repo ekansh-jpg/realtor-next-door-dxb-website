@@ -3,8 +3,8 @@ import { useEffect, useState, useRef } from "react";
 
 const stats = [
   { value: 5, suffix: "+", label: "Years Experience" },
-  { value: 500, suffix: "+", label: "Properties Sold", format: false },
-  { value: 100, suffix: "M+", prefix: "AED ", label: "Worth of Properties" },
+  { value: 200, suffix: "+", label: "Properties Sold", format: false },
+  { value: 500, suffix: "M+", prefix: "AED ", label: "Worth of Properties" },
 ];
 
 const Counter = ({ target, suffix, prefix, format }: { target: number; suffix: string; prefix?: string; format?: boolean }) => {

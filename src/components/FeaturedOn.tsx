@@ -16,24 +16,15 @@ const FeaturedOn = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="flex flex-col items-center gap-4 md:gap-6 md:flex-row md:justify-center md:gap-10"
+            className="flex justify-center"
           >
-            <motion.h3
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+            <motion.img
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-serif text-xl md:text-2xl lg:text-3xl font-bold italic text-white/80"
-            >
-              Featured on
-            </motion.h3>
-            <motion.img
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
               src="https://mohammedzohaib.com/wp-content/uploads/2025/10/Mask-group-e1761787950828.png"
-              alt="Featured media logos - Business Insider, Benzinga, AsiaOne, RCN, FOX"
+              alt="Featured media logos"
               className="max-w-[280px] opacity-90 sm:max-w-sm md:max-w-lg"
               loading="lazy"
             />

@@ -4,18 +4,33 @@ import bgTestimonials from "@/assets/bg-testimonials.jpg";
 
 const testimonials = [
   {
-    quote: "Ekansh made the entire process so smooth. His knowledge of the market and honest advice helped us get our dream apartment.",
+    quote: "Ekansh made the entire process so smooth. His knowledge of the market and honest advice helped us get our dream apartment in Marina.",
     name: "Rahul & Priya M.",
     role: "First-time Buyers",
   },
   {
-    quote: "As an NRI investor, I was worried about the process. Ekansh handled everything professionally and got me a great deal.",
+    quote: "MashaAllah, dealing with Ekansh was a blessing. He understood our family needs, respected our preferences, and closed a great villa deal in Dubai Hills.",
+    name: "Mohammed Al Rashid",
+    role: "Family Home Buyer",
+  },
+  {
+    quote: "As an NRI investor from Mumbai, I was worried about the process. Ekansh handled everything professionally and got me a fantastic off-plan deal.",
     name: "Vikram S.",
     role: "NRI Investor",
   },
   {
+    quote: "Alhamdulillah, Ekansh's honesty stood out. He guided us patiently, no pressure, and secured our investment property in Business Bay.",
+    name: "Fatima Al Zaabi",
+    role: "UAE National Investor",
+  },
+  {
+    quote: "Working with Ekansh from Saudi was seamless. He arranged video tours, handled paperwork remotely, and delivered exactly what he promised.",
+    name: "Abdullah Al Harbi",
+    role: "GCC Investor",
+  },
+  {
     quote: "No pressure, just genuine guidance. That's rare in real estate. Highly recommend Ekansh for anyone looking in Dubai.",
-    name: "Ahmed K.",
+    name: "Ahmed Khan",
     role: "End User",
   },
 ];
@@ -46,7 +61,7 @@ const Testimonials = () => {
             What Clients Say
           </motion.h2>
 
-          <div className="grid grid-cols-1 gap-4 md:gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:gap-6 sm:grid-cols-2 md:grid-cols-3">
             {testimonials.map((t, i) => (
               <motion.div
                 key={i}
