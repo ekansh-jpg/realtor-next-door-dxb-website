@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { Phone } from "lucide-react";
+import { Phone, Instagram, MessageCircle } from "lucide-react";
 import eventBg from "@/assets/event-crowd.jpg";
 
 const socials = [
-  { platform: "Call", handle: "+971 54 459 0555", url: "tel:+971544590555", icon: null, lucideIcon: true },
-  { platform: "Instagram", handle: "@realtor_nextdoordxb", url: "https://www.instagram.com/realtor_nextdoordxb", icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/%E2%80%94Pngtree%E2%80%94instagram-icon_8704817-1024x1024.png", lucideIcon: false },
-  { platform: "WhatsApp", handle: "+971 54 459 0555", url: "https://wa.me/971544590555", icon: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg", lucideIcon: false },
+  { platform: "Call", handle: "+971 54 459 0555", url: "tel:+971544590555", Icon: Phone },
+  { platform: "Instagram", handle: "@realtor_nextdoordxb", url: "https://www.instagram.com/realtor_nextdoordxb", Icon: Instagram },
+  { platform: "WhatsApp", handle: "+971 54 459 0555", url: "https://wa.me/971544590555", Icon: MessageCircle },
 ];
 
 const SocialSection = () => {
@@ -68,12 +68,7 @@ const SocialSection = () => {
                 className="group flex items-center md:flex-col gap-5 md:gap-0 md:justify-center rounded-xl p-6 md:p-10 md:text-center transition-all duration-300 border border-white/10 hover:border-white/25 backdrop-blur-sm"
                 style={{ backgroundColor: 'rgba(17, 17, 17, 0.9)' }}
               >
-                {social.lucideIcon ? (
-                  <Phone className="h-10 w-10 md:mb-4 md:h-14 md:w-14 text-white/80 group-hover:text-white transition-colors flex-shrink-0" />
-                ) : (
-                  <img src={social.icon!} alt={social.platform}
-                    className="h-10 w-10 md:mb-4 md:h-14 md:w-14 object-contain md:h-16 md:w-16 opacity-90 group-hover:opacity-100 transition-opacity flex-shrink-0" loading="lazy" />
-                )}
+                <social.Icon className="h-10 w-10 md:mb-4 md:h-14 md:w-14 text-white/80 group-hover:text-[#C9A96E] transition-colors flex-shrink-0" strokeWidth={1.5} />
                 <div>
                   <p className="font-serif text-base md:text-lg font-bold uppercase tracking-wider text-white">{social.platform}</p>
                   <p className="mt-1 md:mt-2 font-sans text-xs md:text-sm text-white/60">{social.handle}</p>
