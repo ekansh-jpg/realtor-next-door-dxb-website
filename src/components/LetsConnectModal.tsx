@@ -21,7 +21,7 @@ const LetsConnectModal = () => {
     const t = setTimeout(() => {
       setOpen(true);
       sessionStorage.setItem(STORAGE_KEY, "1");
-    }, 3500);
+    }, 4500);
     return () => clearTimeout(t);
   }, []);
 
