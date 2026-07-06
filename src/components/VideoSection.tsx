@@ -38,26 +38,27 @@ const VideoSection = () => {
         </div>
 
         <div className="grid gap-8 md:gap-10 md:grid-cols-2 items-center">
-          {/* Left: "Who Am I" hero video (9:16 native aspect) */}
+          {/* Left: Ekansh award portrait */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8 }}
-            className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl mx-auto w-full max-w-[360px] md:max-w-md bg-black"
+            className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl mx-auto w-full max-w-sm md:max-w-none"
           >
-            <div className="aspect-[9/16] relative overflow-hidden bg-black">
-              <video
-                src={whoAmIVideo.url}
-                className="h-full w-full object-cover"
-                controls
-                playsInline
-                preload="metadata"
-                poster={ekanshAward.url}
-              />
-              <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-[#C9A96E]/40 pointer-events-none">
-                <span className="font-sans text-[10px] uppercase tracking-widest text-[#C9A96E]">Who Am I</span>
-              </div>
+            <img
+              src={ekanshAward.url}
+              alt="Ekansh Kinger with award"
+              className="w-full h-64 sm:h-80 md:h-full md:max-h-[700px] object-cover"
+              loading="lazy"
+            />
+            <div
+              className="absolute inset-0 pointer-events-none md:hidden"
+              style={{ background: 'linear-gradient(180deg, rgba(10,10,10,0) 55%, rgba(10,10,10,0.75) 100%)' }}
+            />
+            <div className="absolute bottom-3 left-4 right-4 md:hidden">
+              <p className="font-serif text-white text-sm">Award-Winning Realtor</p>
+              <p className="font-sans text-[11px] text-white/70">Recognized by top Dubai developers</p>
             </div>
           </motion.div>
 
