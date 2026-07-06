@@ -1,34 +1,36 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import heroDesktop from "@/assets/hero-desktop.png.asset.json";
-import heroMobile from "@/assets/hero-mobile.png.asset.json";
+import heroDesktop from "@/assets/hero-desktop-v2.jpg.asset.json";
+import heroMobile from "@/assets/hero-mobile-v2.jpg.asset.json";
 
 const Hero = () => {
   return (
-    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden">
-      {/* Responsive background image */}
+    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#0A0A0A]">
+      {/* Responsive background image — desaturated to B&W with slight transparency */}
       <picture className="absolute inset-0">
         <source media="(min-width: 768px)" srcSet={heroDesktop.url} />
         <img
           src={heroMobile.url}
-          alt="Ekansh Kinger with Dubai skyline"
+          alt="Ekansh Kinger — Dubai Realtor"
           className="absolute inset-0 h-full w-full object-cover"
+          style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.9)", opacity: 0.75 }}
+          loading="eager"
         />
       </picture>
 
-      {/* Premium gradient overlay for text legibility */}
+      {/* Premium dark gradient overlay for legibility */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 40%, rgba(10,10,10,0.75) 100%)",
+            "linear-gradient(180deg, rgba(10,10,10,0.65) 0%, rgba(10,10,10,0.45) 40%, rgba(10,10,10,0.85) 100%)",
         }}
       />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 30%, rgba(10,10,10,0.5) 100%)",
+            "radial-gradient(ellipse at center, transparent 25%, rgba(10,10,10,0.6) 100%)",
         }}
       />
 
