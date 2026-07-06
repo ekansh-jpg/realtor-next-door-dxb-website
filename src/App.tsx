@@ -51,6 +51,7 @@ const App = () => (
         <AnimatedRoutes />
         <MobileBottomNav />
         <WhatsAppFloat />
+        <LetsConnectModal />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
