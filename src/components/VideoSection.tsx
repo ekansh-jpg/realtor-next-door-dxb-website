@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import ekanshAward from "@/assets/ekansh-award.jpg.asset.json";
-import whoAmIVideo from "@/assets/who-am-i.mp4.asset.json";
+
 
 const instagramPosts = [
   {
