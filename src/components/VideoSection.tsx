@@ -120,7 +120,7 @@ const VideoSection = () => {
                       src={`${post.url}embed`}
                       className="h-full w-full border-0"
                       loading="lazy"
-                      allowTransparency={true}
+                      
                       scrolling="no"
                       title={post.title}
                     />
