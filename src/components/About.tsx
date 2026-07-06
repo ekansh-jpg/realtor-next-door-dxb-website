@@ -60,16 +60,17 @@ const About = () => {
             </motion.p>
           </motion.div>
 
-          {/* Right: Video */}
+          {/* Right: Video (9:16 native aspect) */}
           <motion.div
             initial={{ opacity: 0, x: 30, scale: 0.95 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="mx-auto w-full max-w-[320px] md:max-w-sm"
           >
-            <div className="aspect-video overflow-hidden rounded-xl shadow-2xl">
+            <div className="aspect-[9/16] overflow-hidden rounded-2xl shadow-2xl border border-black/10 bg-black">
               <video
-                src="/videos/ekansh-intro.mp4"
+                src={whoAmIVideo.url}
                 controls
                 playsInline
                 preload="metadata"
