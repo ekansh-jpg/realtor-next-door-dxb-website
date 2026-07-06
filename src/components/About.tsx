@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import ekanshAbout from "@/assets/ekansh-about.jpg";
+import whoAmIVideo from "@/assets/who-am-i.mp4.asset.json";
+
 
 const About = () => {
   return (
