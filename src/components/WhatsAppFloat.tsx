@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { MessageCircle } from "lucide-react";
 
 const WhatsAppFloat = () => {
   return (
@@ -15,11 +16,7 @@ const WhatsAppFloat = () => {
       style={{ backgroundColor: "#25D366" }}
       aria-label="Chat on WhatsApp"
     >
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-        alt="WhatsApp"
-        className="h-7 w-7"
-      />
+      <MessageCircle className="h-7 w-7 text-white" strokeWidth={2} />
     </motion.a>
   );
 };
