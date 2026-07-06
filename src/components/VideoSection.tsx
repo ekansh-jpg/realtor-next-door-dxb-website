@@ -103,40 +103,18 @@ const VideoSection = () => {
               </motion.a>
             </div>
 
-            {/* Video reels: "Who Am I" (9:16 native) + Instagram reel */}
+            {/* Instagram reels — kept as-is */}
             <div className="mt-6 md:mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="overflow-hidden rounded-2xl border border-white/10 hover:border-[#C9A96E]/40 transition-all bg-black/30 mx-auto w-full max-w-[360px]"
-              >
-                <div className="aspect-[9/16] relative overflow-hidden bg-black">
-                  <video
-                    src={whoAmIVideo.url}
-                    className="h-full w-full object-cover"
-                    controls
-                    playsInline
-                    preload="metadata"
-                    poster={ekanshAward.url}
-                  />
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-[#C9A96E]/40">
-                    <span className="font-sans text-[10px] uppercase tracking-widest text-[#C9A96E]">Who Am I</span>
-                  </div>
-                </div>
-              </motion.div>
-
               {instagramPosts.map((post, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.35 + i * 0.15 }}
+                  transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
                   className="overflow-hidden rounded-2xl border border-white/10 hover:border-[#C9A96E]/40 transition-all bg-black/30 mx-auto w-full max-w-[360px]"
                 >
-                  <div className="aspect-[9/16] relative overflow-hidden">
+                  <div className="aspect-[9/12] relative overflow-hidden">
                     <iframe
                       src={`${post.url}embed`}
                       className="h-full w-full border-0"
