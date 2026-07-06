@@ -7,6 +7,10 @@ const instagramPosts = [
     url: "https://www.instagram.com/p/DTpkoa9jbWK/",
     title: "Dubai Real Estate Insights",
   },
+  {
+    url: "https://www.instagram.com/p/DTDcMatkp1n/",
+    title: "Property Investment Tips",
+  },
 ];
 
 const VideoSection = () => {
