@@ -22,7 +22,7 @@ const Index = () => {
       <Achievements />
       <WhyMe />
       <Testimonials />
-      <FeaturedOn />
+      
       <VideoSection />
       <PartnersMarquee />
       <SocialSection />
