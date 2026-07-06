@@ -5,7 +5,7 @@ import Stats from "@/components/Stats";
 import Achievements from "@/components/Achievements";
 import WhyMe from "@/components/WhyMe";
 import Testimonials from "@/components/Testimonials";
-import FeaturedOn from "@/components/FeaturedOn";
+
 import VideoSection from "@/components/VideoSection";
 import PartnersMarquee from "@/components/PartnersMarquee";
 import SocialSection from "@/components/SocialSection";
@@ -22,7 +22,7 @@ const Index = () => {
       <Achievements />
       <WhyMe />
       <Testimonials />
-      <FeaturedOn />
+      
       <VideoSection />
       <PartnersMarquee />
       <SocialSection />
