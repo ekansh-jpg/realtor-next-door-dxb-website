@@ -1,16 +1,11 @@
 import { motion } from "framer-motion";
 import ekanshAward from "@/assets/ekansh-award.jpg.asset.json";
+import whoAmIVideo from "@/assets/who-am-i.mp4.asset.json";
 
 const instagramPosts = [
   {
     url: "https://www.instagram.com/p/DTpkoa9jbWK/",
-    thumbnail: "https://scontent.cdninstagram.com/v/t51.75761-15/495927069_18491373676073903_5787117100108122568_n.jpg",
     title: "Dubai Real Estate Insights",
-  },
-  {
-    url: "https://www.instagram.com/p/DTDcMatkp1n/",
-    thumbnail: "https://scontent.cdninstagram.com/v/t51.75761-15/494000000_18490000000000000_0000000000000000000_n.jpg",
-    title: "Property Investment Tips",
   },
 ];
 
