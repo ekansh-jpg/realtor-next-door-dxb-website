@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { Phone } from "lucide-react";
+import { Phone, Instagram, MessageCircle } from "lucide-react";
 import eventBg from "@/assets/event-crowd.jpg";
 
 const socials = [
-  { platform: "Call", handle: "+971 54 459 0555", url: "tel:+971544590555", icon: null, lucideIcon: true },
-  { platform: "Instagram", handle: "@realtor_nextdoordxb", url: "https://www.instagram.com/realtor_nextdoordxb", icon: "https://mohammedzohaib.com/wp-content/uploads/2025/10/%E2%80%94Pngtree%E2%80%94instagram-icon_8704817-1024x1024.png", lucideIcon: false },
-  { platform: "WhatsApp", handle: "+971 54 459 0555", url: "https://wa.me/971544590555", icon: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg", lucideIcon: false },
+  { platform: "Call", handle: "+971 54 459 0555", url: "tel:+971544590555", Icon: Phone },
+  { platform: "Instagram", handle: "@realtor_nextdoordxb", url: "https://www.instagram.com/realtor_nextdoordxb", Icon: Instagram },
+  { platform: "WhatsApp", handle: "+971 54 459 0555", url: "https://wa.me/971544590555", Icon: MessageCircle },
 ];
 
 const SocialSection = () => {
