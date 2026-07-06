@@ -9,6 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import PageTransition from "@/components/PageTransition";
+import LetsConnectModal from "@/components/LetsConnectModal";
 import Index from "./pages/Index.tsx";
 import Transactions from "./pages/Transactions.tsx";
 import DubaiInsights from "./pages/DubaiInsights.tsx";
