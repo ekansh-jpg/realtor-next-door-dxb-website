@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import heroDesktop from "@/assets/hero-desktop-v2.jpg.asset.json";
-import heroMobile from "@/assets/ekansh-portrait-2.jpg";
+import heroMobile from "@/assets/hero-mobile-bw.webp.asset.json";
 
 const Hero = () => {
   return (
@@ -10,10 +10,10 @@ const Hero = () => {
       <picture className="absolute inset-0">
         <source media="(min-width: 768px)" srcSet={heroDesktop.url} />
         <img
-          src={heroMobile}
+          src={heroMobile.url}
           alt="Ekansh Kinger — #1 Dubai Real Estate Agent & Your Next Door Realtor"
-          className="absolute inset-0 h-full w-full object-cover object-[center_top] md:object-center"
-          style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.85)", opacity: 0.8 }}
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          style={{ opacity: 0.85 }}
           loading="eager"
           fetchPriority="high"
         />
