@@ -85,18 +85,7 @@ const LetsConnectModal = () => {
     } catch (err) {
       console.error("Email send failed", err);
     }
-    const lines = [
-      "Hi Ekansh, I'd like to connect regarding Dubai real estate.",
-      "",
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone}`,
-      `Budget: ${budget}`,
-      `Timeline: ${timeline}`,
-    ];
-    const msg = encodeURIComponent(lines.join("\n"));
-    window.open(`https://wa.me/971544590555?text=${msg}`, "_blank", "noopener,noreferrer");
-    setOpen(false);
+    setSubmitted(true);
   };
 
   const inputCls =
