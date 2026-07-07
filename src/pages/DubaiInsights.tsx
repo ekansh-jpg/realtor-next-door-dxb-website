@@ -98,7 +98,7 @@ const DubaiInsights = () => {
               className="rounded-xl border border-white/10 overflow-hidden group cursor-pointer hover:border-white/25 transition-all"
               style={{ backgroundColor: "rgba(17,17,17,0.85)" }}>
               <div className="overflow-hidden h-36 md:h-48">
-                <img src={article.image} alt={article.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <img src={article.image} alt={article.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
               </div>
               <div className="p-4 md:p-6">
                 <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">

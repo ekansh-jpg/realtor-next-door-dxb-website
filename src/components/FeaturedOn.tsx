@@ -26,7 +26,7 @@ const FeaturedOn = () => {
               src="https://mohammedzohaib.com/wp-content/uploads/2025/10/Mask-group-e1761787950828.png"
               alt="Featured media logos"
               className="max-w-[280px] opacity-90 sm:max-w-sm md:max-w-lg"
-              loading="lazy"
+              loading="lazy" decoding="async"
             />
           </motion.div>
         </div>
