@@ -147,7 +147,6 @@ const About = () => {
                 poster={ekanshAbout}
                 className="h-full w-full object-cover"
               >
-                <source src="/videos/uploaded-ekansh-video.webm" type="video/webm" />
                 <source src="/videos/uploaded-ekansh-video.mp4" type="video/mp4" />
               </video>
               {showUnmute && (
