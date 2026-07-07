@@ -52,7 +52,9 @@ const VideoSection = () => {
                 src={ekanshAward}
                 alt="Ekansh Kinger — award-winning Dubai real estate agent"
                 className="w-full h-full object-cover"
-                loading="lazy"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
               />
             </div>
             <div
