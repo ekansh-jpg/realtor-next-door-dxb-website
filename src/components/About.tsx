@@ -1,9 +1,33 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import ekanshAbout from "@/assets/ekansh-about.jpg";
 import whoAmIVideo from "@/assets/who-am-i.mp4.asset.json";
 
 
+
 const About = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const hasPlayedRef = useRef(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasPlayedRef.current) {
+            hasPlayedRef.current = true;
+            video.muted = true;
+            video.play().catch(() => {});
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="relative py-14 md:py-28" style={{ backgroundColor: '#F5F5F5' }}>
       <div className="container mx-auto px-5 md:px-6">
@@ -70,9 +94,11 @@ const About = () => {
           >
             <div className="aspect-[9/16] overflow-hidden rounded-2xl shadow-2xl border border-black/10 bg-black">
               <video
+                ref={videoRef}
                 src={whoAmIVideo.url}
                 controls
                 playsInline
+                muted
                 preload="metadata"
                 poster={ekanshAbout}
                 className="h-full w-full object-cover"
