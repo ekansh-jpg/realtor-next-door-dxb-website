@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Instagram, Send, MapPin, Clock, ChevronDown } from "lucide-react";
+import { Phone, Instagram, Send, MapPin, Clock, ChevronDown, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import bgContact from "@/assets/bg-contact.webp";
