@@ -13,6 +13,7 @@ const Hero = () => {
           className="absolute inset-0 h-full w-full object-cover object-[center_18%] md:object-center"
           style={{ opacity: 0.85 }}
           loading="eager"
+          decoding="async"
           fetchPriority="high"
         />
       </picture>
