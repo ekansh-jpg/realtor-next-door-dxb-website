@@ -40,6 +40,7 @@ const LetsConnectModal = () => {
     timeline: "",
   });
   const [error, setError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     if (sessionStorage.getItem(STORAGE_KEY)) return;
