@@ -69,23 +69,67 @@ const About = () => {
       if (rafId) return;
       rafId = window.requestAnimationFrame(checkOffscreen);
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true, capture: true });
     window.addEventListener("resize", onScroll, { passive: true });
 
-    // Pause when tab/page becomes hidden
+    // iOS Safari specific: momentum scroll doesn't always fire "scroll" reliably.
+    // touchmove/touchend fire during and after finger interaction.
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && (navigator as Navigator & { maxTouchPoints?: number }).maxTouchPoints! > 1);
+    let touchInterval: number | null = null;
+    const onTouchStart = () => {
+      onScroll();
+      if (touchInterval) window.clearInterval(touchInterval);
+      // Poll during finger drag & momentum scroll (iOS pauses rAF sometimes)
+      touchInterval = window.setInterval(checkOffscreen, 120);
+    };
+    const stopTouchPoll = () => {
+      if (touchInterval) {
+        window.clearInterval(touchInterval);
+        touchInterval = null;
+      }
+      // Keep polling briefly for momentum scroll after finger lift
+      let ticks = 0;
+      const momentum = window.setInterval(() => {
+        checkOffscreen();
+        if (++ticks > 20) window.clearInterval(momentum);
+      }, 100);
+    };
+    if (isIOS) {
+      window.addEventListener("touchstart", onTouchStart, { passive: true });
+      window.addEventListener("touchmove", onScroll, { passive: true });
+      window.addEventListener("touchend", stopTouchPoll, { passive: true });
+      window.addEventListener("touchcancel", stopTouchPoll, { passive: true });
+    }
+
+    // Pause when tab/page becomes hidden (also fires on iOS Safari swipe-away)
     const onVisibility = () => {
-      if (document.hidden) video.pause();
+      if (document.hidden) {
+        video.pause();
+        video.muted = true;
+      }
     };
     document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("pagehide", onVisibility);
+    window.addEventListener("blur", onVisibility);
 
     window.addEventListener("pointerdown", unlockSound, { passive: true });
     window.addEventListener("keydown", unlockSound);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", onScroll, { capture: true } as EventListenerOptions);
       window.removeEventListener("resize", onScroll);
+      if (isIOS) {
+        window.removeEventListener("touchstart", onTouchStart);
+        window.removeEventListener("touchmove", onScroll);
+        window.removeEventListener("touchend", stopTouchPoll);
+        window.removeEventListener("touchcancel", stopTouchPoll);
+      }
+      if (touchInterval) window.clearInterval(touchInterval);
       document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("pagehide", onVisibility);
+      window.removeEventListener("blur", onVisibility);
       window.removeEventListener("pointerdown", unlockSound);
       window.removeEventListener("keydown", unlockSound);
       if (rafId) cancelAnimationFrame(rafId);
