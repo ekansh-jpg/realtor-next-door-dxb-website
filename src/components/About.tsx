@@ -147,7 +147,7 @@ const About = () => {
                 poster={ekanshAbout}
                 className="h-full w-full object-cover"
               >
-                <source src="/videos/uploaded-ekansh-video.mp4" type="video/mp4" />
+                <source src="/videos/ekansh-about-v2.mp4" type="video/mp4" />
               </video>
               {showUnmute && (
                 <button
