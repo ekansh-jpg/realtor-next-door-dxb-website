@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { Phone, Instagram, MessageCircle } from "lucide-react";
+import { Phone, Instagram, MessageCircle, Linkedin } from "lucide-react";
 import eventBg from "@/assets/event-crowd.jpg";
 
 const socials = [
   { platform: "Call", handle: "+971 54 459 0555", url: "tel:+971544590555", Icon: Phone },
-  { platform: "Instagram", handle: "@realtor_nextdoordxb", url: "https://www.instagram.com/realtor_nextdoordxb", Icon: Instagram },
   { platform: "WhatsApp", handle: "+971 54 459 0555", url: "https://wa.me/971544590555", Icon: MessageCircle },
+  { platform: "Instagram", handle: "@realtor_nextdoordxb", url: "https://www.instagram.com/realtor_nextdoordxb", Icon: Instagram },
+  { platform: "LinkedIn", handle: "Ekansh Kinger", url: "https://www.linkedin.com/in/ekansh-kinger-7207341a6", Icon: Linkedin },
 ];
 
 const SocialSection = () => {
@@ -53,7 +54,7 @@ const SocialSection = () => {
             through any of these channels — I'm always happy to connect.
           </motion.p>
 
-          <div className="grid grid-cols-1 gap-3 md:gap-4 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 md:gap-4 sm:grid-cols-2 md:grid-cols-4">
             {socials.map((social, i) => (
               <motion.a
                 key={social.platform}
