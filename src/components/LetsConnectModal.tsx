@@ -135,8 +135,24 @@ const LetsConnectModal = () => {
             </h3>
             <div className="h-[2px] w-12 my-3" style={{ backgroundColor: "#C9A96E" }} />
             <p className="font-sans text-sm text-white/70 mb-5">
-              Share your details — I'll personally reach out on WhatsApp with Dubai's best opportunities.
+              Share your details — I'll personally reach out with Dubai's best opportunities.
             </p>
+
+            {submitted ? (
+              <div className="text-center py-6">
+                <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: "rgba(201,169,110,0.15)" }}>
+                  <Send className="h-6 w-6" style={{ color: "#C9A96E" }} />
+                </div>
+                <h4 className="font-serif text-xl font-bold uppercase tracking-wider text-white mb-2">Thank You</h4>
+                <p className="font-sans text-sm text-white/60 mb-6">Your details have been sent. I'll be in touch shortly.</p>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="font-sans text-[11px] uppercase tracking-widest text-white/60 hover:text-white transition"
+                >
+                  Close
+                </button>
+              </div>
+            ) : (
 
             <form onSubmit={submit} className="space-y-3">
               <div>
