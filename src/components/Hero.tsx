@@ -1,20 +1,21 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import heroDesktop from "@/assets/hero-desktop-v2.jpg.asset.json";
-import heroMobile from "@/assets/hero-mobile-v2.jpg.asset.json";
+import heroDesktop from "@/assets/hero-portrait.jpg";
+import heroMobile from "@/assets/ekansh-portrait-2.jpg";
 
 const Hero = () => {
   return (
     <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#0A0A0A]">
       {/* Responsive background image — desaturated to B&W with slight transparency */}
       <picture className="absolute inset-0">
-        <source media="(min-width: 768px)" srcSet={heroDesktop.url} />
+        <source media="(min-width: 768px)" srcSet={heroDesktop} />
         <img
-          src={heroMobile.url}
-          alt="Ekansh Kinger — Dubai Realtor"
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.9)", opacity: 0.75 }}
+          src={heroMobile}
+          alt="Ekansh Kinger — #1 Dubai Real Estate Agent & Your Next Door Realtor"
+          className="absolute inset-0 h-full w-full object-cover object-[center_top] md:object-center"
+          style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.85)", opacity: 0.8 }}
           loading="eager"
+          fetchPriority="high"
         />
       </picture>
 
