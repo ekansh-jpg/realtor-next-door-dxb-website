@@ -258,15 +258,6 @@ const LetsConnectModal = () => {
               </div>
 
               {error && <p className="text-xs text-red-400">{error}</p>}
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-black transition mt-2"
-                style={{ backgroundColor: "#C9A96E" }}
-              >
-              {error && <p className="text-xs text-red-400">{error}</p>}
               {sendError && (
                 <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
                   className="flex items-start gap-2.5 rounded-lg border p-3"
