@@ -63,14 +63,17 @@ const LetsConnectModal = () => {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
+    setSendError(false);
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
       setError(parsed.error.issues[0]?.message ?? "Invalid input");
       return;
     }
     const { name, email, phone, budget, timeline } = parsed.data;
+    setSending(true);
     try {
-      await fetch("https://formsubmit.co/ajax/investmentmanagment9000@gmail.com", {
+      const res = await fetch("https://formsubmit.co/ajax/investmentmanagment9000@gmail.com", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
@@ -87,10 +90,14 @@ const LetsConnectModal = () => {
           "Submitted At": new Date().toLocaleString("en-AE", { timeZone: "Asia/Dubai", dateStyle: "full", timeStyle: "short" }),
         }),
       });
+      if (!res.ok) throw new Error("Non-OK response");
+      setSubmitted(true);
     } catch (err) {
       console.error("Email send failed", err);
+      setSendError(true);
+    } finally {
+      setSending(false);
     }
-    setSubmitted(true);
   };
 
   const inputCls =
