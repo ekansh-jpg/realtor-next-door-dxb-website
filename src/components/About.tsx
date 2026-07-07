@@ -122,7 +122,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="mx-auto w-full max-w-[320px] md:max-w-sm"
           >
-            <div className="aspect-[9/16] overflow-hidden rounded-2xl shadow-2xl border border-black/10 bg-black">
+            <div className="relative aspect-[9/16] overflow-hidden rounded-2xl shadow-2xl border border-black/10 bg-black">
               <video
                 ref={videoRef}
                 controls
@@ -134,6 +134,17 @@ const About = () => {
                 <source src="/videos/uploaded-ekansh-video.webm" type="video/webm" />
                 <source src="/videos/uploaded-ekansh-video.mp4" type="video/mp4" />
               </video>
+              {showUnmute && (
+                <button
+                  onClick={handleUnmute}
+                  aria-label="Unmute video"
+                  className="absolute top-3 right-3 flex items-center gap-2 rounded-full bg-black/70 px-4 py-2 text-white text-xs font-sans uppercase tracking-wider backdrop-blur-sm hover:bg-black/90 transition"
+                  style={{ borderColor: '#C9A96E', borderWidth: 1 }}
+                >
+                  <Volume2 className="h-4 w-4" style={{ color: '#C9A96E' }} />
+                  Tap for sound
+                </button>
+              )}
             </div>
           </motion.div>
         </div>
@@ -143,3 +154,4 @@ const About = () => {
 };
 
 export default About;
+
