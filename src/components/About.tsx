@@ -7,14 +7,13 @@ import ekanshAbout from "@/assets/ekansh-about.webp";
 
 const About = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const hasPlayedRef = useRef(false);
   const [showUnmute, setShowUnmute] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const playVideo = async () => {
+    const tryPlayWithSound = async () => {
       try {
         video.muted = false;
         video.defaultMuted = false;
@@ -22,31 +21,32 @@ const About = () => {
         await video.play();
         setShowUnmute(false);
       } catch {
-        video.pause();
-        video.muted = false;
-        video.defaultMuted = false;
+        try {
+          video.muted = true;
+          await video.play();
+        } catch {}
         setShowUnmute(true);
       }
     };
 
     const unlockSound = () => {
-      if (!hasPlayedRef.current) return;
       video.muted = false;
       video.defaultMuted = false;
       video.volume = 1;
-      video.play().then(() => setShowUnmute(false)).catch(() => setShowUnmute(true));
+      video.play().then(() => setShowUnmute(false)).catch(() => {});
     };
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasPlayedRef.current) {
-            hasPlayedRef.current = true;
-            playVideo();
+          if (entry.isIntersecting) {
+            tryPlayWithSound();
+          } else {
+            video.pause();
           }
         });
       },
-      { threshold: 0.25 }
+      { threshold: 0.35 }
     );
     observer.observe(video);
     window.addEventListener("pointerdown", unlockSound, { passive: true });
