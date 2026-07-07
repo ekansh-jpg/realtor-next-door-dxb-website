@@ -54,7 +54,7 @@ const SocialSection = () => {
             through any of these channels — I'm always happy to connect.
           </motion.p>
 
-          <div className="grid grid-cols-1 gap-3 md:gap-4 sm:grid-cols-2 md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
             {socials.map((social, i) => (
               <motion.a
                 key={social.platform}
@@ -64,15 +64,15 @@ const SocialSection = () => {
                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.6, ease: "easeOut" }}
+                transition={{ delay: i * 0.12, duration: 0.6, ease: "easeOut" }}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="group flex items-center md:flex-col gap-5 md:gap-0 md:justify-center rounded-xl p-6 md:p-10 md:text-center transition-all duration-300 border border-white/10 hover:border-white/25 backdrop-blur-sm"
+                className="group flex items-center md:flex-col gap-5 md:gap-0 md:justify-center rounded-xl p-6 md:p-8 lg:p-10 md:text-center min-h-[110px] md:min-h-[240px] transition-all duration-300 border border-white/10 hover:border-[#C9A96E]/40 backdrop-blur-sm"
                 style={{ backgroundColor: 'rgba(17, 17, 17, 0.9)' }}
               >
-                <social.Icon className="h-10 w-10 md:mb-4 md:h-14 md:w-14 text-white/80 group-hover:text-[#C9A96E] transition-colors flex-shrink-0" strokeWidth={1.5} />
-                <div>
-                  <p className="font-serif text-base md:text-lg font-bold uppercase tracking-wider text-white">{social.platform}</p>
-                  <p className="mt-1 md:mt-2 font-sans text-xs md:text-sm text-white/60">{social.handle}</p>
+                <social.Icon className="h-10 w-10 md:mb-5 md:h-14 md:w-14 text-white/80 group-hover:text-[#C9A96E] transition-colors flex-shrink-0" strokeWidth={1.5} />
+                <div className="min-w-0">
+                  <p className="font-serif text-base md:text-lg font-bold uppercase tracking-wider text-white truncate">{social.platform}</p>
+                  <p className="mt-1 md:mt-2 font-sans text-xs md:text-sm text-white/60 break-all md:break-normal">{social.handle}</p>
                 </div>
               </motion.a>
             ))}
