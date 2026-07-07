@@ -33,7 +33,7 @@ const SocialSection = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="mb-4 text-center font-serif text-2xl font-bold uppercase tracking-wider text-white sm:text-3xl md:text-4xl"
           >
-            Engage With Me
+            Connect With Me
           </motion.h2>
           <motion.div
             initial={{ width: 0 }}
