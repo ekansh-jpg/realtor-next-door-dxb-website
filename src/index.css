@@ -96,8 +96,11 @@ html {
 
 .animate-marquee {
   animation: marquee 25s linear infinite;
+}
+
 /* Hide the Lovable "Made with Lovable" badge on all deployments */
 #lovable-badge {
   display: none !important;
 }
+
 
