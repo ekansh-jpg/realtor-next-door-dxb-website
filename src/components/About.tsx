@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Volume2 } from "lucide-react";
 import ekanshAbout from "@/assets/ekansh-about.jpg";
 
 
@@ -7,6 +8,7 @@ import ekanshAbout from "@/assets/ekansh-about.jpg";
 const About = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const hasPlayedRef = useRef(false);
+  const [showUnmute, setShowUnmute] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -17,12 +19,14 @@ const About = () => {
         video.muted = false;
         video.volume = 1;
         await video.play();
+        setShowUnmute(false);
       } catch {
         try {
           video.muted = true;
           await video.play();
+          setShowUnmute(true);
         } catch {
-          // Browser blocked autoplay entirely; controls remain visible for manual play.
+          // Blocked entirely; controls remain visible.
         }
       }
     };
@@ -41,6 +45,17 @@ const About = () => {
     observer.observe(video);
     return () => observer.disconnect();
   }, []);
+
+  const handleUnmute = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = false;
+    video.volume = 1;
+    video.play().catch(() => {});
+    setShowUnmute(false);
+  };
+
+
 
 
   return (
