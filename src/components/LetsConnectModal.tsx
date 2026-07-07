@@ -150,19 +150,27 @@ const LetsConnectModal = () => {
             </p>
 
             {submitted ? (
-              <div className="text-center py-6">
-                <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: "rgba(201,169,110,0.15)" }}>
-                  <Send className="h-6 w-6" style={{ color: "#C9A96E" }} />
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-center py-4">
+                <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: "rgba(201,169,110,0.15)" }}>
+                  <CheckCircle2 className="h-8 w-8" style={{ color: "#C9A96E" }} />
                 </div>
-                <h4 className="font-serif text-xl font-bold uppercase tracking-wider text-white mb-2">Thank You</h4>
-                <p className="font-sans text-sm text-white/60 mb-6">Your details have been sent. I'll be in touch shortly.</p>
+                <p className="font-sans text-[10px] tracking-[0.3em] uppercase mb-2" style={{ color: "#C9A96E" }}>Received</p>
+                <h4 className="font-serif text-2xl font-bold uppercase tracking-wider text-white mb-2">
+                  Thank You{form.name ? `, ${form.name.split(" ")[0]}` : ""}
+                </h4>
+                <div className="h-[2px] w-10 mx-auto my-3" style={{ backgroundColor: "#C9A96E" }} />
+                <p className="font-sans text-sm text-white/70 mb-1">Your enquiry is in my inbox.</p>
+                <p className="font-sans text-xs text-white/50 mb-6">
+                  I'll personally reply to <span className="text-white/80">{form.email}</span> within a few hours.
+                </p>
                 <button
                   onClick={() => setOpen(false)}
-                  className="font-sans text-[11px] uppercase tracking-widest text-white/60 hover:text-white transition"
+                  className="rounded-full px-6 py-2.5 font-sans text-[11px] uppercase tracking-widest text-black transition"
+                  style={{ backgroundColor: "#C9A96E" }}
                 >
                   Close
                 </button>
-              </div>
+              </motion.div>
             ) : (
 
             <form onSubmit={submit} className="space-y-3">
