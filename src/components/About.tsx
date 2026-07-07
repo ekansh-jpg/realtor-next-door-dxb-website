@@ -39,14 +39,15 @@ const About = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
             tryPlayWithSound();
-          } else {
+          } else if (entry.intersectionRatio < 0.25) {
             video.pause();
+            video.muted = true;
           }
         });
       },
-      { threshold: 0.35 }
+      { threshold: [0, 0.25, 0.4, 0.6, 1] }
     );
     observer.observe(video);
     window.addEventListener("pointerdown", unlockSound, { passive: true });

@@ -108,7 +108,7 @@ const PropertyDetail = () => {
                 className="relative aspect-[4/3] rounded-lg overflow-hidden border-2 transition-all"
                 style={{ borderColor: activeImage === i ? "#C9A96E" : "rgba(255,255,255,0.1)" }}
               >
-                <img src={img} alt={`${property.name} ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
+                <img src={img} alt={`${property.name} ${i + 1}`} className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </button>
             ))}
           </div>

@@ -36,7 +36,7 @@ const PartnersMarquee = () => {
                 src={logo.src}
                 alt={logo.alt}
                 className="h-8 w-auto object-contain opacity-60 brightness-0 invert md:h-16 hover:opacity-100 transition-opacity duration-300"
-                loading="lazy"
+                loading="lazy" decoding="async"
               />
             </div>
           ))}
