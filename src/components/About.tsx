@@ -17,18 +17,24 @@ const About = () => {
     const playVideo = async () => {
       try {
         video.muted = false;
+        video.defaultMuted = false;
         video.volume = 1;
         await video.play();
         setShowUnmute(false);
       } catch {
-        try {
-          video.muted = true;
-          await video.play();
-          setShowUnmute(true);
-        } catch {
-          // Blocked entirely; controls remain visible.
-        }
+        video.pause();
+        video.muted = false;
+        video.defaultMuted = false;
+        setShowUnmute(true);
       }
+    };
+
+    const unlockSound = () => {
+      if (!hasPlayedRef.current) return;
+      video.muted = false;
+      video.defaultMuted = false;
+      video.volume = 1;
+      video.play().then(() => setShowUnmute(false)).catch(() => setShowUnmute(true));
     };
 
     const observer = new IntersectionObserver(
@@ -43,13 +49,21 @@ const About = () => {
       { threshold: 0.25 }
     );
     observer.observe(video);
-    return () => observer.disconnect();
+    window.addEventListener("pointerdown", unlockSound, { passive: true });
+    window.addEventListener("keydown", unlockSound);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("pointerdown", unlockSound);
+      window.removeEventListener("keydown", unlockSound);
+    };
   }, []);
 
   const handleUnmute = () => {
     const video = videoRef.current;
     if (!video) return;
     video.muted = false;
+    video.defaultMuted = false;
     video.volume = 1;
     video.play().catch(() => {});
     setShowUnmute(false);
@@ -125,7 +139,9 @@ const About = () => {
             <div className="relative aspect-[9/16] overflow-hidden rounded-2xl shadow-2xl border border-black/10 bg-black">
               <video
                 ref={videoRef}
+                autoPlay
                 controls
+                muted={false}
                 playsInline
                 preload="auto"
                 poster={ekanshAbout}
