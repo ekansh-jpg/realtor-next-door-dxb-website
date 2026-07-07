@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, MessageCircle } from "lucide-react";
+import { X, Send } from "lucide-react";
 import { z } from "zod";
 
 const schema = z.object({
