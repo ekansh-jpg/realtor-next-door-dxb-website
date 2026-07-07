@@ -120,7 +120,7 @@ const VideoSection = () => {
                   transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
                   className="overflow-hidden rounded-2xl border border-white/10 hover:border-[#C9A96E]/40 transition-all bg-black/30 mx-auto w-full max-w-[360px]"
                 >
-                  <InstagramEmbed url={post.url} title={post.title} eager={i === 0} />
+                  <InstagramEmbed url={post.url} title={post.title} eager />
                   <a
                     href={post.url}
                     target="_blank"
