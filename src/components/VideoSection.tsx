@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import ekanshAward from "@/assets/uploaded-social-ekansh.webp";
-import InstagramReel from "./InstagramReel";
 
 
 const instagramPosts = [
@@ -118,7 +117,26 @@ const VideoSection = () => {
                   transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
                   className="overflow-hidden rounded-2xl border border-white/10 hover:border-[#C9A96E]/40 transition-all bg-black/30 mx-auto w-full max-w-[360px]"
                 >
-                  <InstagramReel url={post.url} title={post.title} />
+                  <div className="aspect-[9/12] relative overflow-hidden bg-black">
+                    <iframe
+                      src={`${post.url}embed/captioned/`}
+                      className="h-full w-full border-0"
+                      loading="lazy"
+                      scrolling="no"
+                      allow="encrypted-media; autoplay; clipboard-write; picture-in-picture; web-share"
+                      allowFullScreen
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title={post.title}
+                    />
+                  </div>
+                  <a
+                    href={post.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-3 text-center font-sans text-xs uppercase tracking-wider text-white/80 hover:text-[#C9A96E] transition-colors border-t border-white/10"
+                  >
+                    View on Instagram →
+                  </a>
                 </motion.div>
               ))}
             </div>
