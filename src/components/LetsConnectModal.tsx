@@ -244,12 +244,22 @@ const LetsConnectModal = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-white transition mt-2"
-                style={{ backgroundColor: "#25D366" }}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-black transition mt-2"
+                style={{ backgroundColor: "#C9A96E" }}
               >
-                <MessageCircle className="h-4 w-4" />
-                Send via WhatsApp
+                <Send className="h-4 w-4" />
+                Send Enquiry
               </motion.button>
+
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="w-full font-sans text-[11px] uppercase tracking-widest text-white/40 hover:text-white/70 pt-1 transition"
+              >
+                Maybe later
+              </button>
+            </form>
+            )}
 
               <button
                 type="button"
