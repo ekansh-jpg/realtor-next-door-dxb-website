@@ -15,13 +15,14 @@ const faqs = [
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", budget: "", interest: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus("sending");
     try {
-      await fetch("https://formsubmit.co/ajax/investmentmanagment9000@gmail.com", {
+      const res = await fetch("https://formsubmit.co/ajax/investmentmanagment9000@gmail.com", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
@@ -39,10 +40,17 @@ const Contact = () => {
           "Submitted At": new Date().toLocaleString("en-AE", { timeZone: "Asia/Dubai", dateStyle: "full", timeStyle: "short" }),
         }),
       });
+      if (!res.ok) throw new Error("Non-OK response");
+      setStatus("success");
     } catch (err) {
       console.error("Email send failed", err);
+      setStatus("error");
     }
-    setSubmitted(true);
+  };
+
+  const resetForm = () => {
+    setForm({ name: "", email: "", phone: "", budget: "", interest: "", message: "" });
+    setStatus("idle");
   };
 
   return (
