@@ -110,13 +110,15 @@ const About = () => {
             <div className="aspect-[9/16] overflow-hidden rounded-2xl shadow-2xl border border-black/10 bg-black">
               <video
                 ref={videoRef}
-                src="/videos/uploaded-ekansh-video.mp4"
                 controls
                 playsInline
                 preload="auto"
                 poster={ekanshAbout}
                 className="h-full w-full object-cover"
-              />
+              >
+                <source src="/videos/uploaded-ekansh-video.webm" type="video/webm" />
+                <source src="/videos/uploaded-ekansh-video.mp4" type="video/mp4" />
+              </video>
             </div>
           </motion.div>
         </div>
