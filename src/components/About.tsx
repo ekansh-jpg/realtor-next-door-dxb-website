@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import ekanshAbout from "@/assets/ekansh-about.jpg";
-import whoAmIVideo from "@/assets/who-am-i.mp4.asset.json";
 
 
 
@@ -12,22 +11,32 @@ const About = () => {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
+    const playVideo = async () => {
+      try {
+        video.muted = false;
+        video.volume = 1;
+        await video.play();
+      } catch {
+        try {
+          video.muted = true;
+          await video.play();
+        } catch {
+          // Browser blocked autoplay entirely; controls remain visible for manual play.
+        }
+      }
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasPlayedRef.current) {
             hasPlayedRef.current = true;
-            // Try to play with sound first; fall back to muted if the browser blocks it
-            video.muted = false;
-            video.volume = 1;
-            video.play().catch(() => {
-              video.muted = true;
-              video.play().catch(() => {});
-            });
+            playVideo();
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.25 }
     );
     observer.observe(video);
     return () => observer.disconnect();
@@ -101,10 +110,10 @@ const About = () => {
             <div className="aspect-[9/16] overflow-hidden rounded-2xl shadow-2xl border border-black/10 bg-black">
               <video
                 ref={videoRef}
-                src={whoAmIVideo.url}
+                src="/videos/uploaded-ekansh-video.mp4"
                 controls
                 playsInline
-                preload="metadata"
+                preload="auto"
                 poster={ekanshAbout}
                 className="h-full w-full object-cover"
               />
