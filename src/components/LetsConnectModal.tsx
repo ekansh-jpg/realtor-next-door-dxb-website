@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, MessageCircle } from "lucide-react";
+import { X, Send } from "lucide-react";
 import { z } from "zod";
 
 const schema = z.object({
@@ -40,6 +40,7 @@ const LetsConnectModal = () => {
     timeline: "",
   });
   const [error, setError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     if (sessionStorage.getItem(STORAGE_KEY)) return;
@@ -85,18 +86,7 @@ const LetsConnectModal = () => {
     } catch (err) {
       console.error("Email send failed", err);
     }
-    const lines = [
-      "Hi Ekansh, I'd like to connect regarding Dubai real estate.",
-      "",
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone}`,
-      `Budget: ${budget}`,
-      `Timeline: ${timeline}`,
-    ];
-    const msg = encodeURIComponent(lines.join("\n"));
-    window.open(`https://wa.me/971544590555?text=${msg}`, "_blank", "noopener,noreferrer");
-    setOpen(false);
+    setSubmitted(true);
   };
 
   const inputCls =
@@ -145,8 +135,24 @@ const LetsConnectModal = () => {
             </h3>
             <div className="h-[2px] w-12 my-3" style={{ backgroundColor: "#C9A96E" }} />
             <p className="font-sans text-sm text-white/70 mb-5">
-              Share your details — I'll personally reach out on WhatsApp with Dubai's best opportunities.
+              Share your details — I'll personally reach out with Dubai's best opportunities.
             </p>
+
+            {submitted ? (
+              <div className="text-center py-6">
+                <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: "rgba(201,169,110,0.15)" }}>
+                  <Send className="h-6 w-6" style={{ color: "#C9A96E" }} />
+                </div>
+                <h4 className="font-serif text-xl font-bold uppercase tracking-wider text-white mb-2">Thank You</h4>
+                <p className="font-sans text-sm text-white/60 mb-6">Your details have been sent. I'll be in touch shortly.</p>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="font-sans text-[11px] uppercase tracking-widest text-white/60 hover:text-white transition"
+                >
+                  Close
+                </button>
+              </div>
+            ) : (
 
             <form onSubmit={submit} className="space-y-3">
               <div>
@@ -238,11 +244,11 @@ const LetsConnectModal = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-white transition mt-2"
-                style={{ backgroundColor: "#25D366" }}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-black transition mt-2"
+                style={{ backgroundColor: "#C9A96E" }}
               >
-                <MessageCircle className="h-4 w-4" />
-                Send via WhatsApp
+                <Send className="h-4 w-4" />
+                Send Enquiry
               </motion.button>
 
               <button
@@ -253,6 +259,7 @@ const LetsConnectModal = () => {
                 Maybe later
               </button>
             </form>
+            )}
           </motion.div>
         </motion.div>
       )}
