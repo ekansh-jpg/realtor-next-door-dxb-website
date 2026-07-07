@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import ekanshAward from "@/assets/uploaded-social-ekansh.webp";
-import InstagramReel from "./InstagramReel";
 
 
 const instagramPosts = [
