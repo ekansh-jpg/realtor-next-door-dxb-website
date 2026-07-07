@@ -98,9 +98,17 @@ html {
   animation: marquee 25s linear infinite;
 }
 
-/* Hide the Lovable "Made with Lovable" badge on all deployments */
-#lovable-badge {
+/* Hide the Lovable "Made with Lovable" badge on all deployments without affecting layout */
+#lovable-badge,
+#lovable-badge-cta,
+#lovable-badge-text,
+#lovable-badge-divider,
+#lovable-badge-close,
+#lovable-badge * {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 
