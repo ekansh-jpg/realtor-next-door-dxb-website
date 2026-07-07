@@ -266,8 +266,33 @@ const LetsConnectModal = () => {
                 className="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-black transition mt-2"
                 style={{ backgroundColor: "#C9A96E" }}
               >
-                <Send className="h-4 w-4" />
-                Send Enquiry
+              {error && <p className="text-xs text-red-400">{error}</p>}
+              {sendError && (
+                <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
+                  className="flex items-start gap-2.5 rounded-lg border p-3"
+                  style={{ backgroundColor: "rgba(239,68,68,0.08)", borderColor: "rgba(239,68,68,0.35)" }}>
+                  <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5 text-red-400" />
+                  <div>
+                    <p className="font-sans text-xs font-semibold text-white">Couldn't send right now</p>
+                    <p className="font-sans text-[11px] text-white/60 mt-0.5">
+                      Please try again, or reach me on{" "}
+                      <a href="tel:+971544590555" className="underline" style={{ color: "#C9A96E" }}>+971 54 459 0555</a>.
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+
+              <motion.button
+                whileHover={!sending ? { scale: 1.02 } : undefined}
+                whileTap={!sending ? { scale: 0.98 } : undefined}
+                type="submit"
+                disabled={sending}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-black transition mt-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                style={{ backgroundColor: "#C9A96E" }}
+              >
+                {sending ? (<><Loader2 className="h-4 w-4 animate-spin" />Sending…</>)
+                  : sendError ? (<><Send className="h-4 w-4" />Try Again</>)
+                  : (<><Send className="h-4 w-4" />Send Enquiry</>)}
               </motion.button>
 
               <button
