@@ -40,8 +40,6 @@ const Contact = () => {
     } catch (err) {
       console.error("Email send failed", err);
     }
-    const msg = encodeURIComponent(`Hi Ekansh, I'm ${form.name}. ${form.message} | Budget: ${form.budget} | Interest: ${form.interest}`);
-    window.open(`https://wa.me/971544590555?text=${msg}`, "_blank");
     setSubmitted(true);
   };
 
