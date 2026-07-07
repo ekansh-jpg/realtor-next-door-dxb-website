@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import ekanshAward from "@/assets/ekansh-award.webp.asset.json";
+import ekanshAward from "@/assets/ekansh-award-local.webp";
 
 
 const instagramPosts = [
@@ -48,7 +48,7 @@ const VideoSection = () => {
           >
             <div className="aspect-[4/5] md:aspect-[3/4] w-full">
               <img
-                src={ekanshAward.url}
+                src={ekanshAward}
                 alt="Ekansh Kinger — award-winning Dubai real estate agent"
                 className="w-full h-full object-cover"
                 loading="lazy"
