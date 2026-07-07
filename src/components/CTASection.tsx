@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import bgCta from "@/assets/bg-cta.jpg";
+import bgCta from "@/assets/bg-cta.webp";
 
 const CTASection = () => {
   return (

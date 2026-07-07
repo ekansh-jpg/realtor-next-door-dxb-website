@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Star, Award, Users, StarIcon } from "lucide-react";
-import bgTestimonials from "@/assets/bg-testimonials.jpg";
+import bgTestimonials from "@/assets/bg-testimonials.webp";
 
 const testimonials = [
   {

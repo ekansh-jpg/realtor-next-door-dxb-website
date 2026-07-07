@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import bgFeatured from "@/assets/bg-featured.jpg";
+import bgFeatured from "@/assets/bg-featured.webp";
 
 const FeaturedOn = () => {
   return (

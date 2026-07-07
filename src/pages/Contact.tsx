@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { Phone, Instagram, Send, MapPin, Clock, ChevronDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import bgContact from "@/assets/bg-contact.jpg";
-import bgServices from "@/assets/bg-services.jpg";
+import bgContact from "@/assets/bg-contact.webp";
+import bgServices from "@/assets/bg-services.webp";
 
 const faqs = [
   { q: "What documents do I need to buy property in Dubai?", a: "You'll need a valid passport, proof of address, and bank statements. For mortgage buyers, salary certificates and bank pre-approval letters are also required." },

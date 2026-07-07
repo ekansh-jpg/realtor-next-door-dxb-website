@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Phone, Instagram, MessageCircle, Linkedin } from "lucide-react";
-import eventBg from "@/assets/event-crowd.jpg";
+import eventBg from "@/assets/event-crowd.webp";
 
 const socials = [
   { platform: "Call", handle: "+971 54 459 0555", url: "tel:+971544590555", Icon: Phone },

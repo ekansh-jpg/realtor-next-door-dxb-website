@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Volume2 } from "lucide-react";
-import ekanshAbout from "@/assets/ekansh-about.jpg";
+import ekanshAbout from "@/assets/ekansh-about.webp";
 
 
 

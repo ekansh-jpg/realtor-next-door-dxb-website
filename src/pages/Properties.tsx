@@ -5,7 +5,7 @@ import { MapPin, ArrowRight, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { properties } from "@/data/properties";
-import bgTransactions from "@/assets/bg-transactions.jpg";
+import bgTransactions from "@/assets/bg-transactions.webp";
 
 const developers = ["All", "Emaar", "DAMAC", "Nakheel", "Sobha"] as const;
 

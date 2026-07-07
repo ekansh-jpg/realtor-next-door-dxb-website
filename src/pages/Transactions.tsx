@@ -4,7 +4,7 @@ import { RefreshCw, ExternalLink, TrendingUp, Building, BarChart3 } from "lucide
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import bgTransactions from "@/assets/bg-transactions.jpg";
+import bgTransactions from "@/assets/bg-transactions.webp";
 
 const chartData = [
   { date: "Mon", existing: 2.4, offPlan: 2.1 },
