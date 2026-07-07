@@ -58,7 +58,7 @@ const LetsConnectModal = () => {
     };
   }, [open]);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
@@ -66,6 +66,25 @@ const LetsConnectModal = () => {
       return;
     }
     const { name, email, phone, budget, timeline } = parsed.data;
+    try {
+      await fetch("https://formsubmit.co/ajax/investmentmanagment9000@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `New Lead from Website — ${name}`,
+          _template: "table",
+          _captcha: "false",
+          Name: name,
+          Email: email,
+          Phone: phone,
+          Budget: budget,
+          Timeline: timeline,
+          Source: "Let's Connect Popup",
+        }),
+      });
+    } catch (err) {
+      console.error("Email send failed", err);
+    }
     const lines = [
       "Hi Ekansh, I'd like to connect regarding Dubai real estate.",
       "",
