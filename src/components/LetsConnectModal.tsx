@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Send } from "lucide-react";
+import { X, Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { z } from "zod";
 
 const schema = z.object({
@@ -41,6 +41,8 @@ const LetsConnectModal = () => {
   });
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [sendError, setSendError] = useState(false);
+  const [sending, setSending] = useState(false);
 
   useEffect(() => {
     if (sessionStorage.getItem(STORAGE_KEY)) return;
@@ -61,14 +63,17 @@ const LetsConnectModal = () => {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
+    setSendError(false);
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
       setError(parsed.error.issues[0]?.message ?? "Invalid input");
       return;
     }
     const { name, email, phone, budget, timeline } = parsed.data;
+    setSending(true);
     try {
-      await fetch("https://formsubmit.co/ajax/investmentmanagment9000@gmail.com", {
+      const res = await fetch("https://formsubmit.co/ajax/investmentmanagment9000@gmail.com", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
@@ -85,10 +90,14 @@ const LetsConnectModal = () => {
           "Submitted At": new Date().toLocaleString("en-AE", { timeZone: "Asia/Dubai", dateStyle: "full", timeStyle: "short" }),
         }),
       });
+      if (!res.ok) throw new Error("Non-OK response");
+      setSubmitted(true);
     } catch (err) {
       console.error("Email send failed", err);
+      setSendError(true);
+    } finally {
+      setSending(false);
     }
-    setSubmitted(true);
   };
 
   const inputCls =
@@ -141,19 +150,27 @@ const LetsConnectModal = () => {
             </p>
 
             {submitted ? (
-              <div className="text-center py-6">
-                <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: "rgba(201,169,110,0.15)" }}>
-                  <Send className="h-6 w-6" style={{ color: "#C9A96E" }} />
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-center py-4">
+                <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: "rgba(201,169,110,0.15)" }}>
+                  <CheckCircle2 className="h-8 w-8" style={{ color: "#C9A96E" }} />
                 </div>
-                <h4 className="font-serif text-xl font-bold uppercase tracking-wider text-white mb-2">Thank You</h4>
-                <p className="font-sans text-sm text-white/60 mb-6">Your details have been sent. I'll be in touch shortly.</p>
+                <p className="font-sans text-[10px] tracking-[0.3em] uppercase mb-2" style={{ color: "#C9A96E" }}>Received</p>
+                <h4 className="font-serif text-2xl font-bold uppercase tracking-wider text-white mb-2">
+                  Thank You{form.name ? `, ${form.name.split(" ")[0]}` : ""}
+                </h4>
+                <div className="h-[2px] w-10 mx-auto my-3" style={{ backgroundColor: "#C9A96E" }} />
+                <p className="font-sans text-sm text-white/70 mb-1">Your enquiry is in my inbox.</p>
+                <p className="font-sans text-xs text-white/50 mb-6">
+                  I'll personally reply to <span className="text-white/80">{form.email}</span> within a few hours.
+                </p>
                 <button
                   onClick={() => setOpen(false)}
-                  className="font-sans text-[11px] uppercase tracking-widest text-white/60 hover:text-white transition"
+                  className="rounded-full px-6 py-2.5 font-sans text-[11px] uppercase tracking-widest text-black transition"
+                  style={{ backgroundColor: "#C9A96E" }}
                 >
                   Close
                 </button>
-              </div>
+              </motion.div>
             ) : (
 
             <form onSubmit={submit} className="space-y-3">
@@ -241,16 +258,32 @@ const LetsConnectModal = () => {
               </div>
 
               {error && <p className="text-xs text-red-400">{error}</p>}
+              {sendError && (
+                <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
+                  className="flex items-start gap-2.5 rounded-lg border p-3"
+                  style={{ backgroundColor: "rgba(239,68,68,0.08)", borderColor: "rgba(239,68,68,0.35)" }}>
+                  <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5 text-red-400" />
+                  <div>
+                    <p className="font-sans text-xs font-semibold text-white">Couldn't send right now</p>
+                    <p className="font-sans text-[11px] text-white/60 mt-0.5">
+                      Please try again, or reach me on{" "}
+                      <a href="tel:+971544590555" className="underline" style={{ color: "#C9A96E" }}>+971 54 459 0555</a>.
+                    </p>
+                  </div>
+                </motion.div>
+              )}
 
               <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={!sending ? { scale: 1.02 } : undefined}
+                whileTap={!sending ? { scale: 0.98 } : undefined}
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-black transition mt-2"
+                disabled={sending}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-black transition mt-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 style={{ backgroundColor: "#C9A96E" }}
               >
-                <Send className="h-4 w-4" />
-                Send Enquiry
+                {sending ? (<><Loader2 className="h-4 w-4 animate-spin" />Sending…</>)
+                  : sendError ? (<><Send className="h-4 w-4" />Try Again</>)
+                  : (<><Send className="h-4 w-4" />Send Enquiry</>)}
               </motion.button>
 
               <button
