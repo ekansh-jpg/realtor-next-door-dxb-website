@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import bgAchievements from "@/assets/bg-achievements.jpg";
+import bgAchievements from "@/assets/bg-achievements.webp";
 import { Award, ShieldCheck, Briefcase, Users } from "lucide-react";
 
 const achievements = [

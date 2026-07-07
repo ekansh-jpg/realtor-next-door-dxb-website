@@ -3,8 +3,8 @@ import { Building, TrendingUp, Home, Key, Shield, Users, ArrowRight, CheckCircle
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import bgServices from "@/assets/bg-services.jpg";
-import bgContact from "@/assets/bg-contact.jpg";
+import bgServices from "@/assets/bg-services.webp";
+import bgContact from "@/assets/bg-contact.webp";
 
 const services = [
   { icon: Home, title: "Property Buying", description: "Find your dream home in Dubai with personalized property search, market analysis, and end-to-end support.", features: ["Curated property shortlists", "Market price analysis", "Negotiation support", "Legal documentation"] },

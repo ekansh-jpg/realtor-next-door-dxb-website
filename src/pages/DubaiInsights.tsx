@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import { TrendingUp, MapPin, Building, Calendar, ChevronDown, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import bgInsights from "@/assets/bg-insights.jpg";
-import bgCta from "@/assets/bg-contact.jpg";
-import insight1 from "@/assets/insight-1.jpg";
-import insight2 from "@/assets/insight-2.jpg";
-import insight3 from "@/assets/insight-3.jpg";
+import bgInsights from "@/assets/bg-insights.webp";
+import bgCta from "@/assets/bg-contact.webp";
+import insight1 from "@/assets/insight-1.webp";
+import insight2 from "@/assets/insight-2.webp";
+import insight3 from "@/assets/insight-3.webp";
 
 const marketStats = [
   { label: "Total Transactions (2025 YTD)", value: "215,000+", icon: TrendingUp },

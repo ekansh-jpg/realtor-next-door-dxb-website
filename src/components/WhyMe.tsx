@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart, Building2, HandshakeIcon, Globe } from "lucide-react";
-import bgWhyme from "@/assets/bg-whyme.jpg";
+import bgWhyme from "@/assets/bg-whyme.webp";
 
 const reasons = [
   {
