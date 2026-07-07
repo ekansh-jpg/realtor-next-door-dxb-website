@@ -18,8 +18,28 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      await fetch("https://formsubmit.co/ajax/investmentmanagment9000@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `New Lead from Website — ${form.name}`,
+          _template: "table",
+          _captcha: "false",
+          Name: form.name,
+          Email: form.email,
+          Phone: form.phone,
+          Budget: form.budget,
+          Interest: form.interest,
+          Message: form.message,
+          Source: "Contact Page — Get Expert Guidance",
+        }),
+      });
+    } catch (err) {
+      console.error("Email send failed", err);
+    }
     const msg = encodeURIComponent(`Hi Ekansh, I'm ${form.name}. ${form.message} | Budget: ${form.budget} | Interest: ${form.interest}`);
     window.open(`https://wa.me/971544590555?text=${msg}`, "_blank");
     setSubmitted(true);
