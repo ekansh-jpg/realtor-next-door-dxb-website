@@ -37,21 +37,23 @@ const VideoSection = () => {
           </p>
         </div>
 
-        <div className="grid gap-8 md:gap-10 md:grid-cols-2 items-center">
+        <div className="grid gap-8 md:gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:grid-cols-2 items-start">
           {/* Left: Ekansh award portrait */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8 }}
-            className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl mx-auto w-full max-w-sm md:max-w-none"
+            className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl mx-auto w-full max-w-sm md:max-w-none md:sticky md:top-24"
           >
-            <img
-              src={ekanshAward.url}
-              alt="Ekansh Kinger with award"
-              className="w-full h-64 sm:h-80 md:h-full md:max-h-[700px] object-cover"
-              loading="lazy"
-            />
+            <div className="aspect-[4/5] md:aspect-[3/4] w-full">
+              <img
+                src={ekanshAward.url}
+                alt="Ekansh Kinger — award-winning Dubai real estate agent"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
             <div
               className="absolute inset-0 pointer-events-none md:hidden"
               style={{ background: 'linear-gradient(180deg, rgba(10,10,10,0) 55%, rgba(10,10,10,0.75) 100%)' }}
