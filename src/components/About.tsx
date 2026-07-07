@@ -47,16 +47,48 @@ const About = () => {
           }
         });
       },
-      { threshold: [0, 0.25, 0.4, 0.6, 1] }
+      { threshold: [0, 0.15, 0.25, 0.4, 0.6, 1] }
     );
     observer.observe(video);
+
+    // iOS/Android fallback: pause on scroll if video is off-screen
+    // (some mobile browsers throttle IntersectionObserver on fast scrolls)
+    let rafId = 0;
+    const checkOffscreen = () => {
+      rafId = 0;
+      const rect = video.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const visibleH = Math.max(0, Math.min(rect.bottom, vh) - Math.max(rect.top, 0));
+      const ratio = rect.height > 0 ? visibleH / rect.height : 0;
+      if (ratio < 0.25 && !video.paused) {
+        video.pause();
+        video.muted = true;
+      }
+    };
+    const onScroll = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(checkOffscreen);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    // Pause when tab/page becomes hidden
+    const onVisibility = () => {
+      if (document.hidden) video.pause();
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
     window.addEventListener("pointerdown", unlockSound, { passive: true });
     window.addEventListener("keydown", unlockSound);
 
     return () => {
       observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("pointerdown", unlockSound);
       window.removeEventListener("keydown", unlockSound);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
 
