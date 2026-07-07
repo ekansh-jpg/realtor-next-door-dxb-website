@@ -260,15 +260,6 @@ const LetsConnectModal = () => {
               </button>
             </form>
             )}
-
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                className="w-full font-sans text-[11px] uppercase tracking-widest text-white/40 hover:text-white/70 pt-1 transition"
-              >
-                Maybe later
-              </button>
-            </form>
           </motion.div>
         </motion.div>
       )}
