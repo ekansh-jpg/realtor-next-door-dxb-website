@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Instagram, Phone } from "lucide-react";
+import { Instagram, Phone, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const footerLinks = [
@@ -72,15 +72,17 @@ const Footer = () => {
 
             <div className="flex items-center gap-3 mt-4 md:mt-6">
               {[
-                { href: "tel:+971544590555", icon: <Phone className="h-4 w-4" /> },
-                { href: "https://www.instagram.com/realtor_nextdoordxb", icon: <Instagram className="h-4 w-4" /> },
-                { href: "https://wa.me/971544590555", icon: <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="h-4 w-4" /> },
+                { href: "tel:+971544590555", icon: <Phone className="h-4 w-4" />, label: "Call" },
+                { href: "https://www.instagram.com/realtor_nextdoordxb", icon: <Instagram className="h-4 w-4" />, label: "Instagram" },
+                { href: "https://www.linkedin.com/in/ekansh-kinger-7207341a6", icon: <Linkedin className="h-4 w-4" />, label: "LinkedIn" },
+                { href: "https://wa.me/971544590555", icon: <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="h-4 w-4" />, label: "WhatsApp" },
               ].map((s, i) => (
                 <motion.a
                   key={i}
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={s.label}
                   whileHover={{ scale: 1.1, borderColor: "rgba(201,169,110,0.5)" }}
                   className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-full border border-white/15 text-white/60 transition-all hover:text-white"
                 >
