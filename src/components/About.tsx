@@ -17,16 +17,22 @@ const About = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasPlayedRef.current) {
             hasPlayedRef.current = true;
-            video.muted = true;
-            video.play().catch(() => {});
+            // Try to play with sound first; fall back to muted if the browser blocks it
+            video.muted = false;
+            video.volume = 1;
+            video.play().catch(() => {
+              video.muted = true;
+              video.play().catch(() => {});
+            });
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.4 }
     );
     observer.observe(video);
     return () => observer.disconnect();
   }, []);
+
 
   return (
     <section className="relative py-14 md:py-28" style={{ backgroundColor: '#F5F5F5' }}>
@@ -98,7 +104,6 @@ const About = () => {
                 src={whoAmIVideo.url}
                 controls
                 playsInline
-                muted
                 preload="metadata"
                 poster={ekanshAbout}
                 className="h-full w-full object-cover"
