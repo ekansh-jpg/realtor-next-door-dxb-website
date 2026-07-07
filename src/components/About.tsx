@@ -104,7 +104,6 @@ const About = () => {
                 src={whoAmIVideo.url}
                 controls
                 playsInline
-                muted
                 preload="metadata"
                 poster={ekanshAbout}
                 className="h-full w-full object-cover"
