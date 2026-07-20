@@ -1,4 +1,30 @@
 User-agent: *
 Allow: /
+Disallow: /404
 
-Sitemap: https://ekanshkinger.com/sitemap.xml
+# High-priority AI crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://realtornextdoordxb.com/sitemap.xml
