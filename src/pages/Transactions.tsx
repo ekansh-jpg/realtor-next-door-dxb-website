@@ -17,16 +17,16 @@ const chartData = [
 ];
 
 const transactionData = [
-  { id: 1, area: "Palm Jebel Ali", type: "Villa", bedrooms: "6 BR", price: "AED 42,000,000", sqft: "8,900", date: "This week", status: "Off-Plan" },
-  { id: 2, area: "Dubai Creek Harbour", type: "Apartment", bedrooms: "3 BR", price: "AED 4,850,000", sqft: "1,780", date: "This week", status: "Off-Plan" },
-  { id: 3, area: "Palm Jumeirah", type: "Villa", bedrooms: "5 BR", price: "AED 18,500,000", sqft: "5,400", date: "This week", status: "Completed" },
-  { id: 4, area: "Downtown Dubai", type: "Apartment", bedrooms: "2 BR", price: "AED 3,650,000", sqft: "1,320", date: "This week", status: "Completed" },
-  { id: 5, area: "DAMAC Lagoons", type: "Townhouse", bedrooms: "4 BR", price: "AED 3,100,000", sqft: "2,350", date: "This week", status: "Off-Plan" },
-  { id: 6, area: "Dubai Hills Estate", type: "Villa", bedrooms: "5 BR", price: "AED 11,200,000", sqft: "5,800", date: "This week", status: "Completed" },
-  { id: 7, area: "Business Bay", type: "Apartment", bedrooms: "1 BR", price: "AED 2,150,000", sqft: "820", date: "This week", status: "Completed" },
-  { id: 8, area: "MBR City · Hartland II", type: "Apartment", bedrooms: "2 BR", price: "AED 2,780,000", sqft: "1,150", date: "This week", status: "Off-Plan" },
-  { id: 9, area: "Arabian Ranches III", type: "Villa", bedrooms: "4 BR", price: "AED 6,400,000", sqft: "3,900", date: "This week", status: "Completed" },
-  { id: 10, area: "Jumeirah Village Circle", type: "Apartment", bedrooms: "Studio", price: "AED 895,000", sqft: "470", date: "This week", status: "Completed" },
+  { id: 1, area: "Dubai Maritime City · Chelsea Residences", type: "Apartment", bedrooms: "2 BR", price: "AED 2,500,000", sqft: "1,180", date: "This week", status: "Off-Plan" },
+  { id: 2, area: "Dubailand · DAMAC Islands 2", type: "Townhouse", bedrooms: "4 BR", price: "AED 2,900,000", sqft: "2,410", date: "This week", status: "Off-Plan" },
+  { id: 3, area: "Dubailand · The Oasis by Emaar", type: "Villa", bedrooms: "5 BR", price: "AED 15,000,000", sqft: "7,200", date: "This week", status: "Off-Plan" },
+  { id: 4, area: "Palm Jebel Ali", type: "Villa", bedrooms: "6 BR", price: "AED 42,000,000", sqft: "8,900", date: "This week", status: "Off-Plan" },
+  { id: 5, area: "Dubai Creek Harbour", type: "Apartment", bedrooms: "3 BR", price: "AED 4,850,000", sqft: "1,780", date: "This week", status: "Off-Plan" },
+  { id: 6, area: "Palm Jumeirah", type: "Villa", bedrooms: "5 BR", price: "AED 18,500,000", sqft: "5,400", date: "This week", status: "Completed" },
+  { id: 7, area: "Downtown Dubai", type: "Apartment", bedrooms: "2 BR", price: "AED 3,650,000", sqft: "1,320", date: "This week", status: "Completed" },
+  { id: 8, area: "DAMAC Lagoons", type: "Townhouse", bedrooms: "4 BR", price: "AED 3,100,000", sqft: "2,350", date: "This week", status: "Off-Plan" },
+  { id: 9, area: "Dubai Hills Estate", type: "Villa", bedrooms: "5 BR", price: "AED 11,200,000", sqft: "5,800", date: "This week", status: "Completed" },
+  { id: 10, area: "MBR City · Hartland II", type: "Apartment", bedrooms: "2 BR", price: "AED 2,780,000", sqft: "1,150", date: "This week", status: "Off-Plan" },
 ];
 
 const filters = ["All", "Apartment", "Villa", "Townhouse", "Off-Plan"];
