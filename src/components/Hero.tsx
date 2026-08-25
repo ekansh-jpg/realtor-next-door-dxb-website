@@ -5,18 +5,33 @@ import uploadedHomeImage from "@/assets/uploaded-home-ekansh-bw.webp";
 const Hero = () => {
   return (
     <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#0A0A0A]">
-      {/* Responsive background image — desaturated to B&W with slight transparency */}
-      <picture className="absolute inset-0 bg-black">
+      {/* Mobile: black & white background video */}
+      <video
+        className="absolute inset-0 h-full w-full object-cover object-center md:hidden"
+        style={{ opacity: 0.75, filter: "grayscale(1)" }}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/videos/hero-mobile-poster.jpg"
+      >
+        <source src="/videos/hero-mobile-bw.mp4" type="video/mp4" />
+      </video>
+
+      {/* Desktop / tablet: background image — desaturated to B&W with slight transparency */}
+      <picture className="absolute inset-0 hidden bg-black md:block">
         <img
           src={uploadedHomeImage}
           alt="Ekansh Kinger — #1 Dubai Real Estate Agent & Your Next Door Realtor"
-          className="absolute inset-0 h-full w-full object-cover object-[center_18%] md:object-center"
+          className="absolute inset-0 h-full w-full object-cover object-center"
           style={{ opacity: 0.85 }}
           loading="eager"
           decoding="async"
           fetchPriority="high"
         />
       </picture>
+
 
       {/* Premium dark gradient overlay for legibility */}
       <div
