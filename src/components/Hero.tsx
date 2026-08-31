@@ -83,6 +83,7 @@ const Hero = () => {
             style={{ textShadow: "0 4px 24px rgba(0,0,0,0.7)" }}
           >
             Ekansh Kinger
+            <span className="sr-only"> — Dubai Real Estate Agent</span>
           </motion.h1>
           <motion.div
             initial={{ width: 0 }}
