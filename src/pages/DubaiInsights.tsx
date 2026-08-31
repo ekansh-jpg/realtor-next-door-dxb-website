@@ -10,30 +10,30 @@ import insight2 from "@/assets/insight-2.webp";
 import insight3 from "@/assets/insight-3.webp";
 
 const marketStats = [
-  { label: "Total Transactions (2025 YTD)", value: "215,000+", icon: TrendingUp },
-  { label: "Average Price/sqft", value: "AED 2,050", icon: Building },
-  { label: "Hottest Area", value: "Palm Jebel Ali", icon: MapPin },
-  { label: "YoY Price Growth", value: "+21.3%", icon: TrendingUp },
+  { label: "Total Transactions (2026 YTD)", value: "248,000+", icon: TrendingUp },
+  { label: "Average Price/sqft", value: "AED 2,180", icon: Building },
+  { label: "Hottest Area", value: "Emaar Beachfront", icon: MapPin },
+  { label: "YoY Price Growth", value: "+18.6%", icon: TrendingUp },
 ];
 
 const articles = [
-  { image: insight1, date: "June 2026", category: "Mega Launch", title: "Palm Jebel Ali Phase 3 Sold Out in 48 Hours", excerpt: "Nakheel's third villa release on Palm Jebel Ali cleared record-breaking demand — signature villas from AED 18M priced-in for 2027 handover." },
-  { image: insight2, date: "May 2026", category: "Investment Hotspot", title: "DAMAC Lagoons: Why Mediterranean Clusters Outsell the Market", excerpt: "Portofino, Santorini and Malta clusters lead townhouse resale premiums across Dubai's off-plan segment." },
-  { image: insight3, date: "May 2026", category: "Skyline", title: "Safa Two & Downtown Cluster Reshape Sheikh Zayed Road", excerpt: "DAMAC's de GRISOGONO super-tall and Emaar's Downtown Views III are anchoring a new luxury corridor." },
-  { image: insight1, date: "April 2026", category: "Policy", title: "Golden Visa 2.0: New Property Rules NRIs Should Know", excerpt: "Updated UAE Golden Visa property thresholds and payment-plan eligibility explained for 2026 buyers." },
-  { image: insight2, date: "April 2026", category: "Yield", title: "Best Rental Yield Neighbourhoods in Dubai — 2026 Ranking", excerpt: "JVC, Discovery Gardens and Al Furjan continue to top Dubai for gross rental yields above 8%." },
-  { image: insight3, date: "March 2026", category: "Branded Living", title: "Branded Residences Now 30% of New Dubai Launches", excerpt: "Address, Bugatti, Bulgari and Cavalli-branded projects are commanding 40–60% premiums on resale." },
+  { image: insight1, date: "August 2026", category: "Mega Launch", title: "Chelsea Residences Phase 2 Clears in Days at Maritime City", excerpt: "DAMAC's football-branded waterfront tower saw its second release absorbed almost instantly, with 2-BR sea-view homes from AED 2.5M." },
+  { image: insight2, date: "August 2026", category: "Waterfront", title: "DAMAC Islands 2 Townhouses Lead Off-Plan Resale Premiums", excerpt: "4-BR waterfront townhouses from AED 2.9M are already trading at healthy premiums as infrastructure milestones land ahead of schedule." },
+  { image: insight3, date: "July 2026", category: "Ultra Luxury", title: "The Oasis by Emaar Redefines Dubai's Villa Ceiling", excerpt: "Lagoon-front mansions from AED 15M are pulling global capital away from Palm Jumeirah's secondary villa market." },
+  { image: insight1, date: "July 2026", category: "Policy", title: "Golden Visa 2026: What Changed for Property Investors", excerpt: "Updated thresholds, payment-plan eligibility and mortgage rules — a practical breakdown for NRI and international buyers." },
+  { image: insight2, date: "June 2026", category: "Yield", title: "Highest Rental Yield Communities in Dubai — Mid-2026", excerpt: "JVC, Al Furjan and Dubai South continue to clear 8%+ gross yields as tenant demand outpaces new handovers." },
+  { image: insight3, date: "June 2026", category: "Branded Living", title: "Branded Residences Now One in Three New Launches", excerpt: "Bugatti, Bulgari, Cavalli and Address-branded stock is commanding 40–60% resale premiums over comparable non-branded towers." },
 ];
 
 const hotspots = [
-  { area: "Palm Jebel Ali", growth: "+38%", avgPrice: "AED 4,200/sqft", highlight: "Nakheel's revived mega-island" },
-  { area: "Dubai Creek Harbour", growth: "+27%", avgPrice: "AED 2,450/sqft", highlight: "Emaar's flagship waterfront" },
-  { area: "DAMAC Lagoons", growth: "+29%", avgPrice: "AED 1,650/sqft", highlight: "Mediterranean villa community" },
-  { area: "JVC & JVT", growth: "+24%", avgPrice: "AED 1,150/sqft", highlight: "Highest rental yields in Dubai" },
+  { area: "Emaar Beachfront", growth: "+34%", avgPrice: "AED 4,050/sqft", highlight: "Sold-out towers, marina-front living" },
+  { area: "Palm Jebel Ali", growth: "+31%", avgPrice: "AED 4,400/sqft", highlight: "Nakheel's revived mega-island" },
+  { area: "Dubai Islands", growth: "+28%", avgPrice: "AED 2,300/sqft", highlight: "Fastest-emerging beachfront cluster" },
+  { area: "JVC & JVT", growth: "+22%", avgPrice: "AED 1,240/sqft", highlight: "Highest rental yields in Dubai" },
 ];
 
 const faqs = [
-  { q: "Is Dubai real estate a good investment in 2025?", a: "Yes — Dubai offers 6-10% rental yields, zero income tax, and strong capital appreciation. The market has shown consistent growth with record transactions in 2024." },
+  { q: "Is Dubai real estate a good investment in 2026?", a: "Yes — Dubai offers 6-10% rental yields, zero income tax, and strong capital appreciation. The market has shown consistent growth with record transactions through 2025." },
   { q: "What is the minimum investment for a Golden Visa?", a: "A property investment of AED 2 million or more qualifies for a 10-year Golden Visa. The property must be fully paid (not mortgaged) and retained for at least 3 years." },
   { q: "Can foreigners buy property in Dubai?", a: "Yes, foreigners can buy freehold property in designated areas across Dubai. There are no restrictions on nationality, and the process is straightforward with DLD registration." },
   { q: "What are the best areas to invest in Dubai?", a: "Top investment areas include Dubai Marina, Downtown Dubai, Business Bay, JVC, and Dubai Hills Estate — each offering different price points and rental yields." },
