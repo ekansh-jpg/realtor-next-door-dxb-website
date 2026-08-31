@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Seo from "@/components/Seo";
 import { Building, TrendingUp, Home, Key, Shield, Users, ArrowRight, CheckCircle, Phone, MessageSquare, Search, Handshake } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -31,6 +32,7 @@ const valueProps = [
 const Services = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
+      <Seo title={"Dubai Real Estate Services — Buying, Selling & Investment"} description={"End-to-end Dubai real estate services: off-plan investment, resale purchase, property selling, portfolio advisory and Golden Visa guidance for international and NRI buyers."} path="/services" />
       <Navbar />
 
       {/* Hero */}

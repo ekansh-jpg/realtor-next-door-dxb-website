@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
 import { Phone, Instagram, Send, MapPin, Clock, ChevronDown, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -55,6 +56,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
+      <Seo title={"Contact Ekansh Kinger — Top Dubai Real Estate Agent"} description={"Talk to Dubai realtor Ekansh Kinger about buying, selling or investing in Dubai property. Call +971 54 459 0555 or send an enquiry — replies within 2 hours."} path="/contact" />
       <Navbar />
 
       {/* Hero */}

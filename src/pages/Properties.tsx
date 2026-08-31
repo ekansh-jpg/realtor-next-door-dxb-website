@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { MapPin, ArrowRight, Sparkles } from "lucide-react";
@@ -17,6 +18,7 @@ const Properties = () => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
+      <Seo title={"Luxury Properties for Sale in Dubai | Emaar, Damac & Sobha"} description={"Browse trending Dubai properties for sale — off-plan apartments, waterfront townhouses and luxury villas by Emaar, Damac, Sobha and Nakheel. Prices, payment plans & handover dates."} path="/properties" />
       <Navbar />
 
       {/* Hero */}
