@@ -33,7 +33,7 @@ const hotspots = [
 ];
 
 const faqs = [
-  { q: "Is Dubai real estate a good investment in 2025?", a: "Yes — Dubai offers 6-10% rental yields, zero income tax, and strong capital appreciation. The market has shown consistent growth with record transactions in 2024." },
+  { q: "Is Dubai real estate a good investment in 2026?", a: "Yes — Dubai offers 6-10% rental yields, zero income tax, and strong capital appreciation. The market has shown consistent growth with record transactions through 2025." },
   { q: "What is the minimum investment for a Golden Visa?", a: "A property investment of AED 2 million or more qualifies for a 10-year Golden Visa. The property must be fully paid (not mortgaged) and retained for at least 3 years." },
   { q: "Can foreigners buy property in Dubai?", a: "Yes, foreigners can buy freehold property in designated areas across Dubai. There are no restrictions on nationality, and the process is straightforward with DLD registration." },
   { q: "What are the best areas to invest in Dubai?", a: "Top investment areas include Dubai Marina, Downtown Dubai, Business Bay, JVC, and Dubai Hills Estate — each offering different price points and rental yields." },
