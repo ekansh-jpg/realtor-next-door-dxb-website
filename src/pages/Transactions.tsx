@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
 import { RefreshCw, ExternalLink, TrendingUp, Building, BarChart3 } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
@@ -50,6 +51,7 @@ const Transactions = () => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
+      <Seo title={"Dubai Real Estate Transactions — Live Weekly Market Data"} description={"Dubai's latest property transaction data, updated weekly: weekly volumes, total worth, off-plan vs ready split and top-selling communities, with a link to official DLD records."} path="/transactions" />
       <Navbar />
 
       {/* Hero with parallax */}

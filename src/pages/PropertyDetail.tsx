@@ -5,6 +5,7 @@ import { MapPin, ArrowLeft, ExternalLink, Check, MessageCircle, Building2, Calen
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getPropertyBySlug } from "@/data/properties";
+import Seo from "@/components/Seo";
 
 const PropertyDetail = () => {
   const { slug } = useParams();
@@ -40,6 +41,24 @@ const PropertyDetail = () => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
+      <Seo
+        title={`${property.name} by ${property.developer} — ${property.priceFrom} | Dubai`}
+        description={`${property.name} by ${property.developer} in ${property.location}. ${property.bedrooms}, from ${property.priceFrom}, handover ${property.handover}. Payment plan ${property.paymentPlan}. Speak to Dubai realtor Ekansh Kinger.`}
+        path={`/properties/${property.slug}`}
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Residence",
+          name: property.name,
+          description: property.description,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: property.location,
+            addressRegion: "Dubai",
+            addressCountry: "AE",
+          },
+          brand: { "@type": "Organization", name: property.developer },
+        }}
+      />
       <Navbar />
 
       {/* Hero image */}

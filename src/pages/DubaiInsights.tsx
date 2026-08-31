@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
 import { TrendingUp, MapPin, Building, Calendar, ChevronDown, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -45,6 +46,7 @@ const DubaiInsights = () => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
+      <Seo title={"Dubai Property Market Insights 2026 — Trends, Prices & Hotspots"} description={"What is going on in Dubai real estate right now: 2026 price growth, top investment hotspots, rental yields, Golden Visa rules and new launch analysis from a top Dubai realtor."} path="/dubai-insights" />
       <Navbar />
 
       {/* Hero */}
