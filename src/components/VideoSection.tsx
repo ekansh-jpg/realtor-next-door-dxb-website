@@ -5,11 +5,11 @@ import InstagramEmbed from "./InstagramEmbed";
 
 const instagramPosts = [
   {
-    url: "https://www.instagram.com/p/DTpkoa9jbWK/",
+    url: "https://www.instagram.com/reel/DcbLNULIuQv/",
     title: "Dubai Real Estate Insights",
   },
   {
-    url: "https://www.instagram.com/p/DTDcMatkp1n/",
+    url: "https://www.instagram.com/reel/DcTf6ajour8/",
     title: "Property Investment Tips",
   },
 ];
