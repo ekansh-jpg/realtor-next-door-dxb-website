@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import bgContact from "@/assets/bg-contact.webp";
 import bgServices from "@/assets/bg-services.webp";
 
-const MAIL_TO = "investmentmanagment9000@gmail.com";
+const MAIL_TO = "investmentmanagement9000@gmail.com";
 const WHATSAPP_NUMBER = "971544590555";
 
 const faqs = [
