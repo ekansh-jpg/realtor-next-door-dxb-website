@@ -288,15 +288,40 @@ const LetsConnectModal = () => {
               {error && <p className="text-xs text-red-400">{error}</p>}
               {sendError && (
                 <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
-                  className="flex items-start gap-2.5 rounded-lg border p-3"
+                  className="rounded-lg border p-3"
                   style={{ backgroundColor: "rgba(239,68,68,0.08)", borderColor: "rgba(239,68,68,0.35)" }}>
-                  <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5 text-red-400" />
-                  <div>
-                    <p className="font-sans text-xs font-semibold text-white">Couldn't send right now</p>
-                    <p className="font-sans text-[11px] text-white/60 mt-0.5">
-                      Please try again, or reach me on{" "}
-                      <a href="tel:+971544590555" className="underline" style={{ color: "#C9A96E" }}>+971 54 459 0555</a>.
-                    </p>
+                  <div className="flex items-start gap-2.5 mb-2">
+                    <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5 text-red-400" />
+                    <div>
+                      <p className="font-sans text-xs font-semibold text-white">
+                        {errorMsg === "ACTIVATION_NEEDED" ? "Form needs activation" : "Couldn't send right now"}
+                      </p>
+                      <p className="font-sans text-[11px] text-white/60 mt-0.5">
+                        {errorMsg === "ACTIVATION_NEEDED" ? (
+                          <>FormSubmit sent an activation link to <span className="text-white/80">{MAIL_TO}</span>. Please check inbox & spam and click "Activate Form". Then try again.</>
+                        ) : (
+                          <>Please try again, or reach me on{" "}
+                            <a href="tel:+971544590555" className="underline" style={{ color: "#C9A96E" }}>+971 54 459 0555</a>.</>
+                        )}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <a
+                      href={whatsappFallbackHref()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 w-full rounded-full py-2.5 font-sans text-[11px] uppercase tracking-widest text-black transition"
+                      style={{ backgroundColor: "#C9A96E" }}
+                    >
+                      <MessageCircle className="h-3.5 w-3.5" /> Send via WhatsApp
+                    </a>
+                    <a
+                      href={mailtoFallbackHref()}
+                      className="flex items-center justify-center gap-2 w-full rounded-full py-2 font-sans text-[11px] uppercase tracking-widest text-white/70 hover:text-white transition border border-white/10 hover:border-white/25"
+                    >
+                      <Send className="h-3.5 w-3.5" /> Send via Mail App
+                    </a>
                   </div>
                 </motion.div>
               )}
