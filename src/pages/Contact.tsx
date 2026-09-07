@@ -1,11 +1,14 @@
 import { useState } from "react";
 import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
-import { Phone, Instagram, Send, MapPin, Clock, ChevronDown, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Phone, Instagram, Send, MapPin, Clock, ChevronDown, CheckCircle2, AlertCircle, Loader2, MessageCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import bgContact from "@/assets/bg-contact.webp";
 import bgServices from "@/assets/bg-services.webp";
+
+const MAIL_TO = "investmentmanagment9000@gmail.com";
+const WHATSAPP_NUMBER = "971544590555";
 
 const faqs = [
   { q: "What documents do I need to buy property in Dubai?", a: "You'll need a valid passport, proof of address, and bank statements. For mortgage buyers, salary certificates and bank pre-approval letters are also required." },
