@@ -178,15 +178,40 @@ const Contact = () => {
 
                 {status === "error" && (
                   <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}
-                    className="mb-4 flex items-start gap-3 rounded-lg border p-3 md:p-4"
+                    className="mb-4 rounded-lg border p-3 md:p-4"
                     style={{ backgroundColor: "rgba(239,68,68,0.08)", borderColor: "rgba(239,68,68,0.35)" }}>
-                    <AlertCircle className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0 mt-0.5 text-red-400" />
-                    <div>
-                      <p className="font-sans text-xs md:text-sm font-semibold text-white">Something went wrong</p>
-                      <p className="font-sans text-[11px] md:text-xs text-white/60 mt-0.5">
-                        We couldn't send your message right now. Please try again, or reach me directly on{" "}
-                        <a href="tel:+971544590555" className="underline hover:text-white" style={{ color: "#C9A96E" }}>+971 54 459 0555</a>.
-                      </p>
+                    <div className="flex items-start gap-3 mb-3">
+                      <AlertCircle className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0 mt-0.5 text-red-400" />
+                      <div>
+                        <p className="font-sans text-xs md:text-sm font-semibold text-white">
+                          {errorMsg === "ACTIVATION_NEEDED" ? "Form needs activation" : "Something went wrong"}
+                        </p>
+                        <p className="font-sans text-[11px] md:text-xs text-white/60 mt-0.5">
+                          {errorMsg === "ACTIVATION_NEEDED" ? (
+                            <>FormSubmit sent an activation link to <span className="text-white/80">{MAIL_TO}</span>. Please check inbox & spam and click "Activate Form". Then try again.</>
+                          ) : (
+                            <>We couldn't send your message right now. Please try again, or reach me directly on{" "}
+                              <a href="tel:+971544590555" className="underline hover:text-white" style={{ color: "#C9A96E" }}>+971 54 459 0555</a>.</>
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <a
+                        href={whatsappFallbackHref()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 md:py-3 font-sans text-[11px] md:text-xs uppercase tracking-widest text-black transition"
+                        style={{ backgroundColor: "#C9A96E" }}
+                      >
+                        <MessageCircle className="h-3.5 w-3.5" /> WhatsApp
+                      </a>
+                      <a
+                        href={mailtoFallbackHref()}
+                        className="flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 md:py-3 font-sans text-[11px] md:text-xs uppercase tracking-widest text-white/70 hover:text-white transition border border-white/10 hover:border-white/25"
+                      >
+                        <Send className="h-3.5 w-3.5" /> Mail App
+                      </a>
                     </div>
                   </motion.div>
                 )}
