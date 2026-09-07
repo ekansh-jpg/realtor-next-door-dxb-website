@@ -69,6 +69,7 @@ const LetsConnectModal = () => {
     e.preventDefault();
     setError(null);
     setSendError(false);
+    setErrorMsg(null);
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
       setError(parsed.error.issues[0]?.message ?? "Invalid input");
@@ -77,7 +78,7 @@ const LetsConnectModal = () => {
     const { name, email, phone, budget, timeline } = parsed.data;
     setSending(true);
     try {
-      const res = await fetch("https://formsubmit.co/ajax/investmentmanagment9000@gmail.com", {
+      const res = await fetch(`https://formsubmit.co/ajax/${MAIL_TO}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
@@ -94,7 +95,17 @@ const LetsConnectModal = () => {
           "Submitted At": new Date().toLocaleString("en-AE", { timeZone: "Asia/Dubai", dateStyle: "full", timeStyle: "short" }),
         }),
       });
-      if (!res.ok) throw new Error("Non-OK response");
+      let data: any = {};
+      try { data = await res.json(); } catch {}
+      if (!res.ok || data?.success === "false" || data?.success === false) {
+        const msg = data?.message ? String(data.message) : "";
+        if (msg.toLowerCase().includes("activation") || msg.toLowerCase().includes("activate")) {
+          setErrorMsg("ACTIVATION_NEEDED");
+        } else {
+          setErrorMsg(msg || "Non-OK response");
+        }
+        throw new Error(msg || "Non-OK response");
+      }
       setSubmitted(true);
     } catch (err) {
       console.error("Email send failed", err);
@@ -102,6 +113,19 @@ const LetsConnectModal = () => {
     } finally {
       setSending(false);
     }
+  };
+
+  const whatsappFallbackHref = () => {
+    const text = `Hi Ekansh, I'm ${form.name || "interested buyer"} and I'd like to discuss Dubai property options.%0A%0AEmail: ${form.email || "—"}%0APhone: ${form.phone || "—"}%0ABudget: ${form.budget || "—"}%0ATimeline: ${form.timeline || "—"}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+  };
+
+  const mailtoFallbackHref = () => {
+    const subject = encodeURIComponent(`New Enquiry — ${form.name || "Website Lead"}`);
+    const body = encodeURIComponent(
+      `Full Name: ${form.name || "—"}\nEmail: ${form.email || "—"}\nPhone: ${form.phone || "—"}\nBudget: ${form.budget || "—"}\nTimeline: ${form.timeline || "—"}\nSource: Website · Let's Connect Popup`
+    );
+    return `mailto:${MAIL_TO}?subject=${subject}&body=${body}`;
   };
 
   const inputCls =
