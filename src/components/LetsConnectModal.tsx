@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { X, Send, CheckCircle2, AlertCircle, Loader2, MessageCircle } from "lucide-react";
 import { z } from "zod";
+
+const MAIL_TO = "investmentmanagment9000@gmail.com";
+const WHATSAPP_NUMBER = "971544590555";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your full name").max(80),
