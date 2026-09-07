@@ -20,13 +20,15 @@ const faqs = [
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", budget: "", interest: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
+    setErrorMsg(null);
     try {
-      const res = await fetch("https://formsubmit.co/ajax/investmentmanagment9000@gmail.com", {
+      const res = await fetch(`https://formsubmit.co/ajax/${MAIL_TO}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
@@ -44,7 +46,17 @@ const Contact = () => {
           "Submitted At": new Date().toLocaleString("en-AE", { timeZone: "Asia/Dubai", dateStyle: "full", timeStyle: "short" }),
         }),
       });
-      if (!res.ok) throw new Error("Non-OK response");
+      let data: any = {};
+      try { data = await res.json(); } catch {}
+      if (!res.ok || data?.success === "false" || data?.success === false) {
+        const msg = data?.message ? String(data.message) : "";
+        if (msg.toLowerCase().includes("activation") || msg.toLowerCase().includes("activate")) {
+          setErrorMsg("ACTIVATION_NEEDED");
+        } else {
+          setErrorMsg(msg || "Non-OK response");
+        }
+        throw new Error(msg || "Non-OK response");
+      }
       setStatus("success");
     } catch (err) {
       console.error("Email send failed", err);
@@ -55,6 +67,20 @@ const Contact = () => {
   const resetForm = () => {
     setForm({ name: "", email: "", phone: "", budget: "", interest: "", message: "" });
     setStatus("idle");
+    setErrorMsg(null);
+  };
+
+  const whatsappFallbackHref = () => {
+    const text = `Hi Ekansh, I'm ${form.name || "interested buyer"} and I'd like to discuss Dubai property options.%0A%0AEmail: ${form.email || "—"}%0APhone: ${form.phone || "—"}%0ABudget: ${form.budget || "—"}%0AInterest: ${form.interest || "—"}%0AMessage: ${form.message || "—"}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+  };
+
+  const mailtoFallbackHref = () => {
+    const subject = encodeURIComponent(`New Enquiry — ${form.name || "Website Lead"}`);
+    const body = encodeURIComponent(
+      `Full Name: ${form.name || "—"}\nEmail: ${form.email || "—"}\nPhone: ${form.phone || "—"}\nBudget: ${form.budget || "—"}\nInterest: ${form.interest || "—"}\nMessage: ${form.message || "—"}\nSource: Website · Contact Page`
+    );
+    return `mailto:${MAIL_TO}?subject=${subject}&body=${body}`;
   };
 
   return (
