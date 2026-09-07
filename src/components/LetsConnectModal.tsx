@@ -45,6 +45,7 @@ const LetsConnectModal = () => {
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [sendError, setSendError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
