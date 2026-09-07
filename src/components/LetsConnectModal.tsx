@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { X, Send, CheckCircle2, AlertCircle, Loader2, MessageCircle } from "lucide-react";
 import { z } from "zod";
+
+const MAIL_TO = "investmentmanagment9000@gmail.com";
+const WHATSAPP_NUMBER = "971544590555";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your full name").max(80),
@@ -42,6 +45,7 @@ const LetsConnectModal = () => {
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [sendError, setSendError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
@@ -65,6 +69,7 @@ const LetsConnectModal = () => {
     e.preventDefault();
     setError(null);
     setSendError(false);
+    setErrorMsg(null);
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
       setError(parsed.error.issues[0]?.message ?? "Invalid input");
@@ -73,7 +78,7 @@ const LetsConnectModal = () => {
     const { name, email, phone, budget, timeline } = parsed.data;
     setSending(true);
     try {
-      const res = await fetch("https://formsubmit.co/ajax/investmentmanagment9000@gmail.com", {
+      const res = await fetch(`https://formsubmit.co/ajax/${MAIL_TO}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
@@ -90,7 +95,17 @@ const LetsConnectModal = () => {
           "Submitted At": new Date().toLocaleString("en-AE", { timeZone: "Asia/Dubai", dateStyle: "full", timeStyle: "short" }),
         }),
       });
-      if (!res.ok) throw new Error("Non-OK response");
+      let data: any = {};
+      try { data = await res.json(); } catch {}
+      if (!res.ok || data?.success === "false" || data?.success === false) {
+        const msg = data?.message ? String(data.message) : "";
+        if (msg.toLowerCase().includes("activation") || msg.toLowerCase().includes("activate")) {
+          setErrorMsg("ACTIVATION_NEEDED");
+        } else {
+          setErrorMsg(msg || "Non-OK response");
+        }
+        throw new Error(msg || "Non-OK response");
+      }
       setSubmitted(true);
     } catch (err) {
       console.error("Email send failed", err);
@@ -98,6 +113,19 @@ const LetsConnectModal = () => {
     } finally {
       setSending(false);
     }
+  };
+
+  const whatsappFallbackHref = () => {
+    const text = `Hi Ekansh, I'm ${form.name || "interested buyer"} and I'd like to discuss Dubai property options.%0A%0AEmail: ${form.email || "—"}%0APhone: ${form.phone || "—"}%0ABudget: ${form.budget || "—"}%0ATimeline: ${form.timeline || "—"}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+  };
+
+  const mailtoFallbackHref = () => {
+    const subject = encodeURIComponent(`New Enquiry — ${form.name || "Website Lead"}`);
+    const body = encodeURIComponent(
+      `Full Name: ${form.name || "—"}\nEmail: ${form.email || "—"}\nPhone: ${form.phone || "—"}\nBudget: ${form.budget || "—"}\nTimeline: ${form.timeline || "—"}\nSource: Website · Let's Connect Popup`
+    );
+    return `mailto:${MAIL_TO}?subject=${subject}&body=${body}`;
   };
 
   const inputCls =
@@ -260,15 +288,40 @@ const LetsConnectModal = () => {
               {error && <p className="text-xs text-red-400">{error}</p>}
               {sendError && (
                 <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
-                  className="flex items-start gap-2.5 rounded-lg border p-3"
+                  className="rounded-lg border p-3"
                   style={{ backgroundColor: "rgba(239,68,68,0.08)", borderColor: "rgba(239,68,68,0.35)" }}>
-                  <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5 text-red-400" />
-                  <div>
-                    <p className="font-sans text-xs font-semibold text-white">Couldn't send right now</p>
-                    <p className="font-sans text-[11px] text-white/60 mt-0.5">
-                      Please try again, or reach me on{" "}
-                      <a href="tel:+971544590555" className="underline" style={{ color: "#C9A96E" }}>+971 54 459 0555</a>.
-                    </p>
+                  <div className="flex items-start gap-2.5 mb-2">
+                    <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5 text-red-400" />
+                    <div>
+                      <p className="font-sans text-xs font-semibold text-white">
+                        {errorMsg === "ACTIVATION_NEEDED" ? "Form needs activation" : "Couldn't send right now"}
+                      </p>
+                      <p className="font-sans text-[11px] text-white/60 mt-0.5">
+                        {errorMsg === "ACTIVATION_NEEDED" ? (
+                          <>FormSubmit sent an activation link to <span className="text-white/80">{MAIL_TO}</span>. Please check inbox & spam and click "Activate Form". Then try again.</>
+                        ) : (
+                          <>Please try again, or reach me on{" "}
+                            <a href="tel:+971544590555" className="underline" style={{ color: "#C9A96E" }}>+971 54 459 0555</a>.</>
+                        )}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <a
+                      href={whatsappFallbackHref()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 w-full rounded-full py-2.5 font-sans text-[11px] uppercase tracking-widest text-black transition"
+                      style={{ backgroundColor: "#C9A96E" }}
+                    >
+                      <MessageCircle className="h-3.5 w-3.5" /> Send via WhatsApp
+                    </a>
+                    <a
+                      href={mailtoFallbackHref()}
+                      className="flex items-center justify-center gap-2 w-full rounded-full py-2 font-sans text-[11px] uppercase tracking-widest text-white/70 hover:text-white transition border border-white/10 hover:border-white/25"
+                    >
+                      <Send className="h-3.5 w-3.5" /> Send via Mail App
+                    </a>
                   </div>
                 </motion.div>
               )}

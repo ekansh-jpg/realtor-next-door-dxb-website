@@ -1,11 +1,14 @@
 import { useState } from "react";
 import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
-import { Phone, Instagram, Send, MapPin, Clock, ChevronDown, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Phone, Instagram, Send, MapPin, Clock, ChevronDown, CheckCircle2, AlertCircle, Loader2, MessageCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import bgContact from "@/assets/bg-contact.webp";
 import bgServices from "@/assets/bg-services.webp";
+
+const MAIL_TO = "investmentmanagment9000@gmail.com";
+const WHATSAPP_NUMBER = "971544590555";
 
 const faqs = [
   { q: "What documents do I need to buy property in Dubai?", a: "You'll need a valid passport, proof of address, and bank statements. For mortgage buyers, salary certificates and bank pre-approval letters are also required." },
@@ -17,13 +20,15 @@ const faqs = [
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", budget: "", interest: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
+    setErrorMsg(null);
     try {
-      const res = await fetch("https://formsubmit.co/ajax/investmentmanagment9000@gmail.com", {
+      const res = await fetch(`https://formsubmit.co/ajax/${MAIL_TO}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
@@ -41,7 +46,17 @@ const Contact = () => {
           "Submitted At": new Date().toLocaleString("en-AE", { timeZone: "Asia/Dubai", dateStyle: "full", timeStyle: "short" }),
         }),
       });
-      if (!res.ok) throw new Error("Non-OK response");
+      let data: any = {};
+      try { data = await res.json(); } catch {}
+      if (!res.ok || data?.success === "false" || data?.success === false) {
+        const msg = data?.message ? String(data.message) : "";
+        if (msg.toLowerCase().includes("activation") || msg.toLowerCase().includes("activate")) {
+          setErrorMsg("ACTIVATION_NEEDED");
+        } else {
+          setErrorMsg(msg || "Non-OK response");
+        }
+        throw new Error(msg || "Non-OK response");
+      }
       setStatus("success");
     } catch (err) {
       console.error("Email send failed", err);
@@ -52,6 +67,20 @@ const Contact = () => {
   const resetForm = () => {
     setForm({ name: "", email: "", phone: "", budget: "", interest: "", message: "" });
     setStatus("idle");
+    setErrorMsg(null);
+  };
+
+  const whatsappFallbackHref = () => {
+    const text = `Hi Ekansh, I'm ${form.name || "interested buyer"} and I'd like to discuss Dubai property options.%0A%0AEmail: ${form.email || "—"}%0APhone: ${form.phone || "—"}%0ABudget: ${form.budget || "—"}%0AInterest: ${form.interest || "—"}%0AMessage: ${form.message || "—"}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+  };
+
+  const mailtoFallbackHref = () => {
+    const subject = encodeURIComponent(`New Enquiry — ${form.name || "Website Lead"}`);
+    const body = encodeURIComponent(
+      `Full Name: ${form.name || "—"}\nEmail: ${form.email || "—"}\nPhone: ${form.phone || "—"}\nBudget: ${form.budget || "—"}\nInterest: ${form.interest || "—"}\nMessage: ${form.message || "—"}\nSource: Website · Contact Page`
+    );
+    return `mailto:${MAIL_TO}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -149,15 +178,40 @@ const Contact = () => {
 
                 {status === "error" && (
                   <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}
-                    className="mb-4 flex items-start gap-3 rounded-lg border p-3 md:p-4"
+                    className="mb-4 rounded-lg border p-3 md:p-4"
                     style={{ backgroundColor: "rgba(239,68,68,0.08)", borderColor: "rgba(239,68,68,0.35)" }}>
-                    <AlertCircle className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0 mt-0.5 text-red-400" />
-                    <div>
-                      <p className="font-sans text-xs md:text-sm font-semibold text-white">Something went wrong</p>
-                      <p className="font-sans text-[11px] md:text-xs text-white/60 mt-0.5">
-                        We couldn't send your message right now. Please try again, or reach me directly on{" "}
-                        <a href="tel:+971544590555" className="underline hover:text-white" style={{ color: "#C9A96E" }}>+971 54 459 0555</a>.
-                      </p>
+                    <div className="flex items-start gap-3 mb-3">
+                      <AlertCircle className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0 mt-0.5 text-red-400" />
+                      <div>
+                        <p className="font-sans text-xs md:text-sm font-semibold text-white">
+                          {errorMsg === "ACTIVATION_NEEDED" ? "Form needs activation" : "Something went wrong"}
+                        </p>
+                        <p className="font-sans text-[11px] md:text-xs text-white/60 mt-0.5">
+                          {errorMsg === "ACTIVATION_NEEDED" ? (
+                            <>FormSubmit sent an activation link to <span className="text-white/80">{MAIL_TO}</span>. Please check inbox & spam and click "Activate Form". Then try again.</>
+                          ) : (
+                            <>We couldn't send your message right now. Please try again, or reach me directly on{" "}
+                              <a href="tel:+971544590555" className="underline hover:text-white" style={{ color: "#C9A96E" }}>+971 54 459 0555</a>.</>
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <a
+                        href={whatsappFallbackHref()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 md:py-3 font-sans text-[11px] md:text-xs uppercase tracking-widest text-black transition"
+                        style={{ backgroundColor: "#C9A96E" }}
+                      >
+                        <MessageCircle className="h-3.5 w-3.5" /> WhatsApp
+                      </a>
+                      <a
+                        href={mailtoFallbackHref()}
+                        className="flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 md:py-3 font-sans text-[11px] md:text-xs uppercase tracking-widest text-white/70 hover:text-white transition border border-white/10 hover:border-white/25"
+                      >
+                        <Send className="h-3.5 w-3.5" /> Mail App
+                      </a>
                     </div>
                   </motion.div>
                 )}
