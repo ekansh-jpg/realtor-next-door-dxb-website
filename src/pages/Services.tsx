@@ -32,7 +32,13 @@ const valueProps = [
 const Services = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
-      <Seo title={"Dubai Real Estate Services — Buying, Selling & Investment"} description={"End-to-end Dubai real estate services: off-plan investment, resale purchase, property selling, portfolio advisory and Golden Visa guidance for international and NRI buyers."} path="/services" />
+      <Seo
+        title={"Dubai Real Estate Investment Services — Buy, Sell & Grow Portfolio"}
+        description={"End-to-end Dubai real estate services: off-plan investment, resale purchase, property selling, portfolio advisory and Golden Visa guidance for international and NRI investors."}
+        path="/services"
+        keywords={"Dubai real estate services, property investment advisory Dubai, sell property Dubai, off-plan investment services, Golden Visa property, NRI investment Dubai"}
+        breadcrumbs={[{ name: "Services", path: "/services" }]}
+      />
       <Navbar />
 
       {/* Hero */}

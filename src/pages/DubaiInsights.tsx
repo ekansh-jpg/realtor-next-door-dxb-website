@@ -46,7 +46,14 @@ const DubaiInsights = () => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
-      <Seo title={"Dubai Property Market Insights 2026 — Trends, Prices & Hotspots"} description={"What is going on in Dubai real estate right now: 2026 price growth, top investment hotspots, rental yields, Golden Visa rules and new launch analysis from a top Dubai realtor."} path="/dubai-insights" />
+      <Seo
+        title={"Dubai Property Investment Insights 2026 — Trends, Prices & Hotspots"}
+        description={"Where to invest in Dubai real estate in 2026: price growth, best ROI hotspots, rental yields, Golden Visa rules and new launch analysis from a top Dubai realtor."}
+        path="/dubai-insights"
+        keywords={"Dubai property investment 2026, where to invest in Dubai, Dubai rental yields, Dubai real estate trends, Golden Visa property Dubai, best areas to invest Dubai"}
+        type="article"
+        breadcrumbs={[{ name: "Dubai Insights", path: "/dubai-insights" }]}
+      />
       <Navbar />
 
       {/* Hero */}
