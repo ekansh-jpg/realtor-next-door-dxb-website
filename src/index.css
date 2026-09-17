@@ -121,11 +121,33 @@ iframe {
 #lovable-badge-text,
 #lovable-badge-divider,
 #lovable-badge-close,
-#lovable-badge * {
+#lovable-badge *,
+[data-lovable-badge],
+[class*="lovable-badge"],
+[id*="lovable-badge"],
+iframe[src*="lovable"][src*="badge"],
+iframe[id*="lovable"],
+iframe[class*="lovable"],
+.made-with-lovable,
+.lovable-watermark,
+[id*="watermark"][id*="lovable"],
+[class*="watermark"][class*="lovable"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  max-height: 0 !important;
+  max-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  position: absolute !important;
+  z-index: -9999 !important;
 }
+
 
 
