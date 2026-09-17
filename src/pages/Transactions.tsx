@@ -51,7 +51,13 @@ const Transactions = () => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
-      <Seo title={"Dubai Real Estate Transactions — Live Weekly Market Data"} description={"Dubai's latest property transaction data, updated weekly: weekly volumes, total worth, off-plan vs ready split and top-selling communities, with a link to official DLD records."} path="/transactions" />
+      <Seo
+        title={"Dubai Real Estate Transactions — Live Weekly Market & Investment Data"}
+        description={"Dubai property transaction data updated weekly: volumes, total worth, off-plan vs ready split and top-selling investment communities, with a link to official DLD records."}
+        path="/transactions"
+        keywords={"Dubai real estate transactions, DLD data, Dubai property prices, Dubai market report, real estate investment data Dubai, off-plan vs ready Dubai"}
+        breadcrumbs={[{ name: "Transactions", path: "/transactions" }]}
+      />
       <Navbar />
 
       {/* Hero with parallax */}

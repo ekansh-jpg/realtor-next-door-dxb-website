@@ -85,7 +85,13 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
-      <Seo title={"Contact Ekansh Kinger — Top Dubai Real Estate Agent"} description={"Talk to Dubai realtor Ekansh Kinger about buying, selling or investing in Dubai property. Call +971 54 459 0555 or send an enquiry — replies within 2 hours."} path="/contact" />
+      <Seo
+        title={"Contact Ekansh Kinger — Top Dubai Realtor & Investment Advisor"}
+        description={"Talk to Dubai realtor Ekansh Kinger about buying, selling or investing in Dubai property. Call +971 54 459 0555 or send an enquiry — replies within 2 hours."}
+        path="/contact"
+        keywords={"contact Dubai realtor, Dubai real estate agent contact, Dubai property investment advisor, book consultation Dubai property"}
+        breadcrumbs={[{ name: "Contact", path: "/contact" }]}
+      />
       <Navbar />
 
       {/* Hero */}
