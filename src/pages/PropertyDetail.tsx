@@ -57,7 +57,6 @@ const PropertyDetail = () => {
             addressRegion: "Dubai",
             addressCountry: "AE",
           },
-          brand: { "@type": "Organization", name: property.developer },
         }}
       />
       <Navbar />
