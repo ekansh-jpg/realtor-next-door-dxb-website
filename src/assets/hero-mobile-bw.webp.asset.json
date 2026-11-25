@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "7fc47ef8-80e3-4de6-ab04-70664eeb6aad",
-  "project_id": "1239aa36-b595-45e8-ad9e-d9dfd7100f3f",
-  "url": "/__l5e/assets-v1/7fc47ef8-80e3-4de6-ab04-70664eeb6aad/hero-mobile-bw.webp",
-  "r2_key": "a/v1/1239aa36-b595-45e8-ad9e-d9dfd7100f3f/7fc47ef8-80e3-4de6-ab04-70664eeb6aad/hero-mobile-bw.webp",
-  "original_filename": "hero-mobile-bw.webp",
-  "size": 43846,
   "content_type": "image/webp",
-  "created_at": "2026-07-07T09:52:07Z"
+  "created_at": "2026-07-07T09:52:07Z",
+  "original_filename": "hero-mobile-bw.webp",
+  "project_id": "730649de-17e8-4965-bef2-471cf7fbb307",
+  "r2_key": "a/v1/730649de-17e8-4965-bef2-471cf7fbb307/7fc47ef8-80e3-4de6-ab04-70664eeb6aad/hero-mobile-bw.webp",
+  "size": 43846,
+  "url": "/__l5e/assets-v1/7fc47ef8-80e3-4de6-ab04-70664eeb6aad/hero-mobile-bw.webp",
+  "version": 1
 }

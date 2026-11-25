@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "352b3738-a633-4d30-a610-3c6cc81234c5",
-  "project_id": "1239aa36-b595-45e8-ad9e-d9dfd7100f3f",
-  "url": "/__l5e/assets-v1/352b3738-a633-4d30-a610-3c6cc81234c5/ekansh-award.jpg",
-  "r2_key": "a/v1/1239aa36-b595-45e8-ad9e-d9dfd7100f3f/352b3738-a633-4d30-a610-3c6cc81234c5/ekansh-award.jpg",
-  "original_filename": "ekansh-award.jpg",
-  "size": 1897902,
   "content_type": "image/png",
-  "created_at": "2026-07-02T00:53:56Z"
+  "created_at": "2026-07-02T00:53:56Z",
+  "original_filename": "ekansh-award.jpg",
+  "project_id": "730649de-17e8-4965-bef2-471cf7fbb307",
+  "r2_key": "a/v1/730649de-17e8-4965-bef2-471cf7fbb307/352b3738-a633-4d30-a610-3c6cc81234c5/ekansh-award.jpg",
+  "size": 1897902,
+  "url": "/__l5e/assets-v1/352b3738-a633-4d30-a610-3c6cc81234c5/ekansh-award.jpg",
+  "version": 1
 }
