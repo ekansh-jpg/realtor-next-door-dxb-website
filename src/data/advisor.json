@@ -1,0 +1,29 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "@id": "https://www.realtornextdoordxb.com/#advisor",
+    "name": "Ekansh Kinger",
+    "description": "Real Estate Investment Advisor",
+    "identifier": { "@type": "PropertyValue", "propertyID": "RERA BRN", "value": "84711" },
+    "url": "https://www.realtornextdoordxb.com/",
+    "telephone": "+971544590555",
+    "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" },
+    "areaServed": ["Dubai", "Abu Dhabi", "Ras Al Khaimah"],
+    "knowsLanguage": ["English", "Hindi"],
+    "sameAs": ["https://www.instagram.com/realtor_nextdoordxb", "https://www.linkedin.com/in/ekansh-kinger-7207341a6"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://www.realtornextdoordxb.com/#person",
+    "name": "Ekansh Kinger",
+    "jobTitle": "Real Estate Investment Advisor",
+    "identifier": { "@type": "PropertyValue", "propertyID": "RERA BRN", "value": "84711" },
+    "url": "https://www.realtornextdoordxb.com/",
+    "telephone": "+971544590555",
+    "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" },
+    "knowsLanguage": ["English", "Hindi"],
+    "sameAs": ["https://www.instagram.com/realtor_nextdoordxb", "https://www.linkedin.com/in/ekansh-kinger-7207341a6"]
+  }
+]
