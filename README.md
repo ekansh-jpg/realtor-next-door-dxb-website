@@ -1134,3 +1134,9 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Lead notifications
+
+Every enquiry is saved to the `leads` table and also posted to the Netlify form `lead`
+(declared in `index.html`). Netlify emails each submission, with all fields, to
+ekansh@realtornextdoordxb.com. Manage the recipient under Netlify → Forms → Form notifications.
