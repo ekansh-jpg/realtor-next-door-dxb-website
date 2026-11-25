@@ -24,7 +24,7 @@ const Hero = () => {
       <picture className="absolute inset-0 hidden bg-black md:block">
         <img
           src={uploadedHomeImage}
-          alt="Ekansh Kinger — #1 Dubai Real Estate Agent & Your Next Door Realtor"
+          alt="Ekansh Kinger, Dubai Real Estate Investment Advisor"
           className="absolute inset-0 h-full w-full object-cover object-center"
           style={{ opacity: 0.85 }}
           loading="eager"
@@ -84,7 +84,7 @@ const Hero = () => {
             style={{ textShadow: "0 4px 24px rgba(0,0,0,0.7)" }}
           >
             Ekansh Kinger
-            <span className="sr-only"> — Dubai Real Estate Agent</span>
+            <span className="sr-only"> — Dubai Real Estate Investment Advisor</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}

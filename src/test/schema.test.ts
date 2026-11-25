@@ -18,3 +18,13 @@ describe("public structured data", () => {
     for (const block of blocks) inspect(JSON.parse(block[1]));
   });
 });
+describe("static identity", () => {
+  it("matches the shared advisor data", () => {
+    const html = readFileSync("index.html", "utf8");
+    const advisor = JSON.parse(readFileSync("src/data/advisor.json", "utf8"));
+    const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(b => JSON.parse(b[1]));
+    for (const entry of advisor) expect(blocks).toContainEqual(entry);
+    const text = JSON.stringify(blocks);
+    expect(text).not.toMatch(/aggregateRating|#1\b|best real estate agent/i);
+  });
+});

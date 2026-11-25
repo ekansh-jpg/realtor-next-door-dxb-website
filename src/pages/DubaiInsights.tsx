@@ -6,9 +6,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import bgInsights from "@/assets/bg-insights.webp";
 import bgCta from "@/assets/bg-contact.webp";
-import insight1 from "@/assets/insight-1.webp";
-import insight2 from "@/assets/insight-2.webp";
-import insight3 from "@/assets/insight-3.webp";
+import { Link } from "react-router-dom";
+import { insightArticles } from "@/data/insights";
+import { pageMetadata } from "@/lib/seo";
 
 const marketStats = [
   { label: "Total Transactions (2026 YTD)", value: "248,000+", icon: TrendingUp },
@@ -17,14 +17,7 @@ const marketStats = [
   { label: "YoY Price Growth", value: "+18.6%", icon: TrendingUp },
 ];
 
-const articles = [
-  { image: insight1, date: "August 2026", category: "Mega Launch", title: "Chelsea Residences Phase 2 Clears in Days at Maritime City", excerpt: "DAMAC's football-branded waterfront tower saw its second release absorbed almost instantly, with 2-BR sea-view homes from AED 2.5M." },
-  { image: insight2, date: "August 2026", category: "Waterfront", title: "DAMAC Islands 2 Townhouses Lead Off-Plan Resale Premiums", excerpt: "4-BR waterfront townhouses from AED 2.9M are already trading at healthy premiums as infrastructure milestones land ahead of schedule." },
-  { image: insight3, date: "July 2026", category: "Ultra Luxury", title: "The Oasis by Emaar Redefines Dubai's Villa Ceiling", excerpt: "Lagoon-front mansions from AED 15M are pulling global capital away from Palm Jumeirah's secondary villa market." },
-  { image: insight1, date: "July 2026", category: "Policy", title: "Golden Visa 2026: What Changed for Property Investors", excerpt: "Updated thresholds, payment-plan eligibility and mortgage rules — a practical breakdown for NRI and international buyers." },
-  { image: insight2, date: "June 2026", category: "Yield", title: "Highest Rental Yield Communities in Dubai — Mid-2026", excerpt: "JVC, Al Furjan and Dubai South continue to clear 8%+ gross yields as tenant demand outpaces new handovers." },
-  { image: insight3, date: "June 2026", category: "Branded Living", title: "Branded Residences Now One in Three New Launches", excerpt: "Bugatti, Bulgari, Cavalli and Address-branded stock is commanding 40–60% resale premiums over comparable non-branded towers." },
-];
+const articles = insightArticles.map(a => ({ ...a, date: a.dateLabel }));
 
 const hotspots = [
   { area: "Emaar Beachfront", growth: "+34%", avgPrice: "AED 4,050/sqft", highlight: "Sold-out towers, marina-front living" },
@@ -47,10 +40,9 @@ const DubaiInsights = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
       <Seo
-        title={"Dubai Property Investment Insights 2026 — Trends, Prices & Hotspots"}
-        description={"Where to invest in Dubai real estate in 2026: price growth, best ROI hotspots, rental yields, Golden Visa rules and new launch analysis from a top Dubai realtor."}
+        title={pageMetadata.insights.title}
+        description={pageMetadata.insights.description}
         path="/dubai-insights"
-        keywords={"Dubai property investment 2026, where to invest in Dubai, Dubai rental yields, Dubai real estate trends, Golden Visa property Dubai, best areas to invest Dubai"}
         type="article"
         breadcrumbs={[{ name: "Dubai Insights", path: "/dubai-insights" }]}
       />
@@ -102,7 +94,7 @@ const DubaiInsights = () => {
         </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {articles.map((article, i) => (
-            <motion.div key={article.title + i} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            <Link key={article.slug} to={`/dubai-insights/${article.slug}`} className="block"><motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
               className="rounded-xl border border-white/10 overflow-hidden group cursor-pointer hover:border-white/25 transition-all"
               style={{ backgroundColor: "rgba(17,17,17,0.85)" }}>
@@ -117,7 +109,7 @@ const DubaiInsights = () => {
                 <h3 className="font-serif text-sm md:text-lg font-bold text-white mb-1 md:mb-2 group-hover:text-[#C9A96E] transition-colors leading-snug">{article.title}</h3>
                 <p className="font-sans text-xs md:text-sm leading-relaxed text-white/50 line-clamp-2">{article.excerpt}</p>
               </div>
-            </motion.div>
+            </motion.div></Link>
           ))}
         </div>
       </div>

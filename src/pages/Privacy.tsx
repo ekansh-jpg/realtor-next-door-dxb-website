@@ -1,10 +1,11 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
+import { pageMetadata } from "@/lib/seo";
 
 const Privacy = () => (
   <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
-    <Seo title="Privacy Policy | Ekansh Kinger" description="How Ekansh Kinger uses the details you share through this website." path="/privacy" />
+    <Seo title={pageMetadata.privacy.title} description={pageMetadata.privacy.description} path="/privacy" />
     <Navbar />
     <main className="container mx-auto px-5 md:px-6 pt-32 pb-20 max-w-3xl">
       <h1 className="font-serif text-3xl md:text-4xl font-bold uppercase tracking-wider text-white">Privacy Policy</h1>

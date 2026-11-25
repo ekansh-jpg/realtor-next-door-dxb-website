@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
 import Seo from "@/components/Seo";
+import { faqSchema } from "@/data/faqs";
+import PropertyFAQ from "@/components/PropertyFAQ";
+import InternationalInvestors from "@/components/InternationalInvestors";
+import { pageMetadata } from "@/lib/seo";
 import { Building, TrendingUp, Home, Key, Shield, Users, ArrowRight, CheckCircle, Phone, MessageSquare, Search, Handshake } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -9,22 +13,22 @@ import bgContact from "@/assets/bg-contact.webp";
 
 const services = [
   { icon: Home, title: "Property Buying", description: "Find your dream home in Dubai with personalized property search, market analysis, and end-to-end support.", features: ["Curated property shortlists", "Market price analysis", "Negotiation support", "Legal documentation"] },
-  { icon: TrendingUp, title: "Investment Advisory", description: "Maximize your returns with data-driven investment strategies tailored to Dubai's high-growth market.", features: ["ROI projections", "Portfolio diversification", "Market timing insights", "Risk assessment"] },
-  { icon: Building, title: "Off-Plan Projects", description: "Access exclusive off-plan opportunities from Dubai's top developers — Emaar, DAMAC, Sobha, Nakheel.", features: ["Early-bird pricing", "Flexible payment plans", "Developer partnerships", "Project comparisons"] },
+  { icon: TrendingUp, title: "Investment Advisory", description: "Make informed decisions with research-based investment analysis tailored to your goals and risk appetite.", features: ["Rental & cost analysis", "Portfolio diversification", "Market trend research", "Risk assessment"] },
+  { icon: Building, title: "Off-Plan Projects", description: "Access off-plan opportunities from Dubai's top developers — Emaar, DAMAC, Sobha, Nakheel.", features: ["Early-bird pricing", "Flexible payment plans", "Developer partnerships", "Project comparisons"] },
   { icon: Key, title: "Rental Management", description: "Hassle-free property management with tenant sourcing, rent collection, and maintenance coordination.", features: ["Tenant screening", "Rent optimization", "Maintenance handling", "Financial reporting"] },
   { icon: Shield, title: "Golden Visa Assistance", description: "Navigate the UAE Golden Visa process through qualifying real estate investments with full documentation.", features: ["Eligibility check", "Property selection", "Application support", "Status tracking"] },
-  { icon: Users, title: "NRI Investment Support", description: "Specialized guidance for Non-Resident Indian investors looking to enter Dubai's property market.", features: ["Remote viewing tours", "Legal & tax guidance", "Repatriation advice", "POA arrangements"] },
+  { icon: Users, title: "NRI Investment Support", description: "Specialized guidance for Non-Resident Indian investors looking to enter Dubai's property market.", features: ["Remote viewing tours", "Introductions to legal & tax advisors", "Remote documentation support", "POA arrangements"] },
 ];
 
 const steps = [
   { icon: Phone, step: "01", title: "Consultation", desc: "Free initial call to understand your goals, budget, and preferences." },
   { icon: Search, step: "02", title: "Property Search", desc: "Curated shortlist of properties matching your exact requirements." },
-  { icon: Handshake, step: "03", title: "Negotiation", desc: "Expert negotiation to secure the best possible deal for you." },
+  { icon: Handshake, step: "03", title: "Negotiation", desc: "Negotiation on price and terms on your behalf." },
   { icon: CheckCircle, step: "04", title: "Handover", desc: "Complete support through documentation, payment, and key handover." },
 ];
 
 const valueProps = [
-  { title: "Developer Partnerships", desc: "Direct relationships with Emaar, DAMAC, Sobha, Nakheel — giving you access to exclusive deals and pricing." },
+  { title: "Developer Partnerships", desc: "Working relationships with leading developers such as Emaar, DAMAC, Sobha and Nakheel, for early access to launches and accurate project information." },
   { title: "Market Intelligence", desc: "Data-driven insights from years of tracking Dubai's property market trends and transaction patterns." },
   { title: "End-to-End Service", desc: "From your first inquiry to post-handover support — a single point of contact for your entire journey." },
 ];
@@ -33,10 +37,10 @@ const Services = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
       <Seo
-        title={"Dubai Real Estate Investment Services — Buy, Sell & Grow Portfolio"}
-        description={"End-to-end Dubai real estate services: off-plan investment, resale purchase, property selling, portfolio advisory and Golden Visa guidance for international and NRI investors."}
+        title={pageMetadata.services.title}
+        description={pageMetadata.services.description}
         path="/services"
-        keywords={"Dubai real estate services, property investment advisory Dubai, sell property Dubai, off-plan investment services, Golden Visa property, NRI investment Dubai"}
+        schema={faqSchema}
         breadcrumbs={[{ name: "Services", path: "/services" }]}
       />
       <Navbar />
@@ -148,6 +152,9 @@ const Services = () => {
           </div>
         </div>
       </section>
+
+      <InternationalInvestors />
+      <PropertyFAQ />
 
       {/* CTA Banner */}
       <div className="container mx-auto px-5 md:px-6 py-14 md:py-20">

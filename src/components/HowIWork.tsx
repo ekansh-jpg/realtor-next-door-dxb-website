@@ -7,15 +7,15 @@ const steps = [
   { icon: KeyRound, title: "Purchase, handover & leasing support", text: "Coordinate the next steps, documentation and agreed aftercare." },
 ];
 export default function HowIWork() {
-  return <section className="bg-card py-14 md:py-20">
+  return <section style={{ backgroundColor: "#111111" }} className="text-white py-14 md:py-20">
     <div className="container px-5 md:px-6">
-      <p className="mb-3 text-xs uppercase text-primary">A clear process</p>
+      <p className="mb-3 text-xs uppercase text-[#C9A96E]">A clear process</p>
       <h2 className="mb-10 font-serif text-2xl font-bold md:text-4xl">How I work</h2>
       <ol className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        {steps.map((step, i) => <li key={step.title} className="border-t border-border pt-5">
-          <div className="mb-5 flex items-center justify-between text-primary"><span className="font-serif text-2xl">0{i + 1}</span><step.icon className="h-6 w-6" /></div>
+        {steps.map((step, i) => <li key={step.title} className="border-t border-white/10 pt-5">
+          <div className="mb-5 flex items-center justify-between text-[#C9A96E]"><span className="font-serif text-2xl">0{i + 1}</span><step.icon className="h-6 w-6" /></div>
           <h3 className="mb-3 font-serif text-lg font-semibold">{step.title}</h3>
-          <p className="text-sm leading-relaxed text-muted-foreground">{step.text}</p>
+          <p className="text-sm leading-relaxed text-white/60">{step.text}</p>
         </li>)}
       </ol>
     </div>

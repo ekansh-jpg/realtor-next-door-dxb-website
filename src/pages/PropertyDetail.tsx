@@ -1,4 +1,5 @@
 import { openLeadForm } from "@/lib/leads";
+import { propertyMetadata } from "@/lib/seo";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -43,8 +44,8 @@ const PropertyDetail = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
       <Seo
-        title={`${property.name} by ${property.developer} — ${property.priceFrom} | Dubai`}
-        description={`${property.name} by ${property.developer} in ${property.location}. ${property.bedrooms}, from ${property.priceFrom}, handover ${property.handover}. Payment plan ${property.paymentPlan}. Speak to Dubai realtor Ekansh Kinger.`}
+        title={propertyMetadata(property).title}
+        description={propertyMetadata(property).description}
         path={`/properties/${property.slug}`}
         schema={{
           "@context": "https://schema.org",

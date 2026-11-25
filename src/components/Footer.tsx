@@ -1,13 +1,15 @@
 import { motion } from "framer-motion";
-import { Instagram, Phone, Linkedin } from "lucide-react";
+import { Instagram, Phone, Linkedin, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const footerLinks = [
   { label: "Home", to: "/" },
+  { label: "Properties", to: "/properties" },
   { label: "Transactions", to: "/transactions" },
   { label: "Dubai Insights", to: "/dubai-insights" },
   { label: "Services", to: "/services" },
   { label: "Contact", to: "/contact" },
+  { label: "Privacy Policy", to: "/privacy" },
 ];
 
 const Footer = () => {
@@ -29,7 +31,7 @@ const Footer = () => {
               <span className="mt-2 font-sans text-[11px] md:text-xs tracking-wide" style={{ color: "#C9A96E" }}>Real Estate Investment Advisor · RERA BRN 84711</span>
             </div>
             <p className="font-sans text-xs md:text-sm leading-relaxed text-white/50 max-w-xs">
-              Your trusted real estate partner in Dubai. Transparent guidance, premium properties, exceptional service.
+              Research-driven property advice for investors buying in Dubai. Transparent guidance, no pressure.
             </p>
           </motion.div>
 
@@ -69,6 +71,7 @@ const Footer = () => {
                 @realtor_nextdoordxb
               </a>
               <p className="font-sans text-xs md:text-sm text-white/50">Dubai, United Arab Emirates</p>
+              <p className="font-sans text-xs md:text-sm text-white/50">Languages: English &amp; Hindi</p>
             </div>
 
             <div className="flex items-center gap-3 mt-4 md:mt-6">
@@ -76,7 +79,7 @@ const Footer = () => {
                 { href: "tel:+971544590555", icon: <Phone className="h-4 w-4" />, label: "Call" },
                 { href: "https://www.instagram.com/realtor_nextdoordxb", icon: <Instagram className="h-4 w-4" />, label: "Instagram" },
                 { href: "https://www.linkedin.com/in/ekansh-kinger-7207341a6", icon: <Linkedin className="h-4 w-4" />, label: "LinkedIn" },
-                { href: "https://wa.me/971544590555", icon: <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="h-4 w-4" />, label: "WhatsApp" },
+                { href: "https://wa.me/971544590555", icon: <MessageCircle className="h-4 w-4" />, label: "WhatsApp" },
               ].map((s, i) => (
                 <motion.a
                   key={i}
@@ -95,13 +98,16 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
+        <p className="mb-6 max-w-4xl font-sans text-[10px] md:text-xs leading-relaxed text-white/40">
+          Information on this website is for general guidance only and is not financial, legal or tax advice. Property values and rental returns can go down as well as up; no returns are guaranteed. Prices and availability are subject to change.
+        </p>
         <div className="border-t border-white/10 pt-6 md:pt-8">
           <div className="flex flex-col items-center justify-between gap-2 md:flex-row md:gap-4">
             <p className="font-sans text-[10px] md:text-xs text-white/30">
               © 2026 Ekansh Kinger. All rights reserved.
             </p>
             <p className="font-sans text-[10px] md:text-xs text-white/30">
-              Dubai, UAE · RERA Certified Broker
+              Dubai, UAE · RERA BRN 84711
             </p>
           </div>
         </div>

@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import ekanshAward from "@/assets/uploaded-social-ekansh.webp";
+import reelCover1 from "@/assets/dubai-skyline-day.webp";
+import reelCover2 from "@/assets/dubai-night-skyline.webp";
 import InstagramEmbed from "./InstagramEmbed";
 
 
@@ -7,10 +9,12 @@ const instagramPosts = [
   {
     url: "https://www.instagram.com/reel/DcbLNULIuQv/",
     title: "Dubai Real Estate Insights",
+    image: reelCover1,
   },
   {
     url: "https://www.instagram.com/reel/DcTf6ajour8/",
     title: "Property Investment Tips",
+    image: reelCover2,
   },
 ];
 
@@ -50,11 +54,10 @@ const VideoSection = () => {
             <div className="aspect-[4/5] md:aspect-[3/4] w-full">
               <img
                 src={ekanshAward}
-                alt="Ekansh Kinger — award-winning Dubai real estate agent"
+                alt="Ekansh Kinger, Dubai real estate investment advisor, at an industry awards event"
                 className="w-full h-full object-cover"
-                loading="eager"
+                loading="lazy"
                 decoding="async"
-                fetchPriority="high"
               />
             </div>
             <div
@@ -120,7 +123,7 @@ const VideoSection = () => {
                   transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
                   className="overflow-hidden rounded-2xl border border-white/10 hover:border-[#C9A96E]/40 transition-all bg-black/30 mx-auto w-full max-w-[360px]"
                 >
-                  <InstagramEmbed url={post.url} title={post.title} eager />
+                  <InstagramEmbed url={post.url} title={post.title} image={post.image} />
                   <a
                     href={post.url}
                     target="_blank"

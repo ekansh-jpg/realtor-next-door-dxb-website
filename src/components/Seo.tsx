@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
+import { SITE_URL } from "@/lib/seo";
 
-const SITE = "https://realtornextdoordxb.com";
+const SITE = SITE_URL;
 const DEFAULT_IMAGE = `${SITE}/og-image.jpg?v=4`;
 
 interface Crumb {

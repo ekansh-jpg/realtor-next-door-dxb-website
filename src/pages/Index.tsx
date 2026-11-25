@@ -1,5 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Seo from "@/components/Seo";
+import { pageMetadata } from "@/lib/seo";
+import { faqSchema } from "@/data/faqs";
+import HowIWork from "@/components/HowIWork";
+import PropertyFAQ from "@/components/PropertyFAQ";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Stats from "@/components/Stats";
@@ -19,22 +23,10 @@ const Index = () => {
   return (
     <div className="min-h-screen pb-16 md:pb-0">
       <Seo
-        title={"Ekansh Kinger | Dubai Real Estate Investment Advisor"}
-        description={"Dubai real estate investment made simple. Ekansh Kinger — Real Estate Investment Advisor (RERA BRN 84711). 200+ homes sold, AED 500M+ transacted with Emaar, Damac, Sobha & Nakheel."}
+        title={pageMetadata.home.title}
+        description={pageMetadata.home.description}
         path="/"
-        keywords={"realtor in Dubai, Dubai real estate investment, best real estate agent Dubai, invest in Dubai property, Dubai property investment 2026, off-plan investment Dubai, top realtors Dubai, luxury real estate Dubai, Emaar Damac Sobha Nakheel agent, Dubai rental yields, freehold property Dubai, NRI investment Dubai"}
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          name: "Ekansh Kinger — Realtor Next Door DXB",
-          description:
-            "Dubai real estate investment advisory and brokerage: off-plan launches, luxury villas, waterfront apartments and portfolio strategy.",
-          serviceType: ["Real Estate Investment Advisory", "Property Brokerage", "Off-plan Investment"],
-          areaServed: { "@type": "City", name: "Dubai" },
-          url: "https://realtornextdoordxb.com/",
-          telephone: "+971544590555",
-          priceRange: "AED 600,000 - AED 100,000,000",
-        }}
+        schema={faqSchema}
       />
       <Navbar />
       <Hero />
@@ -42,12 +34,14 @@ const Index = () => {
       <Stats />
       <Achievements />
       <WhyMe />
+      <HowIWork />
       <Testimonials />
       
       <VideoSection />
       <PartnersMarquee />
       <LeadMagnet />
       <InlineLeadSection formName="homepage" />
+      <PropertyFAQ />
       <SocialSection />
       <CTASection />
       <Footer />

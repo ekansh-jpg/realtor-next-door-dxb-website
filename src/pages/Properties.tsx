@@ -1,6 +1,7 @@
 import { openLeadForm } from "@/lib/leads";
 import { useState } from "react";
 import Seo from "@/components/Seo";
+import { pageMetadata } from "@/lib/seo";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { MapPin, ArrowRight, Sparkles } from "lucide-react";
@@ -20,10 +21,9 @@ const Properties = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
       <Seo
-        title={"Dubai Investment Properties for Sale | Emaar, Damac & Sobha"}
-        description={"Best investment properties in Dubai — off-plan apartments, waterfront townhouses and luxury villas by Emaar, Damac, Sobha and Nakheel. Prices, payment plans, ROI and handover dates."}
+        title={pageMetadata.properties.title}
+        description={pageMetadata.properties.description}
         path="/properties"
-        keywords={"investment property Dubai, property for sale Dubai, off-plan Dubai, buy apartment Dubai, buy villa Dubai, Emaar properties, Damac properties, Sobha Realty, Dubai payment plans, high ROI property Dubai"}
         breadcrumbs={[{ name: "Properties", path: "/properties" }]}
       />
       <Navbar />

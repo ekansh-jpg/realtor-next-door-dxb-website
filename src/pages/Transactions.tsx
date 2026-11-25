@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Seo from "@/components/Seo";
+import { pageMetadata } from "@/lib/seo";
 import { motion } from "framer-motion";
 import { RefreshCw, ExternalLink, TrendingUp, Building, BarChart3 } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
@@ -52,10 +53,9 @@ const Transactions = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
       <Seo
-        title={"Dubai Real Estate Transactions — Live Weekly Market & Investment Data"}
-        description={"Dubai property transaction data updated weekly: volumes, total worth, off-plan vs ready split and top-selling investment communities, with a link to official DLD records."}
+        title={pageMetadata.transactions.title}
+        description={pageMetadata.transactions.description}
         path="/transactions"
-        keywords={"Dubai real estate transactions, DLD data, Dubai property prices, Dubai market report, real estate investment data Dubai, off-plan vs ready Dubai"}
         breadcrumbs={[{ name: "Transactions", path: "/transactions" }]}
       />
       <Navbar />

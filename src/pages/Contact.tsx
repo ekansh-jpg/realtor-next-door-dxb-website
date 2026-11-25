@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Seo from "@/components/Seo";
+import { pageMetadata } from "@/lib/seo";
 import { motion } from "framer-motion";
 import { Phone, Instagram, Send, MapPin, Clock, ChevronDown, CheckCircle2, AlertCircle, Loader2, MessageCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -87,10 +88,9 @@ const Contact = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
       <Seo
-        title={"Contact Ekansh Kinger — Top Dubai Realtor & Investment Advisor"}
-        description={"Talk to Dubai realtor Ekansh Kinger about buying, selling or investing in Dubai property. Call +971 54 459 0555 or send an enquiry — replies within 2 hours."}
+        title={pageMetadata.contact.title}
+        description={pageMetadata.contact.description}
         path="/contact"
-        keywords={"contact Dubai realtor, Dubai real estate agent contact, Dubai property investment advisor, book consultation Dubai property"}
         breadcrumbs={[{ name: "Contact", path: "/contact" }]}
       />
       <Navbar />
