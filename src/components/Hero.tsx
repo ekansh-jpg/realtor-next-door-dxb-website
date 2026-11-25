@@ -1,3 +1,5 @@
+import { openLeadForm } from "@/lib/leads";
+import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import uploadedHomeImage from "@/assets/uploaded-home-ekansh-bw.webp";
@@ -110,6 +112,39 @@ const Hero = () => {
           >
             Meet Your Realtor Next Door
           </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
+            className="mt-3 mx-auto max-w-xl font-sans text-sm md:text-base text-white/85"
+            style={{ textShadow: "0 2px 12px rgba(0,0,0,0.7)" }}
+          >
+            Research-driven property advice for investors buying in Dubai — off-plan, ready and commercial.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.6 }}
+            className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
+          >
+            <button
+              type="button"
+              onClick={() => openLeadForm({ formName: "hero_consultation", title: "Book a Free Consultation", subtitle: "Tell me your goals and I'll call you back personally." })}
+              className="w-full sm:w-auto rounded-full px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-widest transition hover:opacity-90"
+              style={{ backgroundColor: "#C9A96E", color: "#0A0A0A", boxShadow: "0 8px 30px -8px rgba(201,169,110,0.6)" }}
+            >
+              Book a Free Consultation
+            </button>
+            <a
+              href={`https://wa.me/971544590555?text=${encodeURIComponent("Hi Ekansh, I'm interested in Dubai property. I found you on your website (Home).")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-widest text-white border backdrop-blur-sm transition hover:bg-white/10"
+              style={{ borderColor: "rgba(255,255,255,0.6)" }}
+            >
+              <MessageCircle className="h-4 w-4" /> WhatsApp Me
+            </a>
+          </motion.div>
         </motion.div>
       </div>
 

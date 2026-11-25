@@ -36,7 +36,7 @@ const WhatsAppFloat = () => {
       transition={{ delay: 1.5, type: "spring", stiffness: 200 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl"
+      className="hidden md:flex fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full items-center justify-center shadow-2xl"
       style={{ backgroundColor: "#25D366", marginBottom: "env(safe-area-inset-bottom)" }}
       aria-label="Chat on WhatsApp"
     >

@@ -6,7 +6,7 @@ export const pushEvent = (event: string, data: Record<string, unknown> = {}) => 
   w.dataLayer.push({ event, page_path: window.location.pathname, ...data });
 };
 
-/** Call from any future form's submit handler (also fired automatically for native submits). */
+/** Call after a form submission succeeds. */
 export const trackFormSubmit = (form_name: string) => pushEvent("form_submit", { form_name });
 
 let installed = false;
@@ -21,14 +21,6 @@ export const installTracking = () => {
       const href = a.getAttribute("href") || "";
       if (/wa\.me|api\.whatsapp\.com|whatsapp:/i.test(href)) pushEvent("whatsapp_click", { link_url: href.split("?")[0] });
       else if (href.startsWith("tel:")) pushEvent("call_click", { link_url: href });
-    },
-    true,
-  );
-  document.addEventListener(
-    "submit",
-    (e) => {
-      const f = e.target as HTMLFormElement;
-      trackFormSubmit(f.getAttribute("name") || f.id || window.location.pathname);
     },
     true,
   );

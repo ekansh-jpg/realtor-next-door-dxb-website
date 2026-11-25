@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Phone, Instagram, Send, MapPin, Clock, ChevronDown, CheckCircle2, AlertCircle, Loader2, MessageCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LeadForm from "@/components/leads/LeadForm";
 import bgContact from "@/assets/bg-contact.webp";
 import bgServices from "@/assets/bg-services.webp";
 
@@ -124,115 +125,10 @@ const Contact = () => {
       <div className="container mx-auto px-5 md:px-6 pb-14 md:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="lg:col-span-3">
-            {status === "success" ? (
-              <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-                className="rounded-xl border p-8 md:p-12 text-center backdrop-blur-sm"
-                style={{ backgroundColor: "rgba(17,17,17,0.85)", borderColor: "rgba(201,169,110,0.4)" }}>
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full mx-auto mb-5 flex items-center justify-center" style={{ backgroundColor: "rgba(201,169,110,0.15)" }}>
-                  <CheckCircle2 className="h-8 w-8 md:h-10 md:w-10" style={{ color: "#C9A96E" }} />
-                </div>
-                <p className="font-sans text-[10px] tracking-[0.3em] uppercase mb-2" style={{ color: "#C9A96E" }}>Received</p>
-                <h3 className="font-serif text-2xl md:text-3xl font-bold uppercase tracking-wider text-white mb-3">Thank You{form.name ? `, ${form.name.split(" ")[0]}` : ""}</h3>
-                <div className="h-[2px] w-12 mx-auto my-4" style={{ backgroundColor: "#C9A96E" }} />
-                <p className="font-sans text-sm text-white/70 mb-2">Your enquiry has been delivered to my inbox.</p>
-                <p className="font-sans text-xs md:text-sm text-white/50 mb-6">
-                  I personally review every message and will reply to <span className="text-white/80">{form.email}</span> within 2 hours.
-                </p>
-                <button onClick={resetForm}
-                  className="font-sans text-[11px] uppercase tracking-widest text-white/60 hover:text-white transition underline underline-offset-4">
-                  Send another message
-                </button>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="rounded-xl border border-white/10 p-5 md:p-8 backdrop-blur-sm" style={{ backgroundColor: "rgba(17,17,17,0.85)" }}>
-                <h2 className="font-serif text-xl md:text-2xl font-bold uppercase tracking-wider text-white mb-6 md:mb-8">Get Expert Guidance</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-3 md:mb-4">
-                  {[
-                    { key: "name", label: "Full Name", type: "text", required: true },
-                    { key: "email", label: "Email", type: "email", required: true },
-                    { key: "phone", label: "Phone Number", type: "tel", required: true },
-                    { key: "budget", label: "Budget Range", type: "text", required: false },
-                  ].map((field) => (
-                    <div key={field.key}>
-                      <label className="block font-sans text-[10px] md:text-xs uppercase tracking-wider mb-1.5 md:mb-2 text-white/40">{field.label}</label>
-                      <input type={field.type} required={field.required} value={form[field.key as keyof typeof form]}
-                        onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
-                        disabled={status === "sending"}
-                        className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg font-sans text-sm text-white border border-white/10 outline-none transition-colors focus:border-[#C9A96E] bg-white/5 disabled:opacity-60" />
-                    </div>
-                  ))}
-                </div>
-                <div className="mb-3 md:mb-4">
-                  <label className="block font-sans text-[10px] md:text-xs uppercase tracking-wider mb-1.5 md:mb-2 text-white/40">Property Interest</label>
-                  <select value={form.interest} onChange={(e) => setForm({ ...form, interest: e.target.value })}
-                    disabled={status === "sending"}
-                    className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg font-sans text-sm text-white border border-white/10 outline-none transition-colors focus:border-[#C9A96E] bg-white/5 disabled:opacity-60">
-                    <option value="" style={{ backgroundColor: "#111111" }}>Select interest</option>
-                    <option value="Buying" style={{ backgroundColor: "#111111" }}>Buying</option>
-                    <option value="Investment" style={{ backgroundColor: "#111111" }}>Investment</option>
-                    <option value="Off-Plan" style={{ backgroundColor: "#111111" }}>Off-Plan</option>
-                    <option value="Rental" style={{ backgroundColor: "#111111" }}>Rental</option>
-                    <option value="Golden Visa" style={{ backgroundColor: "#111111" }}>Golden Visa</option>
-                  </select>
-                </div>
-                <div className="mb-4 md:mb-6">
-                  <label className="block font-sans text-[10px] md:text-xs uppercase tracking-wider mb-1.5 md:mb-2 text-white/40">Message</label>
-                  <textarea rows={3} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    disabled={status === "sending"}
-                    className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg font-sans text-sm text-white border border-white/10 outline-none transition-colors focus:border-[#C9A96E] resize-none bg-white/5 disabled:opacity-60" />
-                </div>
-
-                {status === "error" && (
-                  <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}
-                    className="mb-4 rounded-lg border p-3 md:p-4"
-                    style={{ backgroundColor: "rgba(239,68,68,0.08)", borderColor: "rgba(239,68,68,0.35)" }}>
-                    <div className="flex items-start gap-3 mb-3">
-                      <AlertCircle className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0 mt-0.5 text-red-400" />
-                      <div>
-                        <p className="font-sans text-xs md:text-sm font-semibold text-white">
-                          {errorMsg === "ACTIVATION_NEEDED" ? "Form needs activation" : "Something went wrong"}
-                        </p>
-                        <p className="font-sans text-[11px] md:text-xs text-white/60 mt-0.5">
-                          {errorMsg === "ACTIVATION_NEEDED" ? (
-                            <>FormSubmit sent an activation link to <span className="text-white/80">{MAIL_TO}</span>. Please check inbox & spam and click "Activate Form". Then try again.</>
-                          ) : (
-                            <>We couldn't send your message right now. Please try again, or reach me directly on{" "}
-                              <a href="tel:+971544590555" className="underline hover:text-white" style={{ color: "#C9A96E" }}>+971 54 459 0555</a>.</>
-                          )}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex flex-col sm:flex-row gap-2">
-                      <a
-                        href={whatsappFallbackHref()}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 md:py-3 font-sans text-[11px] md:text-xs uppercase tracking-widest text-black transition"
-                        style={{ backgroundColor: "#C9A96E" }}
-                      >
-                        <MessageCircle className="h-3.5 w-3.5" /> WhatsApp
-                      </a>
-                      <a
-                        href={mailtoFallbackHref()}
-                        className="flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 md:py-3 font-sans text-[11px] md:text-xs uppercase tracking-widest text-white/70 hover:text-white transition border border-white/10 hover:border-white/25"
-                      >
-                        <Send className="h-3.5 w-3.5" /> Mail App
-                      </a>
-                    </div>
-                  </motion.div>
-                )}
-
-                <motion.button whileHover={status === "idle" || status === "error" ? { scale: 1.02 } : undefined}
-                  whileTap={status === "idle" || status === "error" ? { scale: 0.97 } : undefined}
-                  type="submit" disabled={status === "sending"}
-                  className="w-full py-3 md:py-4 rounded-full font-sans text-xs md:text-sm font-semibold uppercase tracking-widest text-white transition-all inline-flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
-                  style={{ backgroundColor: "#C9A96E" }}>
-                  {status === "sending" ? (<><Loader2 className="h-4 w-4 animate-spin" />Sending…</>)
-                    : status === "error" ? "Try Again"
-                    : "Get Expert Guidance"}
-                </motion.button>
-              </form>
-            )}
+            <div className="relative rounded-xl border border-white/10 p-5 md:p-8 backdrop-blur-sm" style={{ backgroundColor: "rgba(17,17,17,0.85)" }}>
+              <h2 className="font-serif text-xl md:text-2xl font-bold uppercase tracking-wider text-white mb-6 md:mb-8">Get Expert Guidance</h2>
+              <LeadForm formName="contact" variant="full" withMessage submitLabel="Send Enquiry" />
+            </div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="lg:col-span-2 space-y-3 md:space-y-4">

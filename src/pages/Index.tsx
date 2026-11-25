@@ -12,10 +12,12 @@ import PartnersMarquee from "@/components/PartnersMarquee";
 import SocialSection from "@/components/SocialSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import InlineLeadSection from "@/components/leads/InlineLeadSection";
+import LeadMagnet from "@/components/leads/LeadMagnet";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-16 md:pb-0">
       <Seo
         title={"Ekansh Kinger | Dubai Real Estate Investment Advisor"}
         description={"Dubai real estate investment made simple. Ekansh Kinger — Senior Property Consultant at D&B Properties (RERA BRN 84711). 200+ homes sold, AED 500M+ transacted with Emaar, Damac, Sobha & Nakheel."}
@@ -44,6 +46,8 @@ const Index = () => {
       
       <VideoSection />
       <PartnersMarquee />
+      <LeadMagnet />
+      <InlineLeadSection formName="homepage" />
       <SocialSection />
       <CTASection />
       <Footer />

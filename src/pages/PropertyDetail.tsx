@@ -1,3 +1,4 @@
+import { openLeadForm } from "@/lib/leads";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -245,6 +246,14 @@ const PropertyDetail = () => {
               </div>
             </div>
 
+            <button
+              type="button"
+              onClick={() => openLeadForm({ formName: "brochure", property: property.name, variant: "short", title: "Get Brochure & Payment Plan", subtitle: "I'll send the brochure and latest payment plan to your WhatsApp and email." })}
+              className="mb-3 w-full flex items-center justify-center gap-2 rounded-full px-5 py-3 font-sans text-xs md:text-sm font-semibold uppercase tracking-wider border transition-all hover:bg-white/5"
+              style={{ borderColor: "#C9A96E", color: "#C9A96E" }}
+            >
+              Get Brochure &amp; Payment Plan
+            </button>
             <a
               href={`https://wa.me/971544590555?text=${whatsappMsg}`}
               target="_blank"

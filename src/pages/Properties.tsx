@@ -1,3 +1,4 @@
+import { openLeadForm } from "@/lib/leads";
 import { useState } from "react";
 import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
@@ -167,6 +168,20 @@ const Properties = () => {
                   </div>
                 </div>
               </Link>
+              <div className="px-5 pb-5 grid grid-cols-2 gap-2">
+                <button type="button"
+                  onClick={() => openLeadForm({ formName: "brochure", property: p.name, variant: "short", title: "Get Brochure & Payment Plan", subtitle: "I'll send the brochure and latest payment plan to your WhatsApp and email." })}
+                  className="rounded-full px-3 py-2.5 font-sans text-[10px] font-semibold uppercase tracking-wider transition hover:opacity-90"
+                  style={{ backgroundColor: "#C9A96E", color: "#0A0A0A" }}>
+                  Get Brochure &amp; Payment Plan
+                </button>
+                <a href={`https://wa.me/971544590555?text=${encodeURIComponent(`Hi Ekansh, I'm interested in ${p.name}. I found you on your website (Properties).`)}`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-1.5 rounded-full px-3 py-2.5 font-sans text-[10px] font-semibold uppercase tracking-wider border transition hover:bg-white/5"
+                  style={{ borderColor: "rgba(37,211,102,0.5)", color: "#25D366" }}>
+                  WhatsApp
+                </a>
+              </div>
             </motion.div>
           ))}
         </div>
