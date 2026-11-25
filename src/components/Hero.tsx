@@ -1,7 +1,6 @@
 import { openLeadForm } from "@/lib/leads";
-import { MessageCircle } from "lucide-react";
+import { ChevronDown, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 import uploadedHomeImage from "@/assets/uploaded-home-ekansh-bw.webp";
 
 const Hero = () => {
