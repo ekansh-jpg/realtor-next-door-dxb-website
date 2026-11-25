@@ -54,7 +54,7 @@ const VideoSection = () => {
             <div className="aspect-[4/5] md:aspect-[3/4] w-full">
               <img
                 src={ekanshAward}
-                alt="Ekansh Kinger, Dubai real estate investment advisor, at an industry awards event"
+                alt="Ekansh Kinger, Dubai real estate investment advisor, at an industry event"
                 className="w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -65,8 +65,8 @@ const VideoSection = () => {
               style={{ background: 'linear-gradient(180deg, rgba(10,10,10,0) 55%, rgba(10,10,10,0.75) 100%)' }}
             />
             <div className="absolute bottom-3 left-4 right-4 md:hidden">
-              <p className="font-serif text-white text-sm">Award-Winning Realtor</p>
-              <p className="font-sans text-[11px] text-white/70">Recognized by top Dubai developers</p>
+              <p className="font-serif text-white text-sm">Ekansh Kinger</p>
+              <p className="font-sans text-[11px] text-white/70">Real Estate Investment Advisor · RERA BRN 84711</p>
             </div>
           </motion.div>
 

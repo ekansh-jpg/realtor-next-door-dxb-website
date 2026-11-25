@@ -188,7 +188,7 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-sans text-sm md:text-base leading-relaxed md:text-lg" style={{ color: '#333' }}
             >
-              I'm Ekansh Kinger — a successful realtor and investment manager in Dubai.
+              I'm Ekansh Kinger — a real estate investment advisor in Dubai.
               My journey spans from e-learning to mastering Dubai's dynamic real estate market, driven
               by determination and smart planning.
             </motion.p>

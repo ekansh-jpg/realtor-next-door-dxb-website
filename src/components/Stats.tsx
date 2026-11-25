@@ -1,56 +1,12 @@
 import { motion } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
 import dubaiSkyline from "@/assets/dubai-night-skyline.webp";
 
-const stats = [
-  { value: 2022, prefix: "Since ", suffix: "", label: "in UAE Real Estate", format: false },
-  { value: 200, suffix: "+", label: "Properties Sold", format: false },
-  { value: 500, suffix: "M+", prefix: "AED ", label: "Worth of Properties" },
+// Only verifiable facts belong here — no sales counts or totals unless they can be evidenced.
+const facts = [
+  { value: "Since 2022", label: "in UAE Real Estate" },
+  { value: "RERA BRN 84711", label: "Licensed in Dubai" },
+  { value: "English & Hindi", label: "Languages" },
 ];
-
-const Counter = ({ target, suffix, prefix, format }: { target: number; suffix: string; prefix?: string; format?: boolean }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const [started, setStarted] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started) setStarted(true);
-      },
-      { threshold: 0.5 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [started]);
-
-  useEffect(() => {
-    if (!started) return;
-    const steps = 60;
-    const increment = target / steps;
-    let current = 0;
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, 2000 / steps);
-    return () => clearInterval(timer);
-  }, [started, target]);
-
-  const displayCount = format ? count.toLocaleString() : count;
-
-  return (
-    <div ref={ref} className="text-center">
-      <p className="font-serif text-4xl font-bold text-white sm:text-5xl md:text-6xl lg:text-7xl">
-        {prefix}{displayCount}{suffix}
-      </p>
-    </div>
-  );
-};
 
 const Stats = () => {
   return (
@@ -77,14 +33,13 @@ const Stats = () => {
             transition={{ delay: 0.1 }}
             className="mx-auto mb-12 md:mb-20 max-w-3xl text-center font-sans text-sm md:text-base leading-relaxed text-white/70 px-2"
           >
-            Ekansh Kinger's journey from e-learning to becoming a leading realtor and investment manager
-            in Dubai is a testament to persistence and vision. Mastering two competitive industries, he
-            brings strategic business planning, sharp negotiation skills, and a client-first approach
-            to every property deal — from off-plan investments to ready villas.
+            Ekansh Kinger moved from e-learning into Dubai real estate in 2022. He brings business
+            planning, negotiation and a client-first approach to every property search — from off-plan
+            investments to ready villas.
           </motion.p>
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 md:gap-10">
-            {stats.map((stat, i) => (
+            {facts.map((stat, i) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
@@ -93,7 +48,7 @@ const Stats = () => {
                 transition={{ duration: 0.5, delay: i * 0.15 }}
                 className="text-center"
               >
-                <Counter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} format={stat.format} />
+                <p className="font-serif text-3xl font-bold text-white sm:text-4xl md:text-5xl">{stat.value}</p>
                 <p className="mt-3 md:mt-4 font-serif text-base md:text-lg text-white/80">
                   {stat.label}
                 </p>

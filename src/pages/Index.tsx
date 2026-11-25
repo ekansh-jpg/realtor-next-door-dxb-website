@@ -9,7 +9,6 @@ import About from "@/components/About";
 import Stats from "@/components/Stats";
 import Achievements from "@/components/Achievements";
 import WhyMe from "@/components/WhyMe";
-import Testimonials from "@/components/Testimonials";
 
 import VideoSection from "@/components/VideoSection";
 import PartnersMarquee from "@/components/PartnersMarquee";
@@ -35,7 +34,6 @@ const Index = () => {
       <Achievements />
       <WhyMe />
       <HowIWork />
-      <Testimonials />
       
       <VideoSection />
       <PartnersMarquee />

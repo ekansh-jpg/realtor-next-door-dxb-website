@@ -4,16 +4,16 @@ import { Award, ShieldCheck, Briefcase, Users } from "lucide-react";
 
 const achievements = [
   {
-    title: "Top Broker",
-    subtitle: "Developer Awards",
-    description: "Recognized as top-performing broker by leading Dubai developers for outstanding sales.",
-    icon: Award,
+    title: "RERA Licensed",
+    subtitle: "BRN 84711",
+    description: "A licensed real estate broker in Dubai, so you can verify who you're dealing with.",
+    icon: ShieldCheck,
   },
   {
-    title: "RERA Certified",
-    subtitle: "Official Recognition",
-    description: "Fully certified and authorized real estate broker in Dubai.",
-    icon: ShieldCheck,
+    title: "Research First",
+    subtitle: "Data-Backed Shortlists",
+    description: "Options compared on official transaction data, total costs and your goals — not sales pressure.",
+    icon: Award,
   },
   {
     title: "Dual Industry",
@@ -22,9 +22,9 @@ const achievements = [
     icon: Briefcase,
   },
   {
-    title: "500+ Network",
-    subtitle: "Strong Connections",
-    description: "A powerful professional network of 500+ industry leaders, mentors, and clients.",
+    title: "International Buyers",
+    subtitle: "Remote-Friendly",
+    description: "Video viewings and step-by-step support for investors buying from India and abroad.",
     icon: Users,
   },
 ];
@@ -46,7 +46,7 @@ const Achievements = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="mb-4 md:mb-6 text-center font-serif text-2xl font-bold uppercase tracking-wider text-white sm:text-3xl md:text-4xl"
           >
-            My Achievements
+            Credentials
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -55,8 +55,7 @@ const Achievements = () => {
             transition={{ delay: 0.15, duration: 0.6 }}
             className="mx-auto mb-10 md:mb-14 max-w-3xl text-center font-sans text-sm italic leading-relaxed text-white/70 px-2"
           >
-            Recognition That Speaks Volumes — Honored by top developers and trusted by hundreds of clients,
-            these milestones fuel my drive to lead in real estate.
+            What you can check, and what you can expect when you work with me.
           </motion.p>
 
           <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
