@@ -7,6 +7,29 @@ import share3 from "@/assets/optimized/insight-3-share.jpg.asset.json";
 
 export const insightArticles = [
   {
+    slug: "how-nris-buy-property-in-dubai", title: "How NRIs and Indian Residents Buy Property in Dubai", seoTitle: "How NRIs Buy Property in Dubai | Step-by-Step", category: "Indian investors", image: insight1, share: share1.url,
+    excerpt: "Who can buy, how money can leave India, what it costs in Dubai, and the steps from shortlist to title deed.",
+    sections: [
+      { heading: "First, know which rules apply to you", text: "An NRI living abroad usually pays from overseas income or an NRE/NRO account, subject to Indian banking rules. A resident Indian sends money under the RBI's Liberalised Remittance Scheme (LRS), which allows up to USD 250,000 per person per financial year (April to March) for permitted purposes, including buying property abroad. Family members each have their own limit, so a couple can combine them for one purchase." },
+      { heading: "Plan for TCS on remittances from India", text: "From 1 April 2026, remittances under LRS for purposes such as property are generally free of TCS up to INR 10 lakh in a financial year, with 20% TCS on the amount above that. TCS is not an extra cost: it can be claimed as a credit against your income tax. It does affect cash flow, so plan payment dates with your CA. Rules change, so confirm the current position with your bank and tax adviser." },
+      { heading: "You can buy freehold in Dubai without living there", text: "Foreign nationals, including Indians, can buy freehold property in Dubai's designated areas. You do not need a UAE visa or Emirates ID to buy; a valid passport is the core document. Viewings, reservation and signing can be done remotely, and many buyers visit only once or not at all." },
+      { heading: "Budget for Dubai costs", text: "Allow for the 4% Dubai Land Department transfer fee (on off-plan this is paid through Oqood registration), registration and admin fees, the agreed agency fee on resale, and ongoing service charges. Some developers cover part of the DLD fee on launches. Verify current fees with DLD before you commit." },
+      { heading: "The steps, in order", text: "1) Agree your budget, goal and timeline. 2) Shortlist on real data: recent sale prices, service charges and rents. 3) Reserve the unit and sign the sales agreement (SPA). 4) Pay the deposit and instalments to the project escrow account (off-plan) or settle at transfer (ready). 5) Registration: Oqood for off-plan, title deed at the DLD trustee office for ready property. 6) Handover, then leasing or management if you are renting it out. A property of AED 2M or more may also support a Golden Visa application." },
+      { heading: "Remember the Indian side", text: "Property held abroad, and any rent from it, has to be reported in your Indian tax return if you are a resident for tax purposes. Keep remittance and purchase documents together. This guide is general information, not legal or tax advice." },
+    ],
+  },
+  {
+    slug: "dubai-off-plan-payment-plans-explained", title: "Dubai Off-Plan Payment Plans Explained", seoTitle: "Dubai Off-Plan Payment Plans | Explained", category: "Off-plan", image: insight2, share: share2.url,
+    excerpt: "What 20/60/20 and post-handover plans really mean for your cash flow, and what to check before you sign.",
+    sections: [
+      { heading: "Reading a payment plan", text: "A plan such as 20/60/20 means 20% on booking, 60% during construction (usually tied to dates or build milestones) and 20% at handover. Post-handover plans spread part of the price over months or years after you receive the keys. The headline split matters less than the exact dates and amounts in your sales agreement." },
+      { heading: "The cost on day one is more than the deposit", text: "Alongside the first instalment, buyers usually pay the 4% Dubai Land Department fee through Oqood registration, plus developer admin and registration fees. Some launches cover part of these. Ask for a full schedule showing every payment and fee before reserving, and verify current fees with DLD." },
+      { heading: "Where your money goes", text: "Off-plan payments are made into a project escrow account regulated in Dubai, and the project is registered with the authorities. Check the developer, the project's registration and the escrow details in the SPA, and keep every receipt." },
+      { heading: "Match the plan to your cash flow", text: "Map each instalment against your income and savings, with a buffer. If you will need a mortgage at handover, check your eligibility early, because a lender's valuation can differ from the purchase price. A handover date can move, so ask what the contract says about delays." },
+      { heading: "Know your exit options", text: "If you might sell before completion, check the developer's assignment rules: many require a minimum percentage paid before resale is allowed, and charge an assignment fee. Holding and renting after handover is another route. Neither a resale profit nor rental income is guaranteed." },
+    ],
+  },
+  {
     slug: "chelsea-residences-investor-guide", title: "Chelsea Residences: A Waterfront Buyer's Checklist", seoTitle: "Chelsea Residences Investor Guide | Dubai", category: "Waterfront", image: insight1, share: share1.url,
     excerpt: "What to check before buying a branded sea-view apartment in Dubai Maritime City.",
     sections: [
