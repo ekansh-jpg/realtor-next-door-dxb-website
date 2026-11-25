@@ -150,6 +150,13 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKF4P8ML"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+        <!-- Netlify Forms: lets Netlify detect the "lead" form so each enquiry is emailed. Fields mirror submitLead in src/lib/leads.ts -->
+    <form name="lead" data-netlify="true" netlify-honeypot="company_website" hidden>
+      <input name="company_website" /><input name="name" /><input name="phone" /><input name="email" />
+      <input name="budget" /><input name="interest" /><input name="timeline" /><input name="country" />
+      <textarea name="message"></textarea><input name="property" /><input name="form_name" /><input name="source_page" />
+      <input name="utm_source" /><input name="utm_medium" /><input name="utm_campaign" />
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -32,8 +32,26 @@ export type LeadInput = z.infer<typeof leadSchema>;
 
 const nz = (v?: string) => (v && v.trim() ? v.trim() : null);
 
+/**
+ * Also send each lead to Netlify Forms, which emails a notification to Ekansh.
+ * Field names must match the hidden "lead" form in index.html.
+ */
+const notifyByEmail = async (fields: Record<string, string | null | undefined>) => {
+  try {
+    const body = new URLSearchParams({ "form-name": "lead" });
+    for (const [k, v] of Object.entries(fields)) if (v) body.append(k, v);
+    await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: body.toString() });
+  } catch { /* the database insert below is the record of truth */ }
+};
+
 export const submitLead = async (input: LeadInput, formName: string, property?: string) => {
   const utm = getUtm();
+  const emailed = notifyByEmail({
+    name: input.name.trim(), phone: input.phone.trim(), email: input.email.trim(),
+    budget: input.budget, interest: input.interest, timeline: input.timeline, country: input.country,
+    message: input.message, property, form_name: formName, source_page: window.location.pathname,
+    utm_source: utm.utm_source, utm_medium: utm.utm_medium, utm_campaign: utm.utm_campaign,
+  });
   const { error } = await supabase.from("leads").insert({
     name: input.name.trim(), phone: input.phone.trim(), email: input.email.trim(),
     budget: nz(input.budget), interest: nz(input.interest), timeline: nz(input.timeline),
@@ -42,6 +60,7 @@ export const submitLead = async (input: LeadInput, formName: string, property?: 
     utm_source: utm.utm_source ?? null, utm_medium: utm.utm_medium ?? null, utm_campaign: utm.utm_campaign ?? null,
     consent: true,
   });
+  await emailed;
   if (error) throw error;
   trackFormSubmit(formName);
 };
