@@ -26,6 +26,7 @@ const Footer = () => {
             <div className="flex flex-col leading-tight mb-3 md:mb-4">
               <span className="font-serif text-xl md:text-2xl font-bold tracking-[0.15em] text-white">EKANSH</span>
               <span className="font-serif text-xl md:text-2xl font-bold tracking-[0.15em] text-white">KINGER</span>
+              <span className="mt-2 font-sans text-[11px] md:text-xs tracking-wide" style={{ color: "#C9A96E" }}>Senior Property Consultant, D&amp;B Properties · RERA BRN 84711</span>
             </div>
             <p className="font-sans text-xs md:text-sm leading-relaxed text-white/50 max-w-xs">
               Your trusted real estate partner in Dubai. Transparent guidance, premium properties, exceptional service.
@@ -97,7 +98,7 @@ const Footer = () => {
         <div className="border-t border-white/10 pt-6 md:pt-8">
           <div className="flex flex-col items-center justify-between gap-2 md:flex-row md:gap-4">
             <p className="font-sans text-[10px] md:text-xs text-white/30">
-              © 2025 Ekansh Kinger. All rights reserved.
+              © 2026 Ekansh Kinger. All rights reserved.
             </p>
             <p className="font-sans text-[10px] md:text-xs text-white/30">
               Dubai, UAE · RERA Certified Broker

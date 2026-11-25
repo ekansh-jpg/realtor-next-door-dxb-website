@@ -85,6 +85,15 @@ const Hero = () => {
             Ekansh Kinger
             <span className="sr-only"> — Dubai Real Estate Agent</span>
           </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mt-3 font-sans text-xs sm:text-sm md:text-base tracking-wide text-white/85"
+            style={{ textShadow: "0 2px 12px rgba(0,0,0,0.7)" }}
+          >
+            Senior Property Consultant, D&amp;B Properties · RERA BRN 84711
+          </motion.p>
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: "80px" }}

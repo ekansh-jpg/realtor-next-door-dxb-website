@@ -1,8 +1,10 @@
+import { installTracking } from "./lib/tracking";
 import { createRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import App from "./App.tsx";
 import "./index.css";
 
+installTracking();
 createRoot(document.getElementById("root")!).render(
   <HelmetProvider>
     <App />

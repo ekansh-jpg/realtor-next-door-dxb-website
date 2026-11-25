@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import dubaiSkyline from "@/assets/dubai-night-skyline.webp";
 
 const stats = [
-  { value: 5, suffix: "+", label: "Years Experience" },
+  { value: 2022, prefix: "Since ", suffix: "", label: "in UAE Real Estate", format: false },
   { value: 200, suffix: "+", label: "Properties Sold", format: false },
   { value: 500, suffix: "M+", prefix: "AED ", label: "Worth of Properties" },
 ];

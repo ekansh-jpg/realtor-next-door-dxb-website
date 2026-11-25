@@ -27,4 +27,4 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-Sitemap: https://realtornextdoordxb.com/sitemap.xml
+Sitemap: https://www.realtornextdoordxb.com/sitemap.xml
