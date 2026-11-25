@@ -9,25 +9,26 @@ import bgCta from "@/assets/bg-contact.webp";
 import { Link } from "react-router-dom";
 import { insightArticles } from "@/data/insights";
 import { pageMetadata } from "@/lib/seo";
+import { openLeadForm } from "@/lib/leads";
 
 const marketStats = [
-  { label: "Total Transactions (2026 YTD)", value: "248,000+", icon: TrendingUp },
-  { label: "Average Price/sqft", value: "AED 2,180", icon: Building },
-  { label: "Hottest Area", value: "Emaar Beachfront", icon: MapPin },
-  { label: "YoY Price Growth", value: "+18.6%", icon: TrendingUp },
+  { label: "Transactions, H1 2026", value: "112,850", source: "Dubai Land Department", icon: TrendingUp },
+  { label: "Transaction value, H1 2026", value: "AED 419.9B", source: "Dubai Land Department", icon: Building },
+  { label: "Avg sale price, Aug 2026", value: "AED 1,636/sqft", source: "Khaleej Times, Sep 2026", icon: MapPin },
+  { label: "Price change YoY, Aug 2026", value: "−1.7%", source: "Khaleej Times, Sep 2026", icon: TrendingUp },
 ];
 
 const articles = insightArticles.map(a => ({ ...a, date: a.dateLabel }));
 
 const hotspots = [
-  { area: "Emaar Beachfront", growth: "+34%", avgPrice: "AED 4,050/sqft", highlight: "Sold-out towers, marina-front living" },
-  { area: "Palm Jebel Ali", growth: "+31%", avgPrice: "AED 4,400/sqft", highlight: "Nakheel's revived mega-island" },
-  { area: "Dubai Islands", growth: "+28%", avgPrice: "AED 2,300/sqft", highlight: "Fastest-emerging beachfront cluster" },
-  { area: "JVC & JVT", growth: "+22%", avgPrice: "AED 1,240/sqft", highlight: "Highest rental yields in Dubai" },
+  { area: "Emaar Beachfront", highlight: "Beachfront towers beside Dubai Marina" },
+  { area: "Palm Jebel Ali", highlight: "Nakheel's relaunched island, mostly off-plan" },
+  { area: "Dubai Islands", highlight: "Emerging beachfront master community" },
+  { area: "JVC & JVT", highlight: "Popular mid-market communities for rental investors" },
 ];
 
 const faqs = [
-  { q: "Is Dubai real estate a good investment in 2026?", a: "Yes — Dubai offers 6-10% rental yields, zero income tax, and strong capital appreciation. The market has shown consistent growth with record transactions through 2025." },
+  { q: "Is Dubai real estate a good investment in 2026?", a: "It depends on your goals and time horizon. Dubai offers freehold ownership for foreigners, no personal income tax on rental income and rental yields that compare well with many global cities. Prices move in cycles, though: after several years of strong growth, average prices were slightly lower year-on-year in mid-2026. No returns are guaranteed." },
   { q: "What is the minimum investment for a Golden Visa?", a: "A property investment of AED 2 million or more qualifies for a 10-year Golden Visa. The property must be fully paid (not mortgaged) and retained for at least 3 years." },
   { q: "Can foreigners buy property in Dubai?", a: "Yes, foreigners can buy freehold property in designated areas across Dubai. There are no restrictions on nationality, and the process is straightforward with DLD registration." },
   { q: "What are the best areas to invest in Dubai?", a: "Top investment areas include Dubai Marina, Downtown Dubai, Business Bay, JVC, and Dubai Hills Estate — each offering different price points and rental yields." },
@@ -79,6 +80,7 @@ const DubaiInsights = () => {
               <stat.icon className="h-4 w-4 md:h-5 md:w-5 mx-auto mb-2 md:mb-3" style={{ color: "#C9A96E" }} />
               <p className="font-serif text-base md:text-2xl font-bold text-white">{stat.value}</p>
               <p className="font-sans text-[9px] md:text-xs mt-1 uppercase tracking-wider text-white/40">{stat.label}</p>
+              <p className="font-sans text-[9px] md:text-[10px] mt-1 text-white/30">Source: {stat.source}</p>
             </motion.div>
           ))}
         </div>
@@ -120,7 +122,7 @@ const DubaiInsights = () => {
           className="mb-2 text-center font-sans text-xs md:text-sm uppercase" style={{ color: "#C9A96E" }}>Trending Areas</motion.p>
         <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           className="font-serif text-xl md:text-4xl font-bold uppercase tracking-wider text-white mb-8 md:mb-12 text-center">
-          Investment Hotspots
+          Areas Investors Ask About
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
           {hotspots.map((h, i) => (
@@ -131,12 +133,11 @@ const DubaiInsights = () => {
               <div>
                 <h3 className="font-serif text-sm md:text-lg font-bold text-white">{h.area}</h3>
                 <p className="font-sans text-[10px] md:text-xs mt-0.5 md:mt-1 text-white/50">{h.highlight}</p>
-                <p className="font-sans text-[10px] md:text-xs mt-0.5 md:mt-1 text-white/40">{h.avgPrice}</p>
               </div>
-              <div className="text-right flex-shrink-0 ml-4">
-                <p className="font-sans text-lg md:text-xl font-bold" style={{ color: "#22c55e" }}>{h.growth}</p>
-                <p className="font-sans text-[10px] md:text-xs text-white/40">YoY Growth</p>
-              </div>
+              <button type="button" onClick={() => openLeadForm({ formName: "area_enquiry", property: h.area, title: `Ask about ${h.area}`, variant: "short" })}
+                className="flex-shrink-0 ml-4 rounded-full border border-white/15 px-3 py-1.5 font-sans text-[10px] md:text-xs uppercase tracking-wider text-white/70 hover:border-[#C9A96E] hover:text-white transition-colors">
+                Ask about this area
+              </button>
             </motion.div>
           ))}
         </div>
@@ -204,7 +205,7 @@ const DubaiInsights = () => {
       {/* Source */}
       <div className="container mx-auto px-5 md:px-6 pb-8 md:pb-10 text-center">
         <p className="font-sans text-[10px] md:text-xs text-white/30">
-          Source: <a href="https://dubailand.gov.ae" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#C9A96E] transition-colors">Dubai Land Department (DLD)</a> • Data for illustration purposes
+          Sources: <a href="https://dubailand.gov.ae" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#C9A96E] transition-colors">Dubai Land Department (DLD)</a> H1 2026 transaction data; Khaleej Times (Sep 2026) for August 2026 prices. Figures change monthly — always check the latest DLD data.
         </p>
       </div>
 

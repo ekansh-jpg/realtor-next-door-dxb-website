@@ -1,55 +1,33 @@
-import { useState } from "react";
 import Seo from "@/components/Seo";
 import { pageMetadata } from "@/lib/seo";
 import { motion } from "framer-motion";
-import { RefreshCw, ExternalLink, TrendingUp, Building, BarChart3 } from "lucide-react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import { ExternalLink, TrendingUp, Building, BarChart3 } from "lucide-react";
+import { openLeadForm } from "@/lib/leads";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import bgTransactions from "@/assets/bg-transactions.webp";
 
-const chartData = [
-  { date: "Mon", existing: 2.9, offPlan: 2.5 },
-  { date: "Tue", existing: 3.3, offPlan: 3.0 },
-  { date: "Wed", existing: 3.7, offPlan: 2.8 },
-  { date: "Thu", existing: 3.1, offPlan: 3.6 },
-  { date: "Fri", existing: 4.2, offPlan: 3.3 },
-  { date: "Sat", existing: 4.6, offPlan: 4.0 },
-  { date: "Sun", existing: 3.9, offPlan: 4.3 },
+// Dubai Land Department figures for H1 2026, as reported by Emirates 24|7 (Jul 2026).
+// Update these when DLD publishes new half-year data.
+const salesSplit = [
+  { segment: "Ready (completed)", value: 146.69, deals: 27160 },
+  { segment: "Off-plan", value: 139.75, deals: 58840 },
 ];
-
-const transactionData = [
-  { id: 1, area: "Dubai Maritime City · Chelsea Residences", type: "Apartment", bedrooms: "2 BR", price: "AED 2,560,000", sqft: "1,180", date: "This week", status: "Off-Plan" },
-  { id: 2, area: "Dubailand · DAMAC Islands 2", type: "Townhouse", bedrooms: "4 BR", price: "AED 2,950,000", sqft: "2,410", date: "This week", status: "Off-Plan" },
-  { id: 3, area: "Dubailand · The Oasis by Emaar", type: "Villa", bedrooms: "5 BR", price: "AED 15,400,000", sqft: "7,200", date: "This week", status: "Off-Plan" },
-  { id: 4, area: "Palm Jebel Ali", type: "Villa", bedrooms: "6 BR", price: "AED 43,500,000", sqft: "8,900", date: "This week", status: "Off-Plan" },
-  { id: 5, area: "Emaar Beachfront", type: "Apartment", bedrooms: "3 BR", price: "AED 8,200,000", sqft: "2,040", date: "This week", status: "Off-Plan" },
-  { id: 6, area: "Dubai Creek Harbour", type: "Apartment", bedrooms: "3 BR", price: "AED 4,960,000", sqft: "1,780", date: "This week", status: "Off-Plan" },
-  { id: 7, area: "Palm Jumeirah", type: "Villa", bedrooms: "5 BR", price: "AED 19,750,000", sqft: "5,400", date: "This week", status: "Completed" },
-  { id: 8, area: "Downtown Dubai", type: "Apartment", bedrooms: "2 BR", price: "AED 3,780,000", sqft: "1,320", date: "This week", status: "Completed" },
-  { id: 9, area: "Jumeirah Golf Estates", type: "Villa", bedrooms: "4 BR", price: "AED 9,400,000", sqft: "4,650", date: "This week", status: "Completed" },
-  { id: 10, area: "DAMAC Lagoons", type: "Townhouse", bedrooms: "4 BR", price: "AED 3,250,000", sqft: "2,350", date: "This week", status: "Off-Plan" },
-  { id: 11, area: "Dubai Hills Estate", type: "Villa", bedrooms: "5 BR", price: "AED 11,800,000", sqft: "5,800", date: "This week", status: "Completed" },
-  { id: 12, area: "MBR City · Hartland II", type: "Apartment", bedrooms: "2 BR", price: "AED 2,880,000", sqft: "1,150", date: "This week", status: "Off-Plan" },
-];
-
-const filters = ["All", "Apartment", "Villa", "Townhouse", "Off-Plan"];
 
 const statCards = [
-  { label: "Weekly Transactions", value: "7,310", icon: BarChart3, sub: "+6.9% WoW" },
-  { label: "Total Worth (7 Days)", value: "AED 25.8B", icon: TrendingUp, sub: "+14.7% WoW" },
-  { label: "Units / Villas / Off-Plan", value: "5,240 / 860 / 1,210", icon: Building, sub: "Off-plan share up" },
+  { label: "Transactions, H1 2026", value: "112,850", icon: BarChart3, sub: "All real estate transactions" },
+  { label: "Transaction value, H1 2026", value: "AED 419.9B", icon: TrendingUp, sub: "All real estate transactions" },
+  { label: "Property sales, H1 2026", value: "86,000", icon: Building, sub: "AED 286.4B in sales value" },
+];
+
+const liveSources = [
+  { name: "Dubai Land Department", desc: "Official open data and transaction records.", href: "https://dubailand.gov.ae" },
+  { name: "Dubai REST app", desc: "DLD's official app for property and transaction lookups.", href: "https://dubailand.gov.ae" },
+  { name: "DXBinteract", desc: "Searchable sales and rental data built on DLD records.", href: "https://dxbinteract.com" },
 ];
 
 const Transactions = () => {
-  const [activeFilter, setActiveFilter] = useState("All");
-
-  const filtered = transactionData.filter((t) => {
-    if (activeFilter === "All") return true;
-    if (activeFilter === "Off-Plan") return t.status === "Off-Plan";
-    return t.type === activeFilter;
-  });
-
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
       <Seo
@@ -74,7 +52,7 @@ const Transactions = () => {
             className="inline-block px-4 md:px-5 py-2 rounded-full font-sans text-[10px] md:text-xs tracking-[0.25em] uppercase border mb-4 md:mb-6"
             style={{ borderColor: "rgba(201,169,110,0.4)", color: "#C9A96E" }}
           >
-            Live Market Data
+            Market Overview
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -90,7 +68,7 @@ const Transactions = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-sans text-xs md:text-base max-w-2xl italic text-white/60 px-2"
           >
-            Dubai's latest property transaction data — updated daily from official sources
+            Official Dubai Land Department figures for the first half of 2026, and where to check live transactions yourself
           </motion.p>
         </div>
       </section>
@@ -113,13 +91,13 @@ const Transactions = () => {
               </div>
               <p className="font-serif text-xl md:text-3xl font-bold text-white mb-1">{card.value}</p>
               <p className="font-sans text-[10px] md:text-xs uppercase tracking-wider text-white/40">{card.label}</p>
-              <p className="font-sans text-[10px] md:text-xs mt-1 md:mt-2" style={{ color: "#22c55e" }}>{card.sub}</p>
+              <p className="font-sans text-[10px] md:text-xs mt-1 md:mt-2 text-white/50">{card.sub}</p>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Chart */}
+      {/* Ready vs off-plan */}
       <div className="container mx-auto px-5 md:px-6 pb-10 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -129,151 +107,59 @@ const Transactions = () => {
           className="rounded-xl border border-white/10 p-4 md:p-8 backdrop-blur-sm"
           style={{ backgroundColor: "rgba(17, 17, 17, 0.85)" }}
         >
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 md:mb-8">
-            <div>
-              <h3 className="font-serif text-base md:text-xl font-bold uppercase tracking-wider text-white">Daily Transaction Worth</h3>
-              <p className="font-sans text-[10px] md:text-xs mt-1 text-white/40">Existing vs Off-Plan (in Billions AED)</p>
-            </div>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-full font-sans text-[10px] md:text-xs uppercase tracking-wider border transition-all self-start sm:self-auto"
-              style={{ borderColor: "rgba(201,169,110,0.3)", color: "#C9A96E" }}
-            >
-              <RefreshCw className="h-3 w-3 md:h-3.5 md:w-3.5" /> Refresh
-            </motion.button>
-          </div>
+          <h2 className="font-serif text-base md:text-xl font-bold uppercase tracking-wider text-white">Ready vs Off-Plan Sales</h2>
+          <p className="font-sans text-[10px] md:text-xs mt-1 mb-6 md:mb-8 text-white/40">Sales value, H1 2026 (AED billions)</p>
           <div className="h-56 md:h-72">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-                <XAxis dataKey="date" tick={{ fontSize: 10, fill: "rgba(255,255,255,0.4)" }} axisLine={{ stroke: "rgba(255,255,255,0.1)" }} />
-                <YAxis tick={{ fontSize: 10, fill: "rgba(255,255,255,0.4)" }} axisLine={{ stroke: "rgba(255,255,255,0.1)" }} tickFormatter={(v) => `${v}B`} width={35} />
+              <BarChart data={salesSplit} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" vertical={false} />
+                <XAxis dataKey="segment" tick={{ fontSize: 11, fill: "rgba(255,255,255,0.6)" }} axisLine={{ stroke: "rgba(255,255,255,0.1)" }} tickLine={false} />
+                <YAxis tick={{ fontSize: 10, fill: "rgba(255,255,255,0.4)" }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}B`} width={40} />
                 <Tooltip
+                  cursor={{ fill: "rgba(255,255,255,0.04)" }}
                   contentStyle={{ backgroundColor: "#111111", border: "1px solid rgba(201,169,110,0.2)", borderRadius: "8px", fontSize: "11px", color: "#fff" }}
-                  labelStyle={{ color: "rgba(255,255,255,0.6)" }}
-                  formatter={(value: number) => [`AED ${value}B`, ""]}
+                  formatter={(value: number, _n, item) => [`AED ${value}B · ${(item.payload as { deals: number }).deals.toLocaleString()} deals`, "Sales"]}
                 />
-                <Legend wrapperStyle={{ fontSize: "10px", color: "rgba(255,255,255,0.5)" }} />
-                <Line type="monotone" dataKey="existing" name="Existing" stroke="#C9A96E" strokeWidth={2} dot={{ fill: "#C9A96E", r: 3 }} activeDot={{ r: 5 }} />
-                <Line type="monotone" dataKey="offPlan" name="Off-Plan" stroke="rgba(255,255,255,0.6)" strokeWidth={2} dot={{ fill: "rgba(255,255,255,0.6)", r: 3 }} activeDot={{ r: 5 }} />
-              </LineChart>
+                <Bar dataKey="value" fill="#C9A96E" radius={[6, 6, 0, 0]} maxBarSize={120} />
+              </BarChart>
             </ResponsiveContainer>
           </div>
         </motion.div>
       </div>
 
-      {/* Filters */}
+      {/* Where to check live data */}
       <div className="container mx-auto px-5 md:px-6 pb-10 md:pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap gap-2 md:gap-3 mb-6 md:mb-8"
-        >
-          {filters.map((f) => (
-            <button
-              key={f}
-              onClick={() => setActiveFilter(f)}
-              className="px-4 md:px-6 py-2 md:py-2.5 rounded-full font-sans text-[10px] md:text-xs tracking-wider uppercase transition-all border"
-              style={{
-                backgroundColor: activeFilter === f ? "#C9A96E" : "transparent",
-                borderColor: activeFilter === f ? "#C9A96E" : "rgba(255,255,255,0.15)",
-                color: activeFilter === f ? "#0A0A0A" : "rgba(255,255,255,0.6)",
-              }}
-            >
-              {f}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Mobile Cards / Desktop Table */}
-        {/* Mobile: card layout */}
-        <div className="md:hidden space-y-3">
-          {filtered.map((t, i) => (
-            <motion.div
-              key={t.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="rounded-xl border border-white/10 p-4 backdrop-blur-sm"
+        <h2 className="font-serif text-lg md:text-2xl font-bold uppercase tracking-wider text-white mb-2 text-center">Check Live Transactions</h2>
+        <p className="font-sans text-xs md:text-sm text-white/50 text-center mb-6 md:mb-8">Recent sale prices in a building or community are public. These are the official places to look.</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+          {liveSources.map((src) => (
+            <a
+              key={src.name}
+              href={src.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-xl border border-white/10 p-5 md:p-6 hover:border-[#C9A96E] transition-colors"
               style={{ backgroundColor: "rgba(17, 17, 17, 0.85)" }}
             >
-              <div className="flex items-start justify-between mb-2">
-                <div>
-                  <p className="font-sans text-sm font-medium text-white">{t.area}</p>
-                  <p className="font-sans text-xs text-white/50">{t.type} · {t.bedrooms} · {t.sqft} sqft</p>
-                </div>
-                <span className="px-2.5 py-0.5 rounded-full font-sans text-[10px] flex-shrink-0" style={{
-                  backgroundColor: t.status === "Completed" ? "rgba(34,197,94,0.15)" : "rgba(201,169,110,0.15)",
-                  color: t.status === "Completed" ? "#22c55e" : "#C9A96E",
-                }}>
-                  {t.status}
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <p className="font-sans text-sm font-semibold" style={{ color: "#C9A96E" }}>{t.price}</p>
-                <p className="font-sans text-[10px] text-white/40">{t.date}</p>
-              </div>
-            </motion.div>
+              <p className="flex items-center gap-2 font-serif text-base font-bold text-white">
+                {src.name} <ExternalLink className="h-3.5 w-3.5 text-white/40 group-hover:text-[#C9A96E]" />
+              </p>
+              <p className="mt-1 font-sans text-xs text-white/50">{src.desc}</p>
+            </a>
           ))}
         </div>
-
-        {/* Desktop: table */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="hidden md:block rounded-xl border border-white/10 overflow-hidden"
-          style={{ backgroundColor: "rgba(17, 17, 17, 0.85)" }}
-        >
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr style={{ borderBottom: "1px solid rgba(201,169,110,0.15)" }}>
-                  {["Area", "Type", "Bedrooms", "Size", "Price", "Date", "Status"].map((h) => (
-                    <th key={h} className="px-6 py-4 text-left font-sans text-xs tracking-wider uppercase" style={{ color: "#C9A96E" }}>
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map((t, i) => (
-                  <motion.tr
-                    key={t.id}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.04 }}
-                    className="transition-colors hover:bg-white/5"
-                    style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
-                  >
-                    <td className="px-6 py-4 font-sans text-sm font-medium text-white">{t.area}</td>
-                    <td className="px-6 py-4 font-sans text-sm text-white/60">{t.type}</td>
-                    <td className="px-6 py-4 font-sans text-sm text-white/60">{t.bedrooms}</td>
-                    <td className="px-6 py-4 font-sans text-sm text-white/60">{t.sqft} sqft</td>
-                    <td className="px-6 py-4 font-sans text-sm font-semibold" style={{ color: "#C9A96E" }}>{t.price}</td>
-                    <td className="px-6 py-4 font-sans text-sm text-white/40">{t.date}</td>
-                    <td className="px-6 py-4">
-                      <span className="px-3 py-1 rounded-full font-sans text-xs" style={{
-                        backgroundColor: t.status === "Completed" ? "rgba(34,197,94,0.15)" : "rgba(201,169,110,0.15)",
-                        color: t.status === "Completed" ? "#22c55e" : "#C9A96E",
-                      }}>
-                        {t.status}
-                      </span>
-                    </td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </motion.div>
-
-        <p className="font-sans text-[10px] md:text-xs text-white/30 text-center mt-4 md:mt-6">
-          Data sourced from Dubai Land Department (DLD) • Updated weekly
+        <div className="mt-8 text-center">
+          <button
+            type="button"
+            onClick={() => openLeadForm({ formName: "transactions_request", title: "Recent transactions in an area", subtitle: "Tell me the building or community and I'll send you recent sale prices.", variant: "short" })}
+            className="rounded-full px-8 py-3 font-sans text-xs md:text-sm font-semibold uppercase tracking-wider text-black hover:opacity-90"
+            style={{ backgroundColor: "#C9A96E" }}
+          >
+            Ask me for recent sales in an area
+          </button>
+        </div>
+        <p className="font-sans text-[10px] md:text-xs text-white/30 text-center mt-6">
+          Source: Dubai Land Department H1 2026 data, as reported by Emirates 24|7 (July 2026). Figures are updated when new official data is published.
         </p>
       </div>
 
