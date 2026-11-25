@@ -26,7 +26,7 @@ const Footer = () => {
             <div className="flex flex-col leading-tight mb-3 md:mb-4">
               <span className="font-serif text-xl md:text-2xl font-bold tracking-[0.15em] text-white">EKANSH</span>
               <span className="font-serif text-xl md:text-2xl font-bold tracking-[0.15em] text-white">KINGER</span>
-              <span className="mt-2 font-sans text-[11px] md:text-xs tracking-wide" style={{ color: "#C9A96E" }}>Senior Property Consultant, D&amp;B Properties · RERA BRN 84711</span>
+              <span className="mt-2 font-sans text-[11px] md:text-xs tracking-wide" style={{ color: "#C9A96E" }}>Real Estate Investment Advisor · RERA BRN 84711</span>
             </div>
             <p className="font-sans text-xs md:text-sm leading-relaxed text-white/50 max-w-xs">
               Your trusted real estate partner in Dubai. Transparent guidance, premium properties, exceptional service.

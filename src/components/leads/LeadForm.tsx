@@ -110,7 +110,7 @@ const LeadForm = ({ formName, variant = "full", property, withMessage, submitLab
       <label className="flex items-start gap-2.5 cursor-pointer pt-1">
         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 h-4 w-4 accent-[#C9A96E]" disabled={sending} />
         <span className="font-sans text-[11px] leading-relaxed text-white/60">
-          I agree to be contacted by Ekansh Kinger (D&amp;B Properties) about properties. See{" "}
+          I agree to be contacted by Ekansh Kinger about properties. See{" "}
           <Link to="/privacy" className="underline" style={{ color: "#C9A96E" }} target="_blank">Privacy Policy</Link>.
         </span>
       </label>

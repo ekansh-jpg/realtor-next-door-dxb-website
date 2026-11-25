@@ -20,7 +20,7 @@ const Index = () => {
     <div className="min-h-screen pb-16 md:pb-0">
       <Seo
         title={"Ekansh Kinger | Dubai Real Estate Investment Advisor"}
-        description={"Dubai real estate investment made simple. Ekansh Kinger — Senior Property Consultant at D&B Properties (RERA BRN 84711). 200+ homes sold, AED 500M+ transacted with Emaar, Damac, Sobha & Nakheel."}
+        description={"Dubai real estate investment made simple. Ekansh Kinger — Real Estate Investment Advisor (RERA BRN 84711). 200+ homes sold, AED 500M+ transacted with Emaar, Damac, Sobha & Nakheel."}
         path="/"
         keywords={"realtor in Dubai, Dubai real estate investment, best real estate agent Dubai, invest in Dubai property, Dubai property investment 2026, off-plan investment Dubai, top realtors Dubai, luxury real estate Dubai, Emaar Damac Sobha Nakheel agent, Dubai rental yields, freehold property Dubai, NRI investment Dubai"}
         schema={{

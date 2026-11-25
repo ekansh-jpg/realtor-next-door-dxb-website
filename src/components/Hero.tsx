@@ -93,7 +93,7 @@ const Hero = () => {
             className="mt-3 font-sans text-xs sm:text-sm md:text-base tracking-wide text-white/85"
             style={{ textShadow: "0 2px 12px rgba(0,0,0,0.7)" }}
           >
-            Senior Property Consultant, D&amp;B Properties · RERA BRN 84711
+            Real Estate Investment Advisor · RERA BRN 84711
           </motion.p>
           <motion.div
             initial={{ width: 0 }}
