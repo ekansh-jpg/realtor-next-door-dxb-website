@@ -54,7 +54,7 @@ const VideoSection = () => {
             <div className="aspect-[4/5] md:aspect-[3/4] w-full">
               <img
                 src={ekanshAward}
-                alt="Ekansh Kinger, Dubai real estate investment advisor, at an industry event"
+                alt="Ekansh Kinger holding an award from DAMAC Properties"
                 className="w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -66,7 +66,7 @@ const VideoSection = () => {
             />
             <div className="absolute bottom-3 left-4 right-4 md:hidden">
               <p className="font-serif text-white text-sm">Ekansh Kinger</p>
-              <p className="font-sans text-[11px] text-white/70">Real Estate Investment Advisor · RERA BRN 84711</p>
+              <p className="font-sans text-[11px] text-white/70">Award recipient, DAMAC Properties</p>
             </div>
           </motion.div>
 

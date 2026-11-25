@@ -4,17 +4,18 @@ import { Award, ShieldCheck, Briefcase, Users } from "lucide-react";
 
 const achievements = [
   {
+    title: "DAMAC Award",
+    subtitle: "Developer Recognition",
+    description: "Recognised with an award from DAMAC Properties, one of Dubai's leading developers.",
+    icon: Award,
+  },
+  {
     title: "RERA Licensed",
     subtitle: "BRN 84711",
     description: "A licensed real estate broker in Dubai, so you can verify who you're dealing with.",
     icon: ShieldCheck,
   },
-  {
-    title: "Research First",
-    subtitle: "Data-Backed Shortlists",
-    description: "Options compared on official transaction data, total costs and your goals — not sales pressure.",
-    icon: Award,
-  },
+
   {
     title: "Dual Industry",
     subtitle: "E-learning & Real Estate",
