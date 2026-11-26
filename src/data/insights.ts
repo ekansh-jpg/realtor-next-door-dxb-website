@@ -7,6 +7,17 @@ import share3 from "@/assets/optimized/insight-3-share.jpg.asset.json";
 
 export const insightArticles = [
   {
+    slug: "ready-vs-off-plan-dubai-2026", title: "Ready vs Off-Plan in 2026: What the DLD Numbers Say", seoTitle: "Ready vs Off-Plan Dubai 2026 | DLD Data", category: "Market data", image: insight3, share: share3.url, date: "2026-11-26", dateLabel: "26 November 2026",
+    excerpt: "Off-plan still leads Dubai sales by count, but ready homes took a bigger share of the money in Q3 2026. Here is how to read the split.",
+    sections: [
+      { heading: "Off-plan still leads by count", text: "Trackers built on Dubai Land Department (DLD) registrations agree that off-plan remained the larger share of residential deals in Q3 2026. Savills put it at about 72% of sales by count, and Prop971's analysis of DLD open data at about 73%. In Q2 2026 Savills had the off-plan share at 77%, so the gap narrowed during the summer quarter." },
+      { heading: "Ready homes took more of the money", text: "By value the picture shifted further. Savills estimated off-plan at about 64% of Q3 2026 residential sales value (around AED 45.7bn of AED 70.8bn), with ready homes at about 36%, up from 26% in Q2. Betterhomes reported 10,055 secondary sales in Q3 2026, up 16% on the previous quarter. Analysts linked part of the shift to fewer new launches rather than to a single cause." },
+      { heading: "Why sources show different numbers", text: "Firms use different scopes, such as residential only versus all property, and different definitions of ready versus secondary, so their percentages rarely match exactly. DLD records a sale when it is registered, which can be weeks after it was agreed, so deals can fall into a different quarter. Compare figures from the same source over time instead of mixing sources." },
+      { heading: "What the split means for your choice", text: "Off-plan typically spreads payments over the build period but carries construction, handover-timing and resale-before-completion risk. Ready property can be rented or lived in straight away, and you can inspect the actual unit and check recent registered sales in the same building. The market share of each type does not tell you which one fits your budget, timeline or plans for the property." },
+      { heading: "How to use this before you buy", text: "Decide first whether you need rental income or occupancy soon, or can wait for handover. Then compare registered transaction prices for the specific building or project, not area-wide averages. Market statistics change every quarter and past activity is not a guide to future prices or rents; if you would like help comparing a ready and an off-plan option side by side, use the enquiry form below." },
+    ],
+  },
+  {
     slug: "how-nris-buy-property-in-dubai", title: "How NRIs and Indian Residents Buy Property in Dubai", seoTitle: "How NRIs Buy Property in Dubai | Step-by-Step", category: "Indian investors", image: insight1, share: share1.url,
     excerpt: "Who can buy, how money can leave India, what it costs in Dubai, and the steps from shortlist to title deed.",
     sections: [
@@ -83,4 +94,4 @@ export const insightArticles = [
       { heading: "Compare evidence, not promises", text: "A recognised brand does not assure higher resale value or rent. Compare actual transactions and achievable rents for similar properties and allow for vacancy. Make the decision around your budget and goals, not an assumed premium." },
     ],
   },
-].map(article => ({ ...article, date: "2026-11-25", dateLabel: "25 November 2026" }));
+].map(article => ({ date: "2026-11-25", dateLabel: "25 November 2026", ...article }));
